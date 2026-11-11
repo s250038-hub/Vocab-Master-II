@@ -3,3 +3,4 @@
 ### It will change it completely
 ... coming soon ...
 it's model will not change a lot but it will completely better than before（all game harder lol😂）
+it doesn't have a very big file like csw24.txt so if no internet,game file will small but still very good 👍

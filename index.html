@@ -50,12 +50,12 @@ a{color:var(--blue)}
 .btn:hover{background:rgba(255,255,255,.11)}.btn:active{transform:scale(.96)}
 .btn:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
 .btn:disabled{opacity:.45;cursor:not-allowed;transform:none}
-.btn-p{background:linear-gradient(135deg,var(--blue),var(--blue2));box-shadow:0 8px 22px -8px rgba(61,107,255,.7)}
+.btn-p{background:linear-gradient(135deg,var(--blue),var(--blue2));box-shadow:0 8px 22px -8px rgba(61,107,255,.7);color:#fff}
 .btn-p:hover{background:linear-gradient(135deg,#5f8bff,#3d68ff)}
-.btn-v{background:linear-gradient(135deg,#8b5cf6,#6d28d9);box-shadow:0 8px 22px -8px rgba(139,92,246,.7)}
+.btn-v{background:linear-gradient(135deg,#8b5cf6,#6d28d9);box-shadow:0 8px 22px -8px rgba(139,92,246,.7);color:#fff}
 .btn-a{background:linear-gradient(135deg,#f5a524,#d97706);color:#241500;box-shadow:0 8px 22px -8px rgba(245,165,36,.6)}
-.btn-ok{background:linear-gradient(135deg,#22c55e,#15803d)}
-.btn-d{background:linear-gradient(135deg,#f43f5e,#be123c)}
+.btn-ok{background:linear-gradient(135deg,#22c55e,#15803d);color:#fff}
+.btn-d{background:linear-gradient(135deg,#f43f5e,#be123c);color:#fff}
 .btn-g{background:transparent;border-color:var(--line2)}.btn-g:hover{background:rgba(255,255,255,.06)}
 .btn-sm{padding:7px 12px;font-size:13px;border-radius:10px}.btn-xs{padding:5px 10px;font-size:12px;border-radius:9px}
 .btn-big{padding:13px 28px;font-size:15px;border-radius:999px}
@@ -77,7 +77,6 @@ input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;heigh
 .tag{display:inline-block;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:#9db8ff;background:rgba(77,125,255,.16);border:1px solid rgba(77,125,255,.3);padding:2px 7px;border-radius:6px}
 .label{display:block;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin-bottom:8px}
 .divider{height:1px;background:var(--line);margin:16px 0}
-/* layout */
 #sidebar{position:fixed;left:0;top:0;bottom:0;width:282px;z-index:60;display:flex;flex-direction:column;gap:18px;padding:22px 18px;overflow-y:auto;background:rgba(9,14,30,.86);backdrop-filter:blur(16px);border-right:1px solid var(--line);transition:transform .28s ease}
 #main{margin-left:282px;min-height:100vh;display:flex;flex-direction:column}
 #topbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:12px;padding:14px 28px;background:rgba(7,11,22,.72);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
@@ -98,9 +97,7 @@ input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;heigh
 .nav-btn.on i{color:#9db8ff}
 .stat-row{display:flex;justify-content:space-between;align-items:center;padding:5px 0;font-size:13px;color:var(--muted)}
 .stat-row b{font-size:16px;color:var(--text)}
-#menu-btn{display:none}
-#side-scrim{display:none}
-/* bottom nav (mobile) */
+#menu-btn,#side-scrim{display:none}
 #bnav{display:none;position:fixed;left:0;right:0;bottom:0;z-index:70;align-items:stretch;justify-content:space-around;gap:4px;padding:8px 10px calc(8px + env(safe-area-inset-bottom));background:rgba(9,14,30,.92);backdrop-filter:blur(16px);border-top:1px solid var(--line)}
 .bn{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;background:none;border:none;color:var(--muted);font:inherit;font-size:11px;font-weight:700;cursor:pointer;padding:4px 0;border-radius:12px;transition:.15s}
 .bn i{font-size:19px}
@@ -108,7 +105,6 @@ input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;heigh
 .bn-plus{width:46px;height:46px;margin-top:-22px;border-radius:50%;display:grid;place-items:center;font-size:19px;color:#fff;background:linear-gradient(135deg,var(--blue),var(--violet));box-shadow:0 10px 24px -8px rgba(90,110,255,.8);border:3px solid var(--bg)}
 .bn:active .bn-plus{transform:scale(.94)}
 .bn.on .bn-plus{box-shadow:0 10px 28px -6px rgba(139,92,246,.95)}
-/* home dashboard */
 .search-pill{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.07);border:1px solid var(--line2);border-radius:999px;padding:13px 20px;box-shadow:var(--shadow)}
 .search-pill i{color:var(--muted)}
 .search-pill input{flex:1;background:none;border:none;outline:none;color:var(--text);font:inherit;font-size:15px}
@@ -120,7 +116,6 @@ input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;heigh
 .recent-ic{width:42px;height:42px;min-width:42px;border-radius:12px;display:grid;place-items:center;font-size:16px;color:#9db8ff;background:rgba(77,125,255,.14);border:1px solid rgba(77,125,255,.3)}
 .nw-chip{display:inline-flex;align-items:center;gap:7px;padding:6px 12px;border-radius:10px;border:1px solid rgba(245,165,36,.4);background:rgba(245,165,36,.1);color:#ffd48a;font:inherit;font-size:12.5px;font-weight:700;cursor:pointer;transition:.13s;margin:0 6px 6px 0}
 .nw-chip:hover{background:rgba(245,165,36,.2)}
-/* set page */
 .set-pv{position:relative;border-radius:20px;background:linear-gradient(160deg,var(--paper),var(--paper2));color:var(--ink);min-height:210px;display:flex;align-items:center;justify-content:center;padding:30px;cursor:pointer;box-shadow:0 22px 44px -16px rgba(0,0,0,.6),inset 0 0 0 1px rgba(0,0,0,.06)}
 .set-pv::before{content:"";position:absolute;inset:10px;border:1px solid rgba(90,70,20,.18);border-radius:14px;pointer-events:none}
 .set-pv-word{font-size:clamp(28px,6vw,44px);font-weight:600;word-break:break-word;text-align:center}
@@ -134,17 +129,40 @@ input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;heigh
 .mode-card:hover{background:rgba(255,255,255,.08);border-color:var(--line2);transform:translateY(-2px)}
 .mode-card i{font-size:19px;width:24px;text-align:center}
 .mode-card small{display:block;font-weight:500;font-size:11px;color:var(--muted)}
-/* library */
 .lib-row{display:flex;align-items:center;gap:12px;padding:15px 16px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.035);margin-bottom:10px;transition:.15s}
 .lib-row:hover{border-color:var(--line2);background:rgba(255,255,255,.06)}
 .lib-row .progress{width:110px}
-/* extra modals */
+/* full-vault card editor */
+#editor-scrim{position:fixed;inset:0;background:rgba(4,7,15,.6);backdrop-filter:blur(3px);z-index:100;opacity:0;pointer-events:none;transition:opacity .25s}
+#editor-scrim.on{opacity:1;pointer-events:auto}
+#editor{position:fixed;inset:0;z-index:101;background:var(--bg2);display:none;flex-direction:column}
+#editor.on{display:flex}
+.ed-top{display:flex;align-items:center;gap:10px;padding:12px 16px;background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:3}
+.ed-title-input{flex:1;min-width:0;background:none;border:none;outline:none;color:var(--text);font:inherit;font-weight:700;font-size:17px;font-family:'Space Grotesk Variable',sans-serif}
+.ed-title-input::placeholder{color:var(--dim)}
+.ed-status{padding:9px 16px;background:rgba(77,125,255,.12);border-bottom:1px solid var(--line);color:#9db8ff;font-size:13px;font-weight:600;text-align:center}
+.ed-body{flex:1;overflow-y:auto;padding:20px 16px 130px;max-width:820px;margin:0 auto;width:100%}
+.ed-card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:22px 22px 18px;box-shadow:var(--shadow);margin-bottom:16px;position:relative;transition:border-color .15s}
+.ed-card:focus-within{border-color:rgba(77,125,255,.5)}
+.ed-input{width:100%;background:none;border:none;outline:none;color:var(--text);font:inherit;font-size:21px;padding:5px 0;resize:vertical}
+.ed-line{height:3px;background:var(--text);opacity:.8;border-radius:2px}
+.ed-field:focus-within .ed-line{background:var(--blue2);opacity:1}
+.ed-label{font-size:11px;font-weight:800;letter-spacing:.08em;color:var(--muted);margin-top:7px}
+.ed-lang{font-size:12px;font-weight:700;color:var(--blue)}
+.ed-pos{background:rgba(77,125,255,.12);border:1px solid rgba(77,125,255,.3);color:#9db8ff;border-radius:7px;font:inherit;font-size:11px;font-weight:800;padding:3px 8px;outline:none;cursor:pointer;margin-top:6px}
+.ed-pos option{background:#0d1529;color:var(--text)}
+.ed-sugs{display:flex;flex-direction:column;gap:7px;margin-top:11px}
+.ed-sug{background:rgba(140,160,255,.09);border:none;border-radius:5px;padding:11px 13px;text-align:left;color:var(--text);font:inherit;font-size:14px;cursor:pointer;transition:.12s;line-height:1.45}
+.ed-sug:hover{background:rgba(77,125,255,.22)}
+.ed-sug .p{color:var(--blue);font-weight:800;margin-right:7px}
+.ed-sug-load{padding:10px 13px;color:var(--muted);font-size:13px}
+.ed-fab{position:fixed;right:22px;bottom:26px;width:62px;height:62px;border-radius:50%;border:none;background:linear-gradient(135deg,var(--blue),var(--violet));color:#fff;font-size:24px;cursor:pointer;box-shadow:0 14px 30px -8px rgba(90,110,255,.8);z-index:102;transition:transform .12s}
+.ed-fab:active{transform:scale(.94)}
 #acct-scrim,#share-scrim{position:fixed;inset:0;background:rgba(4,7,15,.6);backdrop-filter:blur(3px);z-index:96;opacity:0;pointer-events:none;transition:opacity .25s}
 #acct-scrim.on,#share-scrim.on{opacity:1;pointer-events:auto}
 #acct,#share{position:fixed;inset:0;z-index:98;display:none;align-items:center;justify-content:center;padding:20px}
 #acct.on,#share.on{display:flex}
 #acct .modal-card,#share .modal-card{max-height:86vh;overflow-y:auto}
-/* word list */
 .word-card{display:flex;gap:12px;align-items:flex-start;padding:15px 16px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.035);transition:border-color .15s,background .15s,transform .15s;cursor:pointer;position:relative}
 .word-card:hover{border-color:var(--line2);background:rgba(255,255,255,.06);transform:translateY(-1px)}
 .word-card.drag-over{border-color:var(--blue);box-shadow:0 0 0 2px rgba(77,125,255,.35)}
@@ -157,11 +175,6 @@ input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;heigh
 .known-dot{color:var(--green);font-size:12px}
 .empty{text-align:center;padding:46px 20px;color:var(--muted)}
 .empty i{font-size:38px;color:var(--dim);margin-bottom:12px;display:block}
-.def-sug{display:flex;gap:10px;align-items:flex-start;padding:9px 10px;border-radius:10px;border:1px solid transparent;cursor:pointer;transition:.12s}
-.def-sug:hover{background:rgba(255,255,255,.05);border-color:var(--line)}
-.def-sug input{margin-top:3px}
-.def-sug p{font-size:13px;color:var(--text)}
-/* flashcards */
 .fc-scene{perspective:1400px;width:100%;max-width:560px;height:320px;margin:0 auto}
 .fc-card{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .6s cubic-bezier(.4,.1,.2,1);cursor:pointer}
 .fc-card.flip{transform:rotateY(180deg)}
@@ -176,7 +189,6 @@ input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;heigh
 .fc-defs .tag{color:#7a5b12;background:rgba(200,160,60,.18);border-color:rgba(160,120,30,.35)}
 .progress{height:8px;border-radius:99px;background:rgba(255,255,255,.08);overflow:hidden}
 .progress>i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--blue),var(--violet));transition:width .35s ease}
-/* quiz / practice */
 .opt-btn{width:100%;text-align:left;padding:14px 16px;border-radius:13px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--text);font:inherit;font-size:14px;cursor:pointer;transition:.15s}
 .opt-btn:hover:not(:disabled){border-color:var(--blue);background:rgba(77,125,255,.1)}
 .opt-btn.good{border-color:var(--green);background:rgba(34,197,94,.16)}
@@ -187,7 +199,6 @@ input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;heigh
 .feedback.no{background:rgba(244,63,94,.11);border-color:rgba(244,63,94,.4);color:#ffc2cd}
 .big-word{font-size:clamp(26px,5vw,40px);font-weight:600;word-break:break-word}
 .result-ic{font-size:52px;margin-bottom:12px}
-/* games */
 .tabs{display:flex;gap:6px;padding:6px;border-radius:14px;background:rgba(255,255,255,.05);border:1px solid var(--line);overflow-x:auto;margin-bottom:20px}
 .tab-btn{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:9px 13px;border-radius:10px;border:none;background:transparent;color:var(--muted);font:inherit;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;transition:.15s}
 .tab-btn:hover{color:var(--text)}
@@ -269,20 +280,11 @@ input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;heigh
 .found-chip{display:inline-flex;align-items:center;gap:6px;padding:5px 11px;border-radius:9px;border:1px solid var(--line);background:rgba(255,255,255,.05);color:var(--text);font:inherit;font-size:12px;font-weight:700;cursor:pointer;transition:.13s}
 .found-chip:hover{background:rgba(255,255,255,.12);transform:translateY(-1px)}
 .found-chip.pangram{background:linear-gradient(135deg,#f5a524,#d97706);color:#241500;border-color:transparent}
-/* photo scan */
-.scan-text{max-height:96px;overflow-y:auto;font-size:12.5px;color:var(--muted);background:rgba(6,10,22,.6);border:1px solid var(--line);border-radius:10px;padding:10px 12px;line-height:1.7}
-.scan-text mark{background:rgba(245,165,36,.35);color:#ffd48a;border-radius:4px;padding:0 3px;font-weight:700}
-.scan-chips{display:flex;flex-wrap:wrap;gap:6px;max-height:130px;overflow-y:auto}
-.found-chip.on{outline:2px solid var(--blue);background:rgba(77,125,255,.16)}
-.found-chip.done{opacity:.5}
-.scan-ctx{font-size:12.5px;color:var(--muted);font-style:italic;border-left:3px solid var(--amber);padding:6px 10px;background:rgba(245,165,36,.07);border-radius:0 8px 8px 0}
-/* sentence lab */
 .sl-score{font-size:46px;font-weight:800;line-height:1;font-family:'Space Grotesk Variable',sans-serif}
 .sl-item{display:flex;gap:9px;align-items:flex-start;padding:9px 12px;border-radius:10px;border:1px solid var(--line);background:rgba(255,255,255,.03);font-size:13px}
 .sl-item i{margin-top:3px}
 .sl-item.bad{border-color:rgba(244,63,94,.35)}
 .sl-item.good{border-color:rgba(34,197,94,.35)}
-/* drawer / modal / toast */
 #drawer-scrim,#modal-scrim{position:fixed;inset:0;background:rgba(4,7,15,.6);backdrop-filter:blur(3px);z-index:80;opacity:0;pointer-events:none;transition:opacity .25s}
 #drawer-scrim.on,#modal-scrim.on{opacity:1;pointer-events:auto}
 #drawer{position:fixed;top:0;right:0;bottom:0;width:min(440px,100%);z-index:90;display:flex;flex-direction:column;background:#0d1529;border-left:1px solid var(--line2);box-shadow:-20px 0 60px rgba(0,0,0,.5);transform:translateX(105%);transition:transform .3s cubic-bezier(.3,.8,.3,1)}
@@ -328,6 +330,11 @@ input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;heigh
 .mode-grid{grid-template-columns:1fr 1fr;gap:8px}
 .mode-card{padding:13px 12px;font-size:13px}
 .lib-row .progress{width:70px}
+.ed-card{padding:18px 16px 14px}
+.ed-input{font-size:19px}
+.ed-top{gap:6px;padding:10px 12px}
+.ed-title-input{font-size:15px}
+#ed-count{display:none}
 }
 </style>
 </head>
@@ -343,6 +350,7 @@ input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;heigh
 <button class="nav-btn on" data-action="nav" data-view="home" id="nav-home"><i class="fa-solid fa-house"></i> Home</button>
 <button class="nav-btn" data-action="nav" data-view="library" id="nav-library"><i class="fa-solid fa-folder-open"></i> Library</button>
 <button class="nav-btn" data-action="nav" data-view="games" id="nav-games"><i class="fa-solid fa-gamepad"></i> Word Games</button>
+<button class="nav-btn" data-action="nav" data-view="settings" id="nav-settings"><i class="fa-solid fa-gear"></i> Settings</button>
 </nav>
 <div class="card pad" style="padding:15px">
 <span class="label">Learning stats</span>
@@ -360,16 +368,16 @@ input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;heigh
 <div id="side-scrim" data-action="close-side"></div>
 <div id="main">
 <header id="topbar">
-<button class="btn icon-btn btn-g" id="menu-btn" data-action="open-side"><i class="fa-solid fa-bars"></i></button>
 <button class="btn btn-xs btn-g hide" id="back-set" data-action="nav" data-view="set"><i class="fa-solid fa-arrow-left"></i> Set</button>
 <span id="view-title">Home</span>
 <span class="grow"></span>
 <span class="chip chip-b hide" id="top-vault-chip"><i class="fa-solid fa-vault"></i> <span id="top-vault-name"></span></span>
+<button class="btn icon-btn btn-g" data-action="nav" data-view="settings" title="Settings"><i class="fa-solid fa-gear"></i></button>
 <button class="btn icon-btn btn-g" id="sound-btn" data-action="sound-toggle" title="Toggle sound"><i class="fa-solid fa-volume-high"></i></button>
 <button class="btn icon-btn btn-g" id="acct-btn" data-action="acct-open" title="Cloud save & sharing"><i class="fa-solid fa-cloud"></i></button>
 </header>
 <div id="views">
-<!-- ============ HOME ============ -->
+<!-- HOME -->
 <section class="view active" id="view-home">
 <div class="search-pill mb-3">
 <i class="fa-solid fa-magnifying-glass"></i>
@@ -400,7 +408,7 @@ input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;heigh
 <div id="nw-list"></div>
 </div>
 </section>
-<!-- ============ LIBRARY ============ -->
+<!-- LIBRARY -->
 <section class="view" id="view-library">
 <div class="view-h"><h2>Library</h2>
 <div class="row gap-1 wrap">
@@ -408,10 +416,10 @@ input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;heigh
 <button class="btn btn-g btn-sm" data-action="import-link"><i class="fa-solid fa-link"></i> From link</button>
 <button class="btn btn-p btn-sm" data-action="new-set"><i class="fa-solid fa-plus"></i> New set</button>
 </div></div>
-<p class="t-xs dim mb-2">Create a set here, then add words inside it with Look up or Scan photo.</p>
+<p class="t-xs dim mb-2">Create a set here — the card editor opens so you can add words, meanings and scan photos right away.</p>
 <div id="lib-list"></div>
 </section>
-<!-- ============ SET (vault detail) ============ -->
+<!-- SET -->
 <section class="view" id="view-set">
 <div class="view-h">
 <div class="row gap-2 grow" style="min-width:0">
@@ -439,26 +447,19 @@ input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;heigh
 <button class="mode-card" data-action="mode" data-mode="sentence"><i class="fa-solid fa-pen-nib" style="color:var(--pink)"></i><span>Sentence Lab<small>Write & score</small></span></button>
 </div>
 <div class="card pad mb-3">
-<span class="label"><i class="fa-solid fa-wand-magic-sparkles" style="color:var(--blue)"></i> Add a word to this set</span>
-<div class="row gap-2">
-<input id="new-word" class="field grow" placeholder="Enter an English word… e.g. serendipity" autocomplete="off" spellcheck="false">
-<button class="btn btn-p" id="lookup-btn" data-action="lookup"><i class="fa-solid fa-magnifying-glass"></i> Look up</button>
+<div class="row between wrap gap-2">
+<div class="grow"><span class="label" style="margin:0"><i class="fa-solid fa-pen" style="color:var(--blue)"></i> Card editor</span>
+<p class="t-xs dim mt-1">The only place to add & change words: edit the whole set, get live word/meaning suggestions, and scan photos — all in one window.</p></div>
+<button class="btn btn-p" data-action="editor-open"><i class="fa-solid fa-pen"></i> Open card editor</button>
 </div>
-<p class="t-xs dim mt-1">Cambridge Dictionary meanings, or scan a photo to grab a word + its one matching meaning instantly.</p>
-<div class="row gap-2 mt-2">
-<button class="btn btn-v grow" data-action="scan-photo"><i class="fa-solid fa-camera"></i> Scan photo · one meaning · fast add</button>
-<input type="file" id="scan-file" accept="image/*" class="hide">
-</div>
-<div id="scan-panel" class="hide mt-2"></div>
-<div id="add-panel" class="hide mt-2"></div>
 </div>
 <div class="card pad">
 <div class="row between wrap gap-2 mb-2">
 <h3 class="t-lg">Words <span class="chip" id="list-count">0</span></h3>
 <div class="row gap-1 wrap">
 <input id="word-search" class="field" style="width:150px;padding:8px 12px;font-size:13px" placeholder="Search…">
-<select id="pos-filter" class="field" style="width:110px;padding:8px 30px 8px 10px;font-size:13px">
-<option value="">All types</option><option>noun</option><option>verb</option><option>adj</option><option>adv</option><option>phrase</option><option>other</option>
+<select id="pos-filter" class="field" style="width:120px;padding:8px 30px 8px 10px;font-size:13px">
+<option value="">All types</option><option>noun</option><option>verb</option><option>adj</option><option>adv</option><option>phrase</option><option>phrasal verb</option><option>other</option>
 </select>
 <select id="sort-mode" class="field" style="width:130px;padding:8px 30px 8px 10px;font-size:13px">
 <option value="custom">Custom order</option><option value="az">A → Z</option><option value="za">Z → A</option><option value="new">Newest first</option><option value="old">Oldest first</option>
@@ -475,10 +476,34 @@ input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;heigh
 <div id="word-list" class="col gap-2"></div>
 </div>
 </section>
-<!-- ============ FLASHCARDS ============ -->
+<!-- SETTINGS -->
+<section class="view" id="view-settings">
+<div class="view-h"><h2>Settings</h2><span class="chip chip-v"><i class="fa-solid fa-moon"></i> Dark</span></div>
+<div class="card pad mb-3">
+<span class="label"><i class="fa-solid fa-wand-magic-sparkles" style="color:var(--blue)"></i> Card editor suggestions</span>
+<div class="row between mb-1"><span class="t-sm">Word choices limit</span><span class="chip chip-b" id="set-word-limit-val">3</span></div>
+<input type="range" id="set-word-limit" min="3" max="20" value="3">
+<div class="row between mb-1 mt-2"><span class="t-sm">Meaning choices limit</span><span class="chip chip-b" id="set-def-limit-val">3</span></div>
+<input type="range" id="set-def-limit" min="3" max="20" value="3">
+<label class="radio-row mt-2"><input type="checkbox" id="set-auto" checked> Re-check automatically when the word changes</label>
+<p class="t-xs dim mt-1">Both limits start at 3. Tap a suggestion to use it — the list closes immediately. Meanings always begin with the part of speech: (n.), (v.), (phr. v.), (phr.).</p>
+<div class="row gap-1 mt-2"><button class="btn btn-g btn-sm" data-action="editor-open"><i class="fa-solid fa-pen"></i> Open card editor</button></div>
+</div>
+<div class="card pad">
+<span class="label"><i class="fa-solid fa-database" style="color:var(--green)"></i> Data & sharing</span>
+<div class="row gap-1 wrap">
+<button class="btn btn-g btn-sm" data-action="export"><i class="fa-solid fa-download"></i> Export</button>
+<button class="btn btn-g btn-sm" data-action="import"><i class="fa-solid fa-upload"></i> Import</button>
+<button class="btn btn-g btn-sm" data-action="acct-open"><i class="fa-solid fa-cloud"></i> Cloud save</button>
+<button class="btn btn-g btn-sm" data-action="import-link"><i class="fa-solid fa-link"></i> Paste share link</button>
+</div>
+<p class="t-xs dim mt-2">Share links copy the set into your library automatically when opened — no extra import step.</p>
+</div>
+</section>
+<!-- FLASHCARDS -->
 <section class="view" id="view-flashcards">
 <div class="view-h"><h2>Flashcards</h2><span class="chip">← → to browse · Space to flip</span></div>
-<div id="fc-empty" class="card empty hide"><i class="fa-solid fa-box-open"></i><p>This set is empty. Add a few words first.</p><button class="btn btn-p mt-2" data-action="nav" data-view="set">Go to set</button></div>
+<div id="fc-empty" class="card empty hide"><i class="fa-solid fa-box-open"></i><p>This set is empty. Add words in the card editor first.</p><button class="btn btn-p mt-2" data-action="editor-open">Open card editor</button></div>
 <div id="fc-ui" class="hide">
 <div class="row between mb-2"><span class="chip chip-b" id="fc-counter">1 / 1</span><span class="chip chip-g hide" id="fc-known-badge"><i class="fa-solid fa-circle-check"></i> Mastered</span></div>
 <div class="progress mb-3"><i id="fc-bar" style="width:0%"></i></div>
@@ -508,7 +533,7 @@ input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;heigh
 <div class="center row mt-2"><button class="btn btn-xs btn-g" data-action="fc-shuffle" style="border:none;color:var(--muted)"><i class="fa-solid fa-shuffle"></i> Shuffle & restart</button></div>
 </div>
 </section>
-<!-- ============ PRACTICE ============ -->
+<!-- PRACTICE -->
 <section class="view" id="view-practice">
 <div class="view-h"><h2>Learn</h2><span class="chip">Match each word to its meaning</span></div>
 <div id="pr-setup" class="card pad" style="text-align:center">
@@ -539,7 +564,7 @@ input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;heigh
 <button class="btn btn-p mt-2" data-action="pr-retry"><i class="fa-solid fa-rotate-right"></i> Try again</button>
 </div>
 </section>
-<!-- ============ DEFINITION QUIZ ============ -->
+<!-- QUIZ -->
 <section class="view" id="view-quiz">
 <div class="view-h"><h2>Test</h2><span class="chip">Read the meaning · type the word</span></div>
 <div id="qz-setup" class="card pad" style="text-align:center">
@@ -576,7 +601,7 @@ input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;heigh
 <button class="btn btn-p mt-2" data-action="qz-retry"><i class="fa-solid fa-rotate-right"></i> Try again</button>
 </div>
 </section>
-<!-- ============ SPELLING QUIZ ============ -->
+<!-- SPELLING -->
 <section class="view" id="view-spelling">
 <div class="view-h"><h2>Spelling</h2><span class="chip">Listen · then spell it out</span></div>
 <div id="sp-setup" class="card pad" style="text-align:center">
@@ -612,10 +637,10 @@ input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;heigh
 <button class="btn btn-p mt-2" data-action="sp-retry"><i class="fa-solid fa-rotate-right"></i> Try again</button>
 </div>
 </section>
-<!-- ============ SENTENCE LAB ============ -->
+<!-- SENTENCE LAB -->
 <section class="view" id="view-sentence">
 <div class="view-h"><h2>Sentence Lab</h2><span class="chip">Write · check errors · get a score</span></div>
-<div id="sl-empty" class="card empty hide"><i class="fa-solid fa-box-open"></i><p>Add a few words to this set first — then practice building sentences with them here.</p><button class="btn btn-p mt-2" data-action="nav" data-view="set">Go to set</button></div>
+<div id="sl-empty" class="card empty hide"><i class="fa-solid fa-box-open"></i><p>Add words in the card editor first — then practice building sentences with them here.</p><button class="btn btn-p mt-2" data-action="editor-open">Open card editor</button></div>
 <div id="sl-ui" class="hide">
 <div class="row gap-2 wrap mb-3">
 <span class="chip chip-v"><i class="fa-solid fa-pen-nib"></i> Attempts <b id="sl-tries">0</b></span>
@@ -645,7 +670,7 @@ input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;heigh
 </div>
 </div>
 </section>
-<!-- ============ WORD GAMES ============ -->
+<!-- GAMES -->
 <section class="view" id="view-games">
 <div class="view-h"><h2>Word Games</h2><span class="chip" id="dict-badge"><i class="fa-solid fa-circle-notch fa-spin"></i> Dictionary loading…</span></div>
 <div class="tabs" id="game-tabs">
@@ -655,7 +680,6 @@ input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;heigh
 <button class="tab-btn" data-action="game-tab" data-game="bee" id="tab-bee"><i class="fa-solid fa-bug" style="color:var(--amber)"></i> Spelling Bee</button>
 <button class="tab-btn" data-action="game-tab" data-game="wordle" id="tab-wordle"><i class="fa-solid fa-border-all" style="color:var(--green)"></i> Wordle</button>
 </div>
-<!-- TETRIS -->
 <div class="game-pane on" id="game-tetris">
 <div class="game-head"><h3><i class="fa-solid fa-shapes" style="color:var(--violet)"></i> Vocabtetris</h3>
 <div class="row gap-1 wrap"><span class="chip chip-v">Score <b id="t-score">0</b></span><span class="chip chip-v">Words <b id="t-words">0</b></span><span class="chip">Best <b id="t-best">0</b></span></div></div>
@@ -688,11 +712,11 @@ input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;heigh
 </div>
 <div id="t-board"></div>
 <div class="pad-controls">
-<button class="btn btn-g" data-action="t-left" title="Move left"><i class="fa-solid fa-arrow-left"></i></button>
-<button class="btn btn-v" data-action="t-rotate" title="Rotate"><i class="fa-solid fa-rotate"></i></button>
-<button class="btn btn-g" data-action="t-right" title="Move right"><i class="fa-solid fa-arrow-right"></i></button>
-<button class="btn btn-g" data-action="t-soft" title="Soft drop"><i class="fa-solid fa-arrow-down"></i></button>
-<button class="btn btn-p" data-action="t-hard" title="Hard drop"><i class="fa-solid fa-angles-down"></i></button>
+<button class="btn btn-g" data-action="t-left"><i class="fa-solid fa-arrow-left"></i></button>
+<button class="btn btn-v" data-action="t-rotate"><i class="fa-solid fa-rotate"></i></button>
+<button class="btn btn-g" data-action="t-right"><i class="fa-solid fa-arrow-right"></i></button>
+<button class="btn btn-g" data-action="t-soft"><i class="fa-solid fa-arrow-down"></i></button>
+<button class="btn btn-p" data-action="t-hard"><i class="fa-solid fa-angles-down"></i></button>
 </div>
 <p class="t-xs dim mt-1" style="text-align:center">Keyboard: ← → move · ↑ rotate · ↓ soft drop · Space hard drop · P pause</p>
 <div class="card pad mt-3" style="padding:15px">
@@ -717,7 +741,6 @@ input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;heigh
 </div>
 </div>
 </div>
-<!-- BLOCKY -->
 <div class="game-pane" id="game-blocky">
 <div class="game-head"><h3><i class="fa-solid fa-cubes-stacked" style="color:var(--blue)"></i> Vocablocky</h3>
 <div class="row gap-1 wrap"><span class="chip chip-b">Score <b id="b-score">0</b></span><span class="chip chip-b">Words <b id="b-words">0</b></span><span class="chip">Best <b id="b-best">0</b></span></div></div>
@@ -765,7 +788,6 @@ input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;heigh
 </div>
 </div>
 </div>
-<!-- SCRABBLE -->
 <div class="game-pane" id="game-scrabble">
 <div class="game-head"><h3><i class="fa-solid fa-font" style="color:var(--amber)"></i> Endless Scrabble</h3>
 <div class="row gap-1 wrap"><span class="chip chip-a">Score <b id="s-score">0</b></span><span class="chip chip-a">Words <b id="s-words">0</b></span><span class="chip">Best <b id="s-best">0</b></span></div></div>
@@ -814,7 +836,6 @@ input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;heigh
 </div>
 </div>
 </div>
-<!-- SPELLING BEE -->
 <div class="game-pane" id="game-bee">
 <div class="game-head"><h3><i class="fa-solid fa-bug" style="color:var(--amber)"></i> Spelling Bee</h3>
 <div class="row gap-1 wrap"><span class="chip chip-a">Score <b id="bee-score">0</b></span><span class="chip chip-a" id="bee-progress-chip">0 / 0</span><span class="chip">Best <b id="bee-best">0</b></span></div></div>
@@ -861,7 +882,6 @@ input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;heigh
 </div>
 </div>
 </div>
-<!-- WORDLE -->
 <div class="game-pane" id="game-wordle">
 <div class="game-head"><h3><i class="fa-solid fa-border-all" style="color:var(--green)"></i> Wordle</h3>
 <div class="row gap-1 wrap"><span class="chip chip-g">Score <b id="w-score">0</b></span><span class="chip chip-g">Wins <b id="w-wins">0</b></span><span class="chip chip-g">Streak <b id="w-streak">0</b></span></div></div>
@@ -910,30 +930,44 @@ input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;heigh
 </section>
 </div>
 </div>
-<!-- bottom nav (mobile): Games takes the center slot -->
 <nav id="bnav">
 <button class="bn on" data-action="nav" data-view="home" id="bn-home"><i class="fa-solid fa-house"></i><span>Home</span></button>
 <button class="bn" data-action="nav" data-view="games" id="bn-games"><span class="bn-plus"><i class="fa-solid fa-gamepad"></i></span><span>Games</span></button>
 <button class="bn" data-action="nav" data-view="library" id="bn-library"><i class="fa-solid fa-folder-open"></i><span>Library</span></button>
 </nav>
-<!-- account modal -->
 <div id="acct-scrim" data-action="acct-close"></div>
 <div id="acct"><div class="card modal-card">
 <div class="row between mb-2"><h3 class="t-lg">Cloud save & sharing</h3><button class="btn icon-btn btn-g" data-action="acct-close"><i class="fa-solid fa-xmark"></i></button></div>
 <div id="acct-body"></div>
 </div></div>
-<!-- share modal -->
 <div id="share-scrim" data-action="share-close"></div>
 <div id="share"><div class="card modal-card">
 <div class="row between mb-2"><h3 class="t-lg">Share this set</h3><button class="btn icon-btn btn-g" data-action="share-close"><i class="fa-solid fa-xmark"></i></button></div>
-<span class="label">Share link (opens straight into the app)</span>
+<span class="label">Share link (copies the set automatically when opened)</span>
 <div class="row gap-1 mb-2"><input id="share-link" class="field grow" readonly><button class="btn btn-p btn-sm" data-action="copy-link"><i class="fa-solid fa-copy"></i></button></div>
 <span class="label">Offline share code (works even if the cloud is down)</span>
 <textarea id="share-code" class="field mb-2" rows="3" readonly style="font-size:11px"></textarea>
 <div class="row gap-1"><button class="btn btn-g btn-sm grow" data-action="copy-code"><i class="fa-solid fa-copy"></i> Copy code</button></div>
-<p class="t-xs dim mt-2">Anyone can paste the link or code into the Home search bar (or Library → From link) to import a copy. Links use free anonymous cloud storage — no account, no API key.</p>
+<p class="t-xs dim mt-2">Anyone opening the link gets the set copied into their library automatically — no import button needed.</p>
 </div></div>
-<!-- word drawer -->
+<!-- FULL-VAULT CARD EDITOR -->
+<div id="editor-scrim" data-action="editor-close"></div>
+<div id="editor">
+<div class="ed-top">
+<button class="btn icon-btn btn-g" data-action="editor-close" title="Close without saving"><i class="fa-solid fa-arrow-left"></i></button>
+<input id="ed-title-input" class="ed-title-input" placeholder="Set title" autocomplete="off">
+<span class="chip chip-b" id="ed-count">0 cards</span>
+<button class="btn icon-btn btn-v" data-action="ed-scan" title="Scan a photo into cards"><i class="fa-solid fa-camera"></i></button>
+<input type="file" id="ed-scan-file" accept="image/*" class="hide">
+<button class="btn icon-btn btn-p" data-action="editor-save" title="Save whole set"><i class="fa-solid fa-check"></i></button>
+</div>
+<div id="ed-status" class="ed-status hide"></div>
+<div class="ed-body">
+<p class="t-xs dim mb-2" style="text-align:center">Editing the whole set · type a word for 3 live choices · tap a choice and the list closes · <i class="fa-solid fa-camera"></i> scans a photo into new cards</p>
+<div id="ed-cards"></div>
+</div>
+<button class="ed-fab" data-action="ed-add-card" title="Add another card"><i class="fa-solid fa-plus"></i></button>
+</div>
 <div id="drawer-scrim" data-action="drawer-close"></div>
 <aside id="drawer">
 <div class="dw-head">
@@ -944,7 +978,6 @@ input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;heigh
 <div class="dw-body" id="dw-body"></div>
 <div class="dw-foot" id="dw-foot"></div>
 </aside>
-<!-- modal -->
 <div id="modal-scrim"></div>
 <div id="modal">
 <div class="card modal-card">
@@ -961,25 +994,26 @@ input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;heigh
 <script>
 (function(){
 "use strict";
-/* ---------- helpers ---------- */
 const $=id=>document.getElementById(id);
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const rxEsc=s=>s.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");
 const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,7);
 const shuffle=a=>{const r=a.slice();for(let i=r.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[r[i],r[j]]=[r[j],r[i]];}return r;};
 const rand=n=>Math.floor(Math.random()*n);
-const POS=["noun","verb","adj","adv","phrase","other"];
+const POS=["noun","verb","adj","adv","phrase","phrasal verb","other"];
+const POS_ABBR={noun:"n.",verb:"v.",adj:"adj.",adv:"adv.",phrase:"phr.","phrasal verb":"phr. v.",other:""};
+const stripPos=s=>String(s||"").replace(/^\([^)]{1,14}\)\s*/,"");
+const fmtDef=d=>{const a=POS_ABBR[d.pos]||"";return (a?"("+a+") ":"")+stripPos(d.def);};
 const WEIGHTED="AAAAAEEEEIIIIOOOOOUUUUBBCDDFGHJKLMNNPQRRSSTTTTVWXYZ";
 const letter=()=>WEIGHTED[rand(WEIGHTED.length)];
-/* ---------- persistent state ---------- */
 const KEY="vocabMaster.v4";
-let state={vaults:{},activeId:"default",sound:true,best:{tetris:0,blocky:0,scrabble:0,bee:0},wordle:{wins:0,streak:0,score:0},sent:{tries:0,best:0,total:0},recent:[],lastVault:null,updatedAt:0,cloud:{on:false,name:"",ref:null}};
+let state={vaults:{},activeId:"default",sound:true,best:{tetris:0,blocky:0,scrabble:0,bee:0},wordle:{wins:0,streak:0,score:0},sent:{tries:0,best:0,total:0},recent:[],lastVault:null,updatedAt:0,cloud:{on:false,name:"",ref:null},settings:{wordLimit:3,defLimit:3,autoCheck:true}};
 function seed(){state.vaults={default:{name:"My Vault",words:[]}};}
 function save(){state.updatedAt=Date.now();try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){}cloudSchedule();}
 function load(){
 try{
 const raw=localStorage.getItem(KEY);
-if(raw){const p=JSON.parse(raw);if(p&&p.vaults&&Object.keys(p.vaults).length){state=Object.assign(state,p);state.best=Object.assign({tetris:0,blocky:0,scrabble:0,bee:0},p.best||{});state.wordle=Object.assign({wins:0,streak:0,score:0},p.wordle||{});state.sent=Object.assign({tries:0,best:0,total:0},p.sent||{});state.cloud=Object.assign({on:false,name:"",ref:null},p.cloud||{});if(!state.cloud.ref)state.cloud.on=false;state.recent=Array.isArray(p.recent)?p.recent:[];state.lastVault=p.lastVault||null;state.updatedAt=p.updatedAt||0;if(!state.vaults[state.activeId])state.activeId=Object.keys(state.vaults)[0];return;}}
+if(raw){const p=JSON.parse(raw);if(p&&p.vaults&&Object.keys(p.vaults).length){state=Object.assign(state,p);state.best=Object.assign({tetris:0,blocky:0,scrabble:0,bee:0},p.best||{});state.wordle=Object.assign({wins:0,streak:0,score:0},p.wordle||{});state.sent=Object.assign({tries:0,best:0,total:0},p.sent||{});state.cloud=Object.assign({on:false,name:"",ref:null},p.cloud||{});if(!state.cloud.ref)state.cloud.on=false;state.settings=Object.assign({wordLimit:3,defLimit:3,autoCheck:true},p.settings||{});delete state.settings.theme;state.recent=Array.isArray(p.recent)?p.recent:[];state.lastVault=p.lastVault||null;state.updatedAt=p.updatedAt||0;if(!state.vaults[state.activeId])state.activeId=Object.keys(state.vaults)[0];return;}}
 const old=localStorage.getItem("vocabMaster.v3")||localStorage.getItem("vocabMasterVaults");
 if(old){
 let p=JSON.parse(old),ov=p&&p.vaults?p.vaults:p;
@@ -1001,7 +1035,6 @@ seed();
 }
 const vault=()=>state.vaults[state.activeId];
 const words=()=>vault().words;
-/* ---------- toast ---------- */
 function toast(msg,type,action){
 const box=$("toasts"),el=document.createElement("div");
 el.className="toast"+(type?" "+type:"");
@@ -1011,7 +1044,6 @@ box.appendChild(el);
 const kill=()=>{el.classList.add("out");setTimeout(()=>el.remove(),320);};
 setTimeout(kill,action?6000:3200);
 }
-/* ---------- sound ---------- */
 let actx=null;
 function tone(f,dur,type,vol,delay){
 if(!state.sound)return;
@@ -1042,7 +1074,6 @@ const u=new SpeechSynthesisUtterance(String(text).toLowerCase());
 u.lang="en-US";u.rate=.9;window.speechSynthesis.speak(u);
 }
 function renderSound(){$("sound-btn").innerHTML=state.sound?'<i class="fa-solid fa-volume-high"></i>':'<i class="fa-solid fa-volume-xmark" style="color:var(--red)"></i>';}
-/* ---------- modal ---------- */
 let modalCb=null;
 function openModal(o){
 $("modal-title").textContent=o.title;$("modal-msg").textContent=o.msg||"";
@@ -1057,8 +1088,7 @@ function closeModal(){$("modal").classList.remove("on");$("modal-scrim").classLi
 $("modal-ok").addEventListener("click",()=>{const cb=modalCb,val=$("modal-input").value;closeModal();if(cb)cb(val);});
 $("modal-scrim").addEventListener("click",closeModal);
 $("modal-input").addEventListener("keydown",e=>{if(e.key==="Enter"){e.preventDefault();$("modal-ok").click();}});
-/* ---------- navigation ---------- */
-const TITLES={home:"Home",library:"Library",set:"Set",flashcards:"Flashcards",practice:"Learn",quiz:"Test",spelling:"Spelling",sentence:"Sentence Lab",games:"Word Games"};
+const TITLES={home:"Home",library:"Library",set:"Set",settings:"Settings",flashcards:"Flashcards",practice:"Learn",quiz:"Test",spelling:"Spelling",sentence:"Sentence Lab",games:"Word Games"};
 const STUDY=["flashcards","practice","quiz","spelling","sentence"];
 let currentView="home";
 function setView(v){
@@ -1071,10 +1101,10 @@ document.querySelectorAll(".nav-btn").forEach(b=>b.classList.toggle("on",b.datas
 $("view-title").textContent=v==="set"?vault().name:TITLES[v];
 $("top-vault-chip").classList.toggle("hide",v==="home"||v==="set");
 $("back-set").classList.toggle("hide",!(STUDY.includes(v)&&state.vaults[state.lastVault||state.activeId]));
-closeSide();
 if(v==="home")renderHome();
 if(v==="library")renderLibrary();
 if(v==="set"){renderSet();renderWords();}
+if(v==="settings")renderSettings();
 if(v==="flashcards")FC.init();
 if(v==="practice")PR.refresh();
 if(v==="quiz")QZ.refresh();
@@ -1083,9 +1113,6 @@ if(v==="sentence")SL.refresh();
 if(v==="games"){Dict.load();showGame(Games.tab);}
 window.scrollTo({top:0});
 }
-function openSide(){$("sidebar").classList.add("open");$("side-scrim").classList.add("on");}
-function closeSide(){$("sidebar").classList.remove("open");$("side-scrim").classList.remove("on");}
-/* ---------- vaults ---------- */
 function renderVaults(){
 $("top-vault-name").textContent=vault().name;
 $("stat-words").textContent=words().length;
@@ -1101,16 +1128,14 @@ state.activeId=id;selected.clear();save();
 renderVaults();renderWords();FC.dirty=true;
 }
 function newSet(){
-openModal({title:"New set",msg:"Name your set — you'll add words inside it with Look up or Scan photo.",input:true,value:"",placeholder:"e.g. Unit 4 — Travel",okText:"Create",cb:v=>{
+openModal({title:"New set",msg:"Name your set — the card editor opens so you can add words right away.",input:true,value:"",placeholder:"e.g. Unit 4 — Travel",okText:"Create & edit",cb:v=>{
 if(!v||!v.trim())return;
 const id="v_"+uid();
 state.vaults[id]={name:v.trim(),words:[]};
 openSet(id);
-toast("Set created — add words below.","ok");
-setTimeout(()=>{const f=$("new-word");if(f)f.focus();},120);
+openEditor();
 }});
 }
-/* ---------- home dashboard ---------- */
 function renderHome(){
 const lv=state.vaults[state.lastVault]||vault();
 const lid=state.vaults[state.lastVault]?state.lastVault:state.activeId;
@@ -1130,7 +1155,7 @@ const q=$("home-search").value.trim(),box=$("home-results");
 if(!q){box.classList.add("hide");box.innerHTML="";return;}
 box.classList.remove("hide");
 if(/#set=|#setdata=/.test(q)||/^[A-Za-z0-9+/=]{60,}$/.test(q)){
-box.innerHTML='<button class="btn btn-p" data-action="import-string" data-q="'+esc(q)+'"><i class="fa-solid fa-cloud-arrow-down"></i> Import shared set</button>';return;
+box.innerHTML='<button class="btn btn-p" data-action="import-string" data-q="'+esc(q)+'"><i class="fa-solid fa-cloud-arrow-down"></i> Copy shared set now</button>';return;
 }
 const ql=q.toLowerCase();let h="";
 const sets=Object.keys(state.vaults).filter(id=>state.vaults[id].name.toLowerCase().includes(ql)).slice(0,6);
@@ -1138,11 +1163,11 @@ if(sets.length)h+='<span class="label">Sets</span>'+sets.map(id=>'<button class=
 const hits=[];
 Object.keys(state.vaults).forEach(id=>{state.vaults[id].words.forEach(w=>{if(hits.length>=12)return;if(w.word.toLowerCase().includes(ql)||w.definitions.some(d=>d.def.toLowerCase().includes(ql)))hits.push({id,w});});});
 if(hits.length)h+='<span class="label mt-2">Words</span>'+hits.map(x=>'<button class="recent-row" data-action="search-word" data-id="'+x.id+'" data-word="'+esc(x.w.word)+'"><span class="recent-ic" style="color:#c4b0ff;background:rgba(139,92,246,.14);border-color:rgba(139,92,246,.3)"><i class="fa-solid fa-book-open"></i></span><span class="grow"><b>'+esc(x.w.word.toLowerCase())+'</b><span class="t-xs dim">'+esc(state.vaults[x.id].name)+"</span></span><i class='fa-solid fa-chevron-right dim'></i></button>").join("");
-box.innerHTML=h||'<p class="t-sm dim">No results in your library. Paste a share link or code to import a set from the internet.</p>';
+box.innerHTML=h||'<p class="t-sm dim">No results in your library. Paste a share link or code to copy a set from the internet.</p>';
 }
 $("home-search").addEventListener("input",renderSearch);
+$("home-search").addEventListener("paste",()=>{setTimeout(()=>{const q=$("home-search").value.trim();if(/[#&]set=|[#&]setdata=/.test(q)){importFromString(q);$("home-search").value="";renderSearch();}},80);});
 $("home-search").addEventListener("keydown",e=>{if(e.key==="Enter"){const q=$("home-search").value.trim();if(/#set=|#setdata=/.test(q)||/^[A-Za-z0-9+/=]{60,}$/.test(q))importFromString(q);else{const first=document.querySelector("#home-results [data-action='open-set']");if(first)openSet(first.dataset.id);}}});
-/* ---------- library ---------- */
 function renderLibrary(){
 $("lib-list").innerHTML=Object.keys(state.vaults).map(id=>{
 const v=state.vaults[id],kn=v.words.filter(w=>w.known).length,pct=v.words.length?Math.round(kn/v.words.length*100):0;
@@ -1154,7 +1179,6 @@ return '<div class="lib-row"><span class="recent-ic"><i class="fa-solid fa-layer
 +'<button class="btn btn-xs btn-g" data-action="lib-del" data-id="'+id+'" title="Delete" style="color:#ff9db1"><i class="fa-solid fa-trash"></i></button></div>';
 }).join("")||'<div class="card empty"><i class="fa-solid fa-box-open"></i><p>No sets yet.</p><button class="btn btn-p mt-2" data-action="new-set"><i class="fa-solid fa-plus"></i> Create your first set</button></div>';
 }
-/* ---------- set page ---------- */
 let setIdx=0;
 function openSet(id){
 if(!state.vaults[id])return;
@@ -1175,11 +1199,20 @@ setPreview();
 function setPreview(){
 const ws=vault().words,n=Math.max(1,ws.length);
 if(setIdx>=n)setIdx=0;
-$("set-pv-word").textContent=ws.length?ws[setIdx].word.toLowerCase():"Add your first word below";
+$("set-pv-word").textContent=ws.length?ws[setIdx].word.toLowerCase():"Open the card editor to add words";
 $("set-dots").innerHTML=ws.slice(0,6).map((_,i)=>'<i class="'+(i===setIdx?"on":"")+'"></i>').join("");
 }
 function openMode(m){if(m==="games")setView("games");else setView(m);}
-/* ---------- word list ---------- */
+function renderSettings(){
+$("set-word-limit").value=state.settings.wordLimit;
+$("set-word-limit-val").textContent=state.settings.wordLimit;
+$("set-def-limit").value=state.settings.defLimit;
+$("set-def-limit-val").textContent=state.settings.defLimit;
+$("set-auto").checked=!!state.settings.autoCheck;
+}
+$("set-word-limit").addEventListener("input",e=>{state.settings.wordLimit=+e.target.value;$("set-word-limit-val").textContent=e.target.value;save();});
+$("set-def-limit").addEventListener("input",e=>{state.settings.defLimit=+e.target.value;$("set-def-limit-val").textContent=e.target.value;save();});
+$("set-auto").addEventListener("change",e=>{state.settings.autoCheck=e.target.checked;save();});
 let selected=new Set(),dragId=null,undoStash=null;
 function filteredWords(){
 const q=$("word-search").value.trim().toLowerCase(),pos=$("pos-filter").value,sort=$("sort-mode").value;
@@ -1195,16 +1228,17 @@ const list=filteredWords(),box=$("word-list"),custom=$("sort-mode").value==="cus
 $("list-count").textContent=list.length;
 $("bulk-bar").classList.toggle("hide",selected.size===0);
 $("bulk-count").textContent=selected.size+" selected";
-if(!list.length){box.innerHTML='<div class="empty"><i class="fa-solid fa-feather"></i><p>'+(words().length?"No words match your filters.":"This set is empty — add your first word above.")+"</p></div>";return;}
+if(!list.length){box.innerHTML='<div class="empty"><i class="fa-solid fa-feather"></i><p>'+(words().length?"No words match your filters.":"This set is empty — open the card editor to add words.")+"</p></div>";return;}
 box.innerHTML=list.map(w=>{
-const defs=w.definitions.slice(0,2).map(d=>'<li><span class="tag">'+esc(d.pos)+'</span><span>'+esc(d.def)+"</span></li>").join("");
+const defs=w.definitions.slice(0,2).map(d=>'<li><span>'+esc(fmtDef(d))+"</span></li>").join("");
 const more=w.definitions.length>2?'<li class="dim t-xs">+ '+(w.definitions.length-2)+" more…</li>":"";
 return '<div class="word-card" data-action="open-word" data-id="'+w.id+'" data-word="'+esc(w.word)+'">'
 +'<input type="checkbox" class="wc-check" data-action="word-check" data-id="'+w.id+'"'+(selected.has(w.id)?" checked":"")+' title="Select">'
 +(custom?'<span class="drag-handle" draggable="true" data-drag="'+w.id+'" title="Drag to reorder"><i class="fa-solid fa-grip-vertical"></i></span>':"")
 +'<div class="grow"><div class="row gap-1"><h4>'+esc(w.word.toLowerCase())+"</h4>"
 +(w.known?'<i class="fa-solid fa-circle-check known-dot" title="Mastered"></i>':"")
-+'<button class="btn btn-xs btn-g" style="border:none;padding:3px 7px" data-action="speak" data-word="'+esc(w.word)+'" title="Pronounce"><i class="fa-solid fa-volume-high" style="color:var(--blue)"></i></button></div>'
++'<button class="btn btn-xs btn-g" style="border:none;padding:3px 7px" data-action="speak" data-word="'+esc(w.word)+'" title="Pronounce"><i class="fa-solid fa-volume-high" style="color:var(--blue)"></i></button>'
++'<button class="btn btn-xs btn-g" style="border:none;padding:3px 7px" data-action="edit-word" data-id="'+w.id+'" title="Edit in card editor"><i class="fa-solid fa-pen" style="color:var(--violet)"></i></button></div>'
 +'<ul class="defs">'+defs+more+"</ul></div>"
 +'<i class="fa-solid fa-chevron-right dim" style="margin-top:6px;font-size:12px"></i></div>';
 }).join("");
@@ -1223,7 +1257,6 @@ undoStash.items.slice().sort((a,b)=>a.index-b.index).forEach(s=>v.words.splice(M
 undoStash=null;save();renderVaults();renderWords();toast("Restored.","ok");
 }});
 }
-/* drag reorder */
 $("word-list").addEventListener("dragstart",e=>{const h=e.target.closest("[data-drag]");if(!h)return;dragId=h.dataset.drag;e.dataTransfer.effectAllowed="move";});
 $("word-list").addEventListener("dragover",e=>{const c=e.target.closest(".word-card");if(!c||!dragId)return;e.preventDefault();c.classList.add("drag-over");});
 $("word-list").addEventListener("dragleave",e=>{const c=e.target.closest(".word-card");if(c)c.classList.remove("drag-over");});
@@ -1233,16 +1266,15 @@ const arr=words(),from=arr.findIndex(w=>w.id===dragId),to=arr.findIndex(w=>w.id=
 if(from>-1&&to>-1&&from!==to){const [m]=arr.splice(from,1);arr.splice(to,0,m);save();renderWords();}
 dragId=null;
 });
-/* ---------- dictionary lookup (Cambridge, parallel + cached) ---------- */
+/* ---------- Cambridge dictionary (parallel + cached) ---------- */
 const defCache=new Map();
-let tempDefs=[],tempWord="",lookupSession=0;
 const CAMB_BASE="https://dictionary.cambridge.org/dictionary/english/";
 const PROXIES=[
 u=>"https://api.allorigins.win/raw?url="+encodeURIComponent(u),
 u=>"https://corsproxy.io/?url="+encodeURIComponent(u),
 u=>"https://api.codetabs.com/v1/proxy?quest="+encodeURIComponent(u)
 ];
-const POS_MAP={noun:"noun",verb:"verb",adjective:"adj",adverb:"adv",phrase:"phrase",idiom:"phrase","phrasal verb":"phrase"};
+const POS_MAP={noun:"noun",verb:"verb",adjective:"adj",adverb:"adv",phrase:"phrase",idiom:"phrase","phrasal verb":"phrasal verb"};
 const DEF_KEY="vocabMaster.defs.v1";
 let defStore={};
 try{defStore=JSON.parse(localStorage.getItem(DEF_KEY)||"{}")||{};}catch(e){defStore={};}
@@ -1281,7 +1313,7 @@ push(pos,db,g?g.textContent.replace(/[()]/g,"").trim():"");
 }else{
 doc.querySelectorAll(".def-block").forEach(db=>push("other",db,""));
 }
-return defs.slice(0,12);
+return defs.slice(0,30);
 }
 async function fetchVia(url,ms){
 const ctrl=new AbortController(),timer=setTimeout(()=>ctrl.abort(),ms||6000);
@@ -1305,7 +1337,7 @@ try{
 const res=await fetch("https://api.dictionaryapi.dev/api/v2/entries/en/"+encodeURIComponent(word),{signal:ctrl.signal});
 if(!res.ok)throw new Error("not found");
 const data=await res.json(),defs=[];
-(data[0].meanings||[]).forEach(m=>(m.definitions||[]).slice(0,3).forEach(d=>{if(d.definition)defs.push({pos:m.partOfSpeech||"other",def:d.definition});}));
+(data[0].meanings||[]).forEach(m=>(m.definitions||[]).slice(0,10).forEach(d=>{if(d.definition)defs.push({pos:m.partOfSpeech||"other",def:d.definition});}));
 return defs;
 }catch(e){return null;}finally{clearTimeout(timer);}
 }
@@ -1323,51 +1355,154 @@ fbGated.then(v=>v||Promise.reject())
 if(out){defCache.set(word,out);stashDef(word,out);}
 return out;
 }
-async function lookup(){
-const word=$("new-word").value.trim().toLowerCase();
-if(!word){toast("Type a word first.","err");return;}
-if(!/^[a-z][a-z\- ]*$/.test(word)){toast("Please enter a single English word.","err");return;}
-if(words().some(w=>w.word.toLowerCase()===word)){toast('"'+word+'" is already in this set.',"err");return;}
-const sid=++lookupSession;
-const btn=$("lookup-btn");btn.disabled=true;btn.innerHTML='<i class="fa-solid fa-circle-notch fa-spin"></i> Searching';
-$("add-panel").classList.remove("hide");
-$("add-panel").innerHTML='<p class="muted t-sm" style="text-align:center;padding:14px"><i class="fa-solid fa-circle-notch fa-spin"></i> Checking Cambridge for "'+esc(word)+'"…</p>';
-const res=await fetchDefs(word);
-if(sid!==lookupSession)return;
-btn.disabled=false;btn.innerHTML='<i class="fa-solid fa-magnifying-glass"></i> Look up';
-tempWord=word;tempDefs=((res&&res.defs)||[]).map(d=>({pos:d.pos,def:d.def,sel:false}));
-renderAddPanel(!res,res?res.source:"");
+/* ---------- FULL-VAULT CARD EDITOR ---------- */
+const ED={cards:[],vaultName:"",session:0};
+function edCard(word,def,pos,id,known,addedAt){
+return{_key:uid(),id:id||null,word:word||"",def:def||"",pos:pos||"noun",known:!!known,addedAt:addedAt||Date.now(),_defs:[],_shown:[],_tt:0,_dt:0,_timer:null};
 }
-function renderAddPanel(failed,source){
-const src=failed?"Dictionary unavailable — add a custom meaning below":(source==="cambridge"?"Cambridge · ":"")+tempDefs.length+" suggestion"+(tempDefs.length===1?"":"s");
-let h='<div class="divider"></div><div class="row between wrap gap-1 mb-1"><span class="bold">Meanings for "'+esc(tempWord)+'"</span><span class="t-xs dim">'+src+"</span></div>";
-if(tempDefs.length){
-h+='<div class="col gap-1" style="max-height:210px;overflow-y:auto">';
-tempDefs.forEach((d,i)=>{h+='<label class="def-sug"><input type="checkbox" data-action="def-toggle" data-i="'+i+'"'+(d.sel?" checked":"")+'><div><span class="tag">'+esc(d.pos)+'</span><p class="mt-1">'+esc(d.def)+"</p></div></label>";});
-h+="</div>";
-}else if(!failed){h+='<p class="t-sm dim mb-1">No online definitions found. You can still save the word with your own meaning.</p>';}
-h+='<div class="row gap-1 mt-2 wrap"><select id="custom-pos" class="field" style="width:100px;padding:8px 28px 8px 10px;font-size:13px">'+POS.map(p=>"<option>"+p+"</option>").join("")+"</select>"
-+'<input id="custom-def" class="field grow" placeholder="Add a custom meaning or translation…" style="font-size:13px"></div>'
-+'<button class="btn btn-ok mt-2" style="width:100%" data-action="save-word" id="save-word-btn" disabled><i class="fa-solid fa-plus"></i> Save word to set</button>';
-$("add-panel").innerHTML=h;
-$("custom-def").addEventListener("input",refreshSaveBtn);
+function edFind(key){return ED.cards.find(c=>c._key===key);}
+function edEl(key,sel){return document.querySelector(sel+'[data-key="'+key+'"]');}
+function openEditor(focusId){
+ED.session++;
+ED.vaultName=vault().name;
+ED.cards=words().map(w=>{const d=w.definitions[0]||{pos:"other",def:""};return edCard(w.word,fmtDef(d),d.pos,w.id,w.known,w.addedAt);});
+if(!ED.cards.length)ED.cards.push(edCard());
+$("ed-title-input").value=ED.vaultName;
+edRender();
+$("editor").classList.add("on");$("editor-scrim").classList.add("on");
+setTimeout(()=>{
+let key=ED.cards[0]._key;
+if(focusId){const c=ED.cards.find(x=>x.id===focusId);if(c)key=c._key;}
+const inp=edEl(key,".ed-term");
+if(inp){inp.focus();inp.closest(".ed-card").scrollIntoView({block:"center",behavior:"smooth"});}
+},110);
 }
-function refreshSaveBtn(){
-const b=$("save-word-btn");if(!b)return;
-b.disabled=!(tempDefs.some(d=>d.sel)||($("custom-def")&&$("custom-def").value.trim()));
+function closeEditor(){
+ED.session++;
+ED.cards.forEach(c=>clearTimeout(c._timer));
+$("editor").classList.remove("on");$("editor-scrim").classList.remove("on");
+$("ed-status").classList.add("hide");
 }
-function saveWord(){
-const defs=tempDefs.filter(d=>d.sel).map(d=>({pos:d.pos,def:d.def}));
-const cd=$("custom-def");
-if(cd&&cd.value.trim())defs.push({pos:$("custom-pos").value,def:cd.value.trim()});
-if(!defs.length||!tempWord)return;
-if(words().some(w=>w.word.toLowerCase()===tempWord)){toast("Already in this set.","err");return;}
-words().unshift({id:uid(),word:tempWord,definitions:defs,addedAt:Date.now(),known:false});
-save();renderVaults();renderWords();FC.dirty=true;
-$("new-word").value="";$("add-panel").classList.add("hide");tempDefs=[];tempWord="";
-Sfx.tap();toast("Word saved to your set!","ok");
+function edRender(){
+$("ed-count").textContent=ED.cards.length+" card"+(ED.cards.length===1?"":"s");
+$("ed-cards").innerHTML=ED.cards.map((c,i)=>{
+return '<div class="ed-card" data-key="'+c._key+'">'
++'<div class="row between mb-1"><span class="label" style="margin:0">CARD '+(i+1)+(c.id?'':' · NEW')+'</span>'
++'<button class="btn btn-xs btn-g" style="border:none;color:#ff9db1" data-action="ed-del-card" data-key="'+c._key+'" title="Delete card"><i class="fa-solid fa-trash"></i></button></div>'
++'<div class="ed-field"><input class="ed-input ed-term" data-key="'+c._key+'" value="'+esc(c.word)+'" placeholder="Word or phrase" autocomplete="off" spellcheck="false">'
++'<div class="ed-line"></div><div class="row between"><span class="ed-label">TERM</span><span class="ed-lang">English</span></div>'
++'<div class="ed-sugs ed-term-sugs" data-key="'+c._key+'"></div></div>'
++'<div class="ed-field mt-2"><textarea class="ed-input ed-def" data-key="'+c._key+'" rows="2" placeholder="Meaning">'+esc(c.def)+'</textarea>'
++'<div class="ed-line"></div><div class="row between"><span class="ed-label">DEFINITION</span>'
++'<select class="ed-pos" data-key="'+c._key+'">'+POS.map(p=>'<option value="'+p+'"'+(p===c.pos?" selected":"")+">"+p+"</option>").join("")+'</select></div>'
++'<div class="ed-sugs ed-def-sugs" data-key="'+c._key+'"></div></div>'
++'</div>';
+}).join("");
 }
-$("new-word").addEventListener("keydown",e=>{if(e.key==="Enter"){e.preventDefault();lookup();}});
+function edStatus(msg){
+const s=$("ed-status");
+if(!msg){s.classList.add("hide");s.innerHTML="";return;}
+s.classList.remove("hide");s.innerHTML=msg;
+}
+function edSugBox(c,which){return document.querySelector(".ed-"+which+"-sugs[data-key='"+c._key+"']");}
+function edHideSugs(c,which){const b=edSugBox(c,which);if(b)b.innerHTML="";}
+function edHideAllSugs(){ED.cards.forEach(c=>{edHideSugs(c,"term");edHideSugs(c,"def");});}
+function edRenderTermSugs(c,list){
+const box=edSugBox(c,"term");if(!box)return;
+box.innerHTML=list.map(w=>'<button class="ed-sug" data-action="ed-pick-term" data-key="'+c._key+'" data-word="'+esc(w)+'">'+esc(w)+"</button>").join("");
+}
+function edRenderDefSugs(c){
+const box=edSugBox(c,"def");if(!box)return;
+const q=c.def.trim().toLowerCase();
+const lim=state.settings.defLimit||3;
+let list=c._defs;
+if(q&&!/^\(/.test(q)){const f=list.filter(d=>fmtDef(d).toLowerCase().includes(q));if(f.length)list=f;}
+c._shown=list.slice(0,lim);
+box.innerHTML=c._shown.map((d,i)=>'<button class="ed-sug" data-action="ed-pick-def" data-key="'+c._key+'" data-i="'+i+'"><span class="p">'+esc("("+ (POS_ABBR[d.pos]||"") +")")+'</span>'+esc(stripPos(d.def))+"</button>").join("");
+}
+async function edTermSuggest(c){
+const tok=++c._tt;
+const q=c.word.trim().toLowerCase();
+if(!q){edHideSugs(c,"term");return;}
+const lim=state.settings.wordLimit||3;
+const seen=new Set(),out=[];
+words().forEach(w=>{const t=w.word.toLowerCase();if(t.startsWith(q)&&!seen.has(t)){seen.add(t);out.push(t);}});
+try{
+const ctrl=new AbortController(),t=setTimeout(()=>ctrl.abort(),4500);
+const r=await fetch("https://api.datamuse.com/sug?s="+encodeURIComponent(q)+"&max="+lim,{signal:ctrl.signal});clearTimeout(t);
+if(r.ok){const j=await r.json();j.forEach(o=>{const w=String(o.word||"").toLowerCase();if(w&&!seen.has(w)){seen.add(w);out.push(w);}});}
+}catch(e){}
+if(out.length<lim){for(const w of Dict.set){const lw=w.toLowerCase();if(lw.startsWith(q)&&!seen.has(lw)){seen.add(lw);out.push(lw);if(out.length>=lim)break;}}}
+if(tok!==c._tt||!ED.cards.includes(c))return;
+edRenderTermSugs(c,out.slice(0,lim));
+}
+async function edDefSuggest(c){
+const term=c.word.trim().toLowerCase();
+if(!term){edHideSugs(c,"def");return;}
+const tok=++c._dt;
+const box=edSugBox(c,"def");
+if(box)box.innerHTML='<div class="ed-sug-load"><i class="fa-solid fa-circle-notch fa-spin"></i> Checking meanings…</div>';
+const res=await fetchDefs(term);
+if(tok!==c._dt||!ED.cards.includes(c))return;
+c._defs=(res&&res.defs)||[];
+edRenderDefSugs(c);
+}
+function edSync(){
+ED.cards.forEach(c=>{
+const t=edEl(c._key,".ed-term"),d=edEl(c._key,".ed-def"),p=edEl(c._key,".ed-pos");
+if(t)c.word=t.value;if(d)c.def=d.value;if(p)c.pos=p.value;
+});
+ED.vaultName=$("ed-title-input").value;
+}
+function edSave(){
+edSync();
+const name=ED.vaultName.trim();
+if(!name){toast("Give the set a title.","err");$("ed-title-input").focus();return;}
+const out=[],seen=new Set();
+for(let i=0;i<ED.cards.length;i++){
+const c=ED.cards[i];
+const term=c.word.trim().toLowerCase(),def=stripPos(c.def.trim());
+if(!term&&!def)continue;
+if(!term){toast("Card "+(i+1)+" needs a word.","err");const el=edEl(c._key,".ed-term");if(el){el.focus();el.closest(".ed-card").scrollIntoView({block:"center"});}return;}
+if(!def){toast("Card "+(i+1)+" needs a meaning.","err");const el=edEl(c._key,".ed-def");if(el){el.focus();el.closest(".ed-card").scrollIntoView({block:"center"});}return;}
+if(seen.has(term))continue;
+seen.add(term);
+out.push({id:c.id||uid(),word:term,definitions:[{pos:POS.includes(c.pos)?c.pos:"other",def}],addedAt:c.addedAt,known:c.known});
+}
+vault().name=name;
+vault().words=out;
+save();renderVaults();renderWords();renderSet();FC.dirty=true;
+closeEditor();Sfx.clear();
+toast("Set saved · "+out.length+" card"+(out.length===1?"":"s"),"ok");
+}
+$("ed-cards").addEventListener("input",e=>{
+const key=e.target.dataset.key;if(!key)return;
+const c=edFind(key);if(!c)return;
+if(e.target.classList.contains("ed-term")){
+c.word=e.target.value;
+clearTimeout(c._timer);
+c._timer=setTimeout(()=>{
+edTermSuggest(c);
+c._defs=[];c._shown=[];
+if(state.settings.autoCheck)edDefSuggest(c);else edHideSugs(c,"def");
+},320);
+}else if(e.target.classList.contains("ed-def")){
+c.def=e.target.value;
+if(c._defs.length)edRenderDefSugs(c);
+}
+});
+$("ed-cards").addEventListener("focusin",e=>{
+const key=e.target.dataset.key;if(!key)return;
+const c=edFind(key);if(!c)return;
+if(e.target.classList.contains("ed-term")){edTermSuggest(c);}
+else if(e.target.classList.contains("ed-def")){if(!c._defs.length)edDefSuggest(c);else edRenderDefSugs(c);}
+});
+$("ed-cards").addEventListener("change",e=>{
+const key=e.target.dataset.key;if(!key)return;
+const c=edFind(key);if(!c)return;
+if(e.target.classList.contains("ed-pos"))c.pos=e.target.value;
+});
+$("ed-scan-file").addEventListener("change",e=>{const f=e.target.files[0];if(f)edScan(f);e.target.value="";});
 /* ---------- import / export ---------- */
 async function exportVault(){
 if(!words().length){toast("This set is empty — nothing to export.","err");return;}
@@ -1396,7 +1531,7 @@ data.forEach(it=>{
 if(!it||typeof it.word!=="string")return;
 const w=it.word.trim().toLowerCase();if(!w)return;
 if(words().some(x=>x.word.toLowerCase()===w))return;
-const defs=Array.isArray(it.definitions)&&it.definitions.length?it.definitions.filter(d=>d&&d.def).map(d=>({pos:POS.includes(d.pos)?d.pos:"other",def:String(d.def)})):[{pos:"other",def:"Imported word."}];
+const defs=Array.isArray(it.definitions)&&it.definitions.length?it.definitions.filter(d=>d&&d.def).map(d=>({pos:POS.includes(d.pos)?d.pos:"other",def:stripPos(String(d.def))})):[{pos:"other",def:"Imported word."}];
 words().push({id:uid(),word:w,definitions:defs.length?defs:[{pos:"other",def:"Imported word."}],addedAt:it.addedAt||Date.now(),known:!!it.known});added++;
 });
 save();renderVaults();renderWords();FC.dirty=true;
@@ -1406,25 +1541,17 @@ toast(added+" new word"+(added===1?"":"s")+" imported.","ok");
 r.readAsText(f);e.target.value="";
 });
 /* ---------- word drawer ---------- */
-let dwWord=null,dwEditing=false;
+let dwWord=null;
 async function openDrawer(word){
 dwWord=String(word||"").trim().toLowerCase();if(!dwWord)return;
-dwEditing=false;
 $("dw-word").textContent=dwWord;
 $("drawer").classList.add("on");$("drawer-scrim").classList.add("on");
 renderDrawer();
 }
-function closeDrawer(){$("drawer").classList.remove("on");$("drawer-scrim").classList.remove("on");dwEditing=false;}
+function closeDrawer(){$("drawer").classList.remove("on");$("drawer-scrim").classList.remove("on");}
 function drawerEntry(){return words().find(w=>w.word.toLowerCase()===dwWord);}
 async function renderDrawer(){
 const body=$("dw-body"),foot=$("dw-foot"),entry=drawerEntry();
-if(dwEditing&&entry){
-body.innerHTML='<p class="label">Edit meanings</p><div class="col gap-2" id="dw-rows">'
-+entry.definitions.map(d=>editRowHtml(d)).join("")+"</div>"
-+'<button class="btn btn-g btn-sm mt-2" data-action="dw-add-row"><i class="fa-solid fa-plus"></i> Add meaning</button>';
-foot.innerHTML='<button class="btn btn-g" data-action="dw-cancel-edit">Cancel</button><button class="btn btn-p" data-action="dw-save-edit"><i class="fa-solid fa-check"></i> Save changes</button>';
-return;
-}
 let defs=entry?entry.definitions:null,source="vault";
 if(!defs||!defs.length){
 body.innerHTML='<p class="muted t-sm" style="text-align:center;padding:20px"><i class="fa-solid fa-circle-notch fa-spin"></i> Checking Cambridge Dictionary…</p>';
@@ -1437,19 +1564,15 @@ source=res?res.source:"none";
 const srcChip=source==="cambridge"?'<span class="chip chip-a" style="align-self:flex-start"><i class="fa-solid fa-book"></i> Cambridge Dictionary</span>':(source==="fallback"?'<span class="chip" style="align-self:flex-start">Fallback dictionary</span>':"");
 body.innerHTML=(entry&&entry.known?'<span class="chip chip-g" style="align-self:flex-start"><i class="fa-solid fa-circle-check"></i> Mastered</span>':"")
 +srcChip
-+defs.map(d=>'<div class="def-item"><span class="tag">'+esc(d.pos)+'</span><p>'+esc(d.def)+"</p>"+(d.ex?'<p class="t-xs dim mt-1" style="font-style:italic">“'+esc(d.ex)+'”</p>':"")+"</div>").join("");
++defs.map(d=>'<div class="def-item"><span class="tag">'+esc(d.pos)+'</span><p>'+esc(fmtDef(d))+"</p>"+(d.ex?'<p class="t-xs dim mt-1" style="font-style:italic">“'+esc(d.ex)+'”</p>':"")+"</div>").join("");
 if(entry){
 foot.innerHTML='<button class="btn btn-d btn-sm" data-action="dw-delete"><i class="fa-solid fa-trash"></i> Delete</button>'
 +'<button class="btn btn-g btn-sm" data-action="dw-toggle-known"><i class="fa-solid fa-'+(entry.known?"rotate-left":"check")+'"></i> '+(entry.known?"Mark learning":"Mark mastered")+"</button>"
-+'<button class="btn btn-p btn-sm" data-action="dw-edit"><i class="fa-solid fa-pen"></i> Edit</button>';
++'<button class="btn btn-p btn-sm" data-action="dw-edit"><i class="fa-solid fa-pen"></i> Edit in card editor</button>';
 }else{
 foot.innerHTML='<button class="btn btn-p" data-action="dw-add"><i class="fa-solid fa-plus"></i> Add to current set</button>';
-body.dataset.defs=JSON.stringify(defs.map(d=>({pos:d.pos,def:d.def})));
+body.dataset.defs=JSON.stringify(defs.map(d=>({pos:d.pos,def:stripPos(d.def)})));
 }
-}
-function editRowHtml(d){
-return '<div class="edit-row"><select class="field dw-pos">'+POS.map(p=>'<option'+(p===d.pos?" selected":"")+">"+p+"</option>").join("")+"</select>"
-+'<input class="field grow dw-def" value="'+esc(d.def)+'"><button class="btn icon-btn btn-g" data-action="dw-del-row" title="Remove"><i class="fa-solid fa-circle-minus" style="color:var(--red)"></i></button></div>';
 }
 /* ---------- flashcards ---------- */
 const FC={list:[],i:0,dirty:true,
@@ -1465,7 +1588,7 @@ $("fc-counter").textContent=(this.i+1)+" / "+this.list.length;
 $("fc-bar").style.width=((this.i+1)/this.list.length*100)+"%";
 $("fc-word").textContent=c.word.toLowerCase();
 $("fc-known-badge").classList.toggle("hide",!c.known);
-$("fc-defs").innerHTML=c.definitions.map(d=>'<div class="d"><div class="grow"><span class="tag">'+esc(d.pos)+'</span><p class="mt-1">'+esc(d.def)+'</p></div><button class="btn btn-xs" style="background:rgba(0,0,0,.07);color:#3b5bdb" data-action="speak" data-word="'+esc(d.def)+'" title="Read aloud"><i class="fa-solid fa-volume-high"></i></button></div>').join("");
+$("fc-defs").innerHTML=c.definitions.map(d=>'<div class="d"><div class="grow"><span class="tag">'+esc(d.pos)+'</span><p class="mt-1">'+esc(fmtDef(d))+'</p></div><button class="btn btn-xs" style="background:rgba(0,0,0,.07);color:#3b5bdb" data-action="speak" data-word="'+esc(stripPos(d.def))+'" title="Read aloud"><i class="fa-solid fa-volume-high"></i></button></div>').join("");
 $("fc-card").classList.remove("flip");
 },
 flip(){$("fc-card").classList.toggle("flip");Sfx.flip();},
@@ -1486,11 +1609,11 @@ const r=$("pr-options");r.max=Math.max(2,Math.min(6,words().length));
 if(+r.value>+r.max)r.value=r.max;$("pr-options-val").textContent=r.value;
 },
 start(){
-if(words().length<2){$("pr-err").textContent="Add at least 2 words to start.";$("pr-err").classList.remove("hide");return;}
+if(words().length<2){$("pr-err").textContent="Add at least 2 words in the card editor to start.";$("pr-err").classList.remove("hide");return;}
 $("pr-err").classList.add("hide");
 this.opts=Math.min(+$("pr-options").value,words().length);
 this.qs=shuffle(words().filter(w=>w.definitions.length));this.i=0;this.score=0;this.session++;
-if(this.qs.length<2){$("pr-err").textContent="Wait for meanings to load, then try again.";$("pr-err").classList.remove("hide");return;}
+if(this.qs.length<2){$("pr-err").textContent="Add at least 2 words with meanings first.";$("pr-err").classList.remove("hide");return;}
 $("pr-setup").classList.add("hide");$("pr-result").classList.add("hide");$("pr-active").classList.remove("hide");
 this.render();
 },
@@ -1500,8 +1623,8 @@ const t=this.qs[this.i];
 $("pr-progress").textContent="Question "+(this.i+1)+" / "+this.qs.length;
 $("pr-score").textContent="Score "+this.score;
 $("pr-word").textContent=t.word.toLowerCase();
-const correct=t.definitions[rand(t.definitions.length)].def;
-const wrong=shuffle(words().filter(w=>w.id!==t.id&&w.definitions.length)).slice(0,this.opts-1).map(w=>w.definitions[0].def);
+const correct=fmtDef(t.definitions[rand(t.definitions.length)]);
+const wrong=shuffle(words().filter(w=>w.id!==t.id&&w.definitions.length)).slice(0,this.opts-1).map(w=>fmtDef(w.definitions[0]));
 const opts=shuffle([{text:correct,ok:true},...wrong.map(d=>({text:d,ok:false}))]);
 $("pr-options-list").innerHTML=opts.map(o=>'<button class="opt-btn" data-action="pr-answer" data-ok="'+(o.ok?1:0)+'">'+esc(o.text)+"</button>").join("");
 },
@@ -1529,7 +1652,7 @@ if(+r.value>+r.max)r.value=r.max;$("qz-count-val").textContent=r.value;
 },
 start(){
 const pool=words().filter(w=>w.definitions.length);
-if(!pool.length){$("qz-err").textContent="Add at least 1 word with a meaning to start.";$("qz-err").classList.remove("hide");return;}
+if(!pool.length){$("qz-err").textContent="Add words with meanings in the card editor first.";$("qz-err").classList.remove("hide");return;}
 $("qz-err").classList.add("hide");
 this.qs=shuffle(pool).slice(0,+$("qz-count").value);this.i=0;this.correct=0;
 $("qz-setup").classList.add("hide");$("qz-result").classList.add("hide");$("qz-active").classList.remove("hide");
@@ -1540,7 +1663,7 @@ const t=this.qs[this.i];
 $("qz-progress").textContent="Word "+(this.i+1)+" / "+this.qs.length;
 $("qz-score").textContent="Correct "+this.correct;
 const d=t.definitions[rand(t.definitions.length)];
-$("qz-pos").textContent=d.pos;$("qz-def").textContent=d.def;
+$("qz-pos").textContent=d.pos;$("qz-def").textContent=fmtDef(d);
 $("qz-input").value="";$("qz-input").disabled=false;$("qz-submit").disabled=false;
 $("qz-feedback").classList.add("hide");$("qz-next").classList.add("hide");
 $("qz-input").focus();
@@ -1570,7 +1693,7 @@ const r=$("sp-count");r.max=Math.max(1,Math.min(20,words().length));
 if(+r.value>+r.max)r.value=r.max;$("sp-count-val").textContent=r.value;
 },
 start(){
-if(!words().length){$("sp-err").textContent="Add at least 1 word to start the spelling test.";$("sp-err").classList.remove("hide");return;}
+if(!words().length){$("sp-err").textContent="Add words in the card editor first.";$("sp-err").classList.remove("hide");return;}
 $("sp-err").classList.add("hide");
 this.qs=shuffle(words()).slice(0,+$("sp-count").value);this.i=0;this.correct=0;
 $("sp-setup").classList.add("hide");$("sp-result").classList.add("hide");$("sp-active").classList.remove("hide");
@@ -1585,7 +1708,7 @@ if(!state.sound||!("speechSynthesis" in window))this.hint();else this.play();
 $("sp-input").focus();
 },
 play(){const t=this.qs[this.i];if(t)speak(t.word);},
-hint(){const t=this.qs[this.i];if(!t)return;const d=t.definitions[0]||{pos:"word",def:"Listen and spell the word."};$("sp-hint").innerHTML='<b><i class="fa-solid fa-lightbulb"></i> Hint:</b> <span class="tag">'+esc(d.pos)+"</span> "+esc(d.def)+" <span class='dim'>("+t.word.length+" letters)</span>";$("sp-hint").classList.remove("hide");},
+hint(){const t=this.qs[this.i];if(!t)return;const d=t.definitions[0]||{pos:"word",def:"Listen and spell the word."};$("sp-hint").innerHTML='<b><i class="fa-solid fa-lightbulb"></i> Hint:</b> <span class="tag">'+esc(d.pos)+"</span> "+esc(fmtDef(d))+" <span class='dim'>("+t.word.length+" letters)</span>";$("sp-hint").classList.remove("hide");},
 submit(){
 const t=this.qs[this.i],ans=$("sp-input").value.trim().toLowerCase();
 if(!ans)return;
@@ -1638,7 +1761,7 @@ this.set.forEach(w=>{if(w.length>=4&&w.length<=15){let m=0,ok=true;for(const ch 
 }
 };
 const maskOf=w=>{let m=0;for(const ch of w)m|=1<<(ch.charCodeAt(0)-65);return m;};
-/* ---------- Cambridge auto-update (new words → game + grammar dictionaries) ---------- */
+/* ---------- Cambridge auto-update ---------- */
 const NW_KEY="vocabMaster.newwords.v1";
 let NW={at:0,words:[]};
 try{const p=JSON.parse(localStorage.getItem(NW_KEY)||"{}");if(p&&Array.isArray(p.words))NW=p;}catch(e){}
@@ -2120,9 +2243,9 @@ $("w-over-msg").textContent=msg;
 $("w-over").classList.remove("hide");
 }
 };
-/* ---------- photo scan ---------- */
+/* ---------- photo scan (inside the card editor) ---------- */
 const SCAN_STOP=new Set("the a an and or but if then else when while of to in on at by for with about against between into through during before after above below from up down out off over under again further once here there all any both each few more most other some such no nor not only own same so than too very can will just should now is are was were be been being am do does did doing have has had having i you he she it we they me him her us them my your his its our their this that these those what which who whom as".split(" "));
-let scanSession=0,tessLoading=null;
+let tessLoading=null;
 function loadTesseract(){
 if(window.Tesseract)return Promise.resolve();
 tessLoading=tessLoading||new Promise((res,rej)=>{
@@ -2165,131 +2288,54 @@ return{d,sc,i};
 scored.sort((a,b)=>b.sc-a.sc||a.i-b.i);
 return scored.map(s=>s.d);
 }
-const Scan={
-text:"",cands:[],handled:new Set(),cur:"",ctx:"",ranked:[],ri:0,source:"",
-open(){$("scan-panel").classList.remove("hide");},
-close(){scanSession++;$("scan-panel").classList.add("hide");$("scan-file").value="";},
-head(){return '<div class="divider"></div><div class="row between wrap gap-1 mb-1"><span class="bold"><i class="fa-solid fa-camera" style="color:var(--violet)"></i> Photo scan</span><div class="row gap-1"><button class="btn btn-xs btn-g" data-action="scan-photo"><i class="fa-solid fa-rotate-right"></i> New photo</button><button class="btn btn-xs btn-g" data-action="scan-close"><i class="fa-solid fa-xmark"></i> Close</button></div></div>';},
-status(msg,pct){
-this.open();
-$("scan-panel").innerHTML=this.head()
-+'<p class="t-sm muted mb-1"><i class="fa-solid fa-circle-notch fa-spin"></i> '+esc(msg)+"</p>"
-+'<div class="progress"><i style="width:'+(pct||0)+'%"></i></div>';
-},
-fail(msg){this.open();$("scan-panel").innerHTML=this.head()+'<p class="t-sm" style="color:var(--red)">'+esc(msg)+"</p>";},
-async start(file){
-const sid=++scanSession;
-this.text="";this.cands=[];this.handled=new Set();this.cur="";this.ranked=[];
+async function edScan(file){
+const sid=ED.session;
 try{
-this.status("Loading OCR engine…",4);
+edStatus('<i class="fa-solid fa-circle-notch fa-spin"></i> Loading OCR engine…');
 await loadTesseract();
-if(sid!==scanSession)return;
-this.status("Reading your photo…",8);
+if(sid!==ED.session)return;
+edStatus('<i class="fa-solid fa-circle-notch fa-spin"></i> Reading your photo…');
 const img=await prepImage(file);
-if(sid!==scanSession)return;
+if(sid!==ED.session)return;
 const out=await window.Tesseract.recognize(img,"eng",{logger:m=>{
-if(sid!==scanSession)return;
-if(m&&m.status==="recognizing text")this.status("Reading your photo…",8+Math.round((m.progress||0)*90));
+if(sid!==ED.session)return;
+if(m&&m.status==="recognizing text")edStatus('<i class="fa-solid fa-circle-notch fa-spin"></i> Reading your photo… '+Math.round((m.progress||0)*100)+"%");
 }});
-if(sid!==scanSession)return;
-this.text=String(out&&out.data&&out.data.text||"").replace(/\s+/g," ").trim();
-this.cands=this.extract(this.text);
-if(!this.cands.length){this.fail("No English words found in that photo. Try a sharper, closer shot.");return;}
-this.shell();this.nextWord();
-}catch(err){
-if(sid!==scanSession)return;
-this.fail("Couldn't read that photo — check your connection and try again.");
-}
-},
-extract(text){
-const seen=new Set(),out=[];
-(text.toLowerCase().match(/[a-z]{3,}/g)||[]).forEach(w=>{
-if(SCAN_STOP.has(w)||seen.has(w))return;seen.add(w);out.push(w);
-});
-return out.slice(0,60);
-},
-context(word){
-const re=new RegExp("\\b"+rxEsc(word)+"\\b","i");
-const seg=this.text.split(/[.!?\n]+/).find(p=>re.test(p));
-return seg?seg.trim():"";
-},
-shell(){
-this.open();
-$("scan-panel").innerHTML=this.head()
-+'<div class="scan-text mb-2" id="scan-text"></div>'
-+'<span class="label">Words found — tap one to check its meaning</span>'
-+'<div class="scan-chips mb-2" id="scan-chips"></div>'
-+'<div id="scan-card"></div>';
-this.renderText();this.renderChips();
-},
-renderText(){
-const box=$("scan-text");if(!box)return;
-let h=esc(this.text);
-if(this.cur)h=h.replace(new RegExp("\\b("+rxEsc(this.cur)+")\\b","gi"),"<mark>$1</mark>");
-box.innerHTML=h||'<span class="dim">—</span>';
-},
-renderChips(){
-const box=$("scan-chips");if(!box)return;
-box.innerHTML=this.cands.map(w=>{
-const done=this.handled.has(w)||words().some(x=>x.word.toLowerCase()===w);
-return '<button class="found-chip'+(w===this.cur?" on":"")+(done?" done":"")+'" data-action="scan-word" data-word="'+w+'">'+(done?'<i class="fa-solid fa-check" style="font-size:10px;color:var(--green)"></i> ':"")+w+"</button>";
-}).join("");
-},
-nextWord(){
-const next=this.cands.find(w=>!this.handled.has(w)&&!words().some(x=>x.word.toLowerCase()===w));
-if(!next){
-this.cur="";this.renderText();this.renderChips();
-const c=$("scan-card");
-if(c)c.innerHTML='<div class="feedback ok"><b><i class="fa-solid fa-circle-check"></i> All done!</b><p class="t-sm mt-1">Every scanned word has been handled. Scan another photo or close this panel.</p></div>';
-return;
-}
-this.select(next);
-},
-async select(w){
-const sid=++scanSession;
-this.cur=w;this.ctx=this.context(w);this.ranked=[];this.ri=0;
-this.renderText();this.renderChips();
-const card=$("scan-card");if(!card)return;
-card.innerHTML='<p class="muted t-sm" style="text-align:center;padding:16px"><i class="fa-solid fa-circle-notch fa-spin"></i> Checking Cambridge for “'+esc(w)+'”…</p>';
+if(sid!==ED.session)return;
+const text=String(out&&out.data&&out.data.text||"").replace(/\s+/g," ").trim();
+const seen=new Set(),cands=[];
+(text.toLowerCase().match(/[a-z]{3,}/g)||[]).forEach(w=>{if(SCAN_STOP.has(w)||seen.has(w))return;seen.add(w);cands.push(w);});
+if(!cands.length){edStatus('<i class="fa-solid fa-circle-xmark"></i> No English words found — try a sharper photo.');setTimeout(()=>{if(sid===ED.session)edStatus("");},3500);return;}
+edSync();
+const existing=new Set(ED.cards.map(c=>c.word.trim().toLowerCase()).filter(Boolean));
+let added=0,checked=0;
+for(const w of cands.slice(0,12)){
+if(sid!==ED.session)return;
+if(existing.has(w))continue;
+checked++;
+edStatus('<i class="fa-solid fa-circle-notch fa-spin"></i> Checking meanings… '+checked+" / "+Math.min(cands.length,12));
 const res=await fetchDefs(w);
-if(sid!==scanSession)return;
-if(!res||!res.defs.length){
-card.innerHTML='<div class="feedback no"><b><i class="fa-solid fa-circle-xmark"></i> No dictionary meaning found for “'+esc(w)+'”.</b><p class="t-sm mt-1">It may be a name, an OCR typo, or you are offline.</p></div><div class="row gap-1 mt-2"><button class="btn btn-g btn-sm" data-action="scan-skip"><i class="fa-solid fa-forward"></i> Skip word</button></div>';
-return;
+if(sid!==ED.session)return;
+if(res&&res.defs.length){
+const seg=text.split(/[.!?]+/).find(p=>new RegExp("\\b"+rxEsc(w)+"\\b","i").test(p))||"";
+const best=rankDefs(w,res.defs,seg.trim())[0];
+ED.cards.push(edCard(w,fmtDef(best),best.pos));
+existing.add(w);added++;
 }
-this.source=res.source;
-this.ranked=rankDefs(w,res.defs,this.ctx);
-this.renderCard();
-},
-renderCard(){
-const card=$("scan-card");if(!card)return;
-const d=this.ranked[this.ri];if(!d)return;
-const matched=this.ctx?"Best match for your photo’s context":"Most common meaning";
-card.innerHTML='<div class="card pad" style="background:rgba(139,92,246,.08)">'
-+'<div class="row between wrap gap-1 mb-1"><span class="serif bold" style="font-size:24px">'+esc(this.cur)+'</span><span class="chip '+(this.source==="cambridge"?"chip-a":"")+'">'+(this.source==="cambridge"?"Cambridge":"Fallback")+"</span></div>"
-+'<p class="t-xs dim mb-1"><i class="fa-solid fa-wand-magic-sparkles"></i> '+matched+" · meaning "+(this.ri+1)+" of "+this.ranked.length+" — check it fits, then add.</p>"
-+(this.ctx?'<div class="scan-ctx mb-2">“'+esc(this.ctx)+'”</div>':"")
-+'<div class="def-item"><span class="tag">'+esc(d.pos)+"</span>"+(d.guide?' <span class="chip chip-v" style="font-size:10px">'+esc(d.guide)+"</span>":"")+"<p>"+esc(d.def)+"</p>"+(d.ex?'<p class="t-xs dim mt-1" style="font-style:italic">“'+esc(d.ex)+'”</p>':"")+"</div>"
-+'<div class="row gap-1 wrap mt-2">'
-+'<button class="btn btn-ok grow" data-action="scan-add"><i class="fa-solid fa-bolt"></i> Add to set</button>'
-+(this.ranked.length>1?'<button class="btn btn-g" data-action="scan-cycle" title="Show the next candidate meaning, one at a time"><i class="fa-solid fa-rotate"></i> Not this one</button>':"")
-+'<button class="btn btn-g" data-action="scan-skip"><i class="fa-solid fa-forward"></i> Skip</button>'
-+"</div></div>";
-},
-cycle(){if(this.ranked.length<2)return;this.ri=(this.ri+1)%this.ranked.length;Sfx.tap();this.renderCard();},
-skip(){if(!this.cur)return;this.handled.add(this.cur);this.nextWord();},
-add(){
-const w=this.cur,d=this.ranked[this.ri];
-if(!w||!d)return;
-if(words().some(x=>x.word.toLowerCase()===w)){toast("Already in this set.","err");this.handled.add(w);this.nextWord();return;}
-words().unshift({id:uid(),word:w,definitions:[{pos:d.pos,def:d.def}],addedAt:Date.now(),known:false});
-save();renderVaults();renderWords();FC.dirty=true;
-this.handled.add(w);Sfx.clear();toast('"'+w+'" added to your set ⚡',"ok");
-this.renderChips();this.nextWord();
 }
-};
-$("scan-file").addEventListener("change",e=>{const f=e.target.files[0];if(f)Scan.start(f);e.target.value="";});
-/* ---------- sentence lab (part-of-speech aware) ---------- */
+if(ED.cards.length===1&&!ED.cards[0].word.trim()&&!ED.cards[0].def.trim())ED.cards.pop();
+if(!ED.cards.length)ED.cards.push(edCard());
+edRender();
+edStatus(added?('<i class="fa-solid fa-circle-check"></i> Added '+added+' card'+(added===1?"":"s")+' from your photo — review & save.'):'<i class="fa-solid fa-circle-info"></i> No new dictionary words found in that photo.');
+Sfx.clear();
+setTimeout(()=>{if(sid===ED.session)edStatus("");},4500);
+}catch(e){
+if(sid!==ED.session)return;
+edStatus('<i class="fa-solid fa-circle-xmark"></i> Could not read that photo — check your connection and try again.');
+setTimeout(()=>{if(sid===ED.session)edStatus("");},4000);
+}
+}
+/* ---------- sentence lab ---------- */
 function slForms(w){
 w=String(w).toLowerCase();
 const f=new Set([w,w+"s",w+"es",w+"ed",w+"d",w+"ing"]);
@@ -2421,7 +2467,7 @@ pick(w){this.word=w;$("sl-word").value=w;this.meaning();$("sl-result").classList
 random(){const ws=words().filter(w=>w.word!==this.word);const p=ws.length?ws[rand(ws.length)]:words()[0];if(p){this.pick(p.word);Sfx.tap();}},
 meaning(){
 const e=words().find(w=>w.word===this.word);
-$("sl-meaning").innerHTML=e?e.definitions.slice(0,2).map(d=>'<div class="def-item" style="padding:9px 12px"><span class="tag">'+esc(d.pos)+'</span><p class="t-sm">'+esc(d.def)+"</p></div>").join(""):"";
+$("sl-meaning").innerHTML=e?e.definitions.slice(0,2).map(d=>'<div class="def-item" style="padding:9px 12px"><span class="tag">'+esc(d.pos)+'</span><p class="t-sm">'+esc(fmtDef(d))+"</p></div>").join(""):"";
 },
 clear(){$("sl-input").value="";$("sl-count").textContent="0 words";$("sl-result").classList.add("hide");$("sl-input").focus();},
 check(){
@@ -2450,7 +2496,7 @@ $("sl-result").classList.remove("hide");
 $("sl-word").addEventListener("change",e=>SL.pick(e.target.value));
 $("sl-input").addEventListener("input",()=>{const n=($("sl-input").value.trim().match(/\S+/g)||[]).length;$("sl-count").textContent=n+" word"+(n===1?"":"s");});
 $("sl-input").addEventListener("keydown",e=>{if(e.key==="Enter"&&(e.ctrlKey||e.metaKey)){e.preventDefault();SL.check();}});
-/* ---------- free cloud (no account, no API key) ---------- */
+/* ---------- free cloud ---------- */
 const CLOUD={busy:false,last:0};
 let cloudApplying=false,cloudTimer=null;
 async function jfetch(url,opt,ms){
@@ -2482,7 +2528,7 @@ put:async(id,d)=>{await jfetch("https://json.extendsclass.com/bin/"+encodeURICom
 ];
 const prov=p=>PROVIDERS.find(x=>x.p===p)||PROVIDERS[0];
 function cloudPayload(){
-return{v:4,app:"vocabmaster",name:state.cloud.name||"My vocabulary",updatedAt:state.updatedAt||0,vaults:state.vaults,activeId:state.activeId,best:state.best,wordle:state.wordle,sent:state.sent,sound:state.sound,recent:state.recent,lastVault:state.lastVault};
+return{v:4,app:"vocabmaster",name:state.cloud.name||"My vocabulary",updatedAt:state.updatedAt||0,vaults:state.vaults,activeId:state.activeId,best:state.best,wordle:state.wordle,sent:state.sent,sound:state.sound,recent:state.recent,lastVault:state.lastVault,settings:state.settings};
 }
 function cloudSchedule(){
 if(!state.cloud.on||!state.cloud.ref||cloudApplying)return;
@@ -2504,6 +2550,7 @@ state.sent=Object.assign(state.sent,rem.sent||{});
 state.recent=Array.isArray(rem.recent)?rem.recent:[];
 state.lastVault=rem.lastVault||null;
 state.updatedAt=rem.updatedAt||Date.now();
+if(rem.settings){state.settings=Object.assign(state.settings,rem.settings);delete state.settings.theme;}
 try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){}
 cloudApplying=false;
 selected.clear();FC.dirty=true;
@@ -2559,7 +2606,7 @@ for(const pr of PROVIDERS){
 try{
 const id=await pr.create(JSON.parse(data));
 showShare(location.origin+location.pathname+"#set="+id,data);
-toast("Published! Anyone with the link can import this set — no account needed.","ok");
+toast("Published! Anyone opening the link gets the set copied automatically.","ok");
 return;
 }catch(e){}
 }
@@ -2584,15 +2631,15 @@ if(!j||!Array.isArray(j.words)||!j.words.length)throw new Error("bad");
 const id="v_"+uid();
 let name=String(j.name||"Shared set");
 if(Object.values(state.vaults).some(v=>v.name===name))name+=" (shared)";
-state.vaults[id]={name,words:j.words.filter(w=>w&&w.word).map(w=>({id:uid(),word:String(w.word).toLowerCase(),definitions:Array.isArray(w.definitions)&&w.definitions.length?w.definitions.map(d=>({pos:POS.includes(d.pos)?d.pos:"other",def:String(d.def||"")})):[{pos:"other",def:"Imported word."}],addedAt:w.addedAt||Date.now(),known:!!w.known}))};
+state.vaults[id]={name,words:j.words.filter(w=>w&&w.word).map(w=>({id:uid(),word:String(w.word).toLowerCase(),definitions:Array.isArray(w.definitions)&&w.definitions.length?w.definitions.map(d=>({pos:POS.includes(d.pos)?d.pos:"other",def:stripPos(String(d.def||""))})):[{pos:"other",def:"Imported word."}],addedAt:w.addedAt||Date.now(),known:!!w.known}))};
 openSet(id);
-toast('Imported "'+name+'" · '+state.vaults[id].words.length+" words","ok");
+toast('Copied "'+name+'" into your library · '+state.vaults[id].words.length+" words","ok");
 }
 async function importFromString(s){
 s=String(s||"").trim();if(!s)return;
 let m=s.match(/[#&?]set=([A-Za-z0-9_-]+)/);
 if(m){
-toast("Downloading shared set…");
+toast("Copying shared set from link…");
 for(const pr of PROVIDERS){
 try{const j=await pr.get(m[1]);if(j&&j.words){importShared(j);return;}}catch(e){}
 }
@@ -2638,14 +2685,12 @@ $("side-acct").innerHTML=on
 document.addEventListener("click",e=>{
 const el=e.target.closest("[data-action]");if(!el)return;
 const a=el.dataset.action;
-if(a==="speak"||a==="fc-speak-word"||a==="dw-speak"||a==="pr-speak"||a==="sl-speak"||a==="set-prev"||a==="set-next"){e.stopPropagation();}
+if(["speak","fc-speak-word","dw-speak","pr-speak","sl-speak","set-prev","set-next","edit-word","ed-pick-term","ed-pick-def","ed-del-card"].includes(a))e.stopPropagation();
 switch(a){
 case"nav":setView(el.dataset.view);break;
-case"open-side":openSide();break;
-case"close-side":closeSide();break;
 case"sound-toggle":state.sound=!state.sound;save();renderSound();if(!state.sound&&"speechSynthesis" in window)window.speechSynthesis.cancel();toast(state.sound?"Sound on":"Sound muted");break;
 case"new-set":newSet();break;
-case"import-link":openModal({title:"Import shared set",msg:"Paste a share link or offline code.",input:true,value:"",placeholder:"https://…#set=… or code",okText:"Import",cb:v=>importFromString(v)});break;
+case"import-link":openModal({title:"Import shared set",msg:"Paste a share link or offline code. It copies into your library directly.",input:true,value:"",placeholder:"https://…#set=… or code",okText:"Copy set",cb:v=>importFromString(v)});break;
 case"import-string":importFromString(el.dataset.q);break;
 case"open-set":openSet(el.dataset.id);break;
 case"cont":openSet($("cont-card").dataset.id||state.activeId);openMode("flashcards");break;
@@ -2663,6 +2708,44 @@ if(Object.keys(state.vaults).length<=1){toast("You must keep at least one set.",
 openModal({title:"Delete this set?",msg:'"'+vault().name+'" and its '+words().length+" words will be removed.",danger:true,okText:"Delete",cb:()=>{const wasSet=currentView==="set";delete state.vaults[state.activeId];state.activeId=Object.keys(state.vaults)[0];state.recent=(state.recent||[]).filter(x=>state.vaults[x]);if(!state.vaults[state.lastVault])state.lastVault=null;selected.clear();save();renderVaults();renderWords();FC.dirty=true;toast("Set deleted.");if(wasSet)setView("library");}});
 break;
 case"vault-rename":openModal({title:"Rename set",msg:"",input:true,value:vault().name,okText:"Rename",cb:v=>{if(!v||!v.trim())return;vault().name=v.trim();save();renderVaults();toast("Set renamed.","ok");}});break;
+case"editor-open":openEditor();break;
+case"edit-word":openEditor(el.dataset.id);break;
+case"editor-close":closeEditor();break;
+case"editor-save":edSave();break;
+case"ed-add-card":{
+edSync();
+const c=edCard();ED.cards.push(c);edRender();
+setTimeout(()=>{const inp=edEl(c._key,".ed-term");if(inp){inp.focus();inp.closest(".ed-card").scrollIntoView({block:"center",behavior:"smooth"});}},60);
+Sfx.tap();break;
+}
+case"ed-del-card":{
+edSync();
+const c=edFind(el.dataset.key);if(!c)break;
+ED.cards=ED.cards.filter(x=>x!==c);
+if(!ED.cards.length)ED.cards.push(edCard());
+edRender();Sfx.tap();break;
+}
+case"ed-scan":$("ed-scan-file").click();break;
+case"ed-pick-term":{
+const c=edFind(el.dataset.key);if(!c)break;
+c.word=el.dataset.word;
+const inp=edEl(c._key,".ed-term");if(inp)inp.value=c.word;
+edHideSugs(c,"term");
+c._defs=[];c._shown=[];
+edDefSuggest(c);
+Sfx.tap();
+const d=edEl(c._key,".ed-def");if(d)d.focus();
+break;
+}
+case"ed-pick-def":{
+const c=edFind(el.dataset.key);if(!c)break;
+const d=c._shown[+el.dataset.i];if(!d)break;
+c.def=fmtDef(d);c.pos=d.pos;
+const ta=edEl(c._key,".ed-def");if(ta)ta.value=c.def;
+const ps=edEl(c._key,".ed-pos");if(ps)ps.value=d.pos;
+edHideSugs(c,"def");edHideSugs(c,"term");
+Sfx.tap();break;
+}
 case"nw-add":nwAdd(el.dataset.word);break;
 case"nw-refresh":toast("Checking Cambridge for new words…");nwUpdate(true);break;
 case"acct-open":openAcct();break;
@@ -2677,20 +2760,6 @@ case"copy-link":copyField("share-link");break;
 case"copy-code":copyField("share-code");break;
 case"export":exportVault();break;
 case"import":$("import-file").click();break;
-case"lookup":lookup();break;
-case"save-word":saveWord();break;
-case"scan-photo":$("scan-file").click();break;
-case"scan-close":Scan.close();break;
-case"scan-word":Scan.select(el.dataset.word);break;
-case"scan-add":Scan.add();break;
-case"scan-cycle":Scan.cycle();break;
-case"scan-skip":Scan.skip();break;
-case"sl-random":SL.random();break;
-case"sl-speak":speak(SL.word);break;
-case"sl-clear":SL.clear();break;
-case"sl-check":SL.check();break;
-case"sl-edit":$("sl-input").focus();break;
-case"sl-next":SL.clear();SL.random();break;
 case"open-word":openDrawer(el.dataset.word||(words().find(w=>w.id===el.dataset.id)||{}).word);break;
 case"speak":speak(el.dataset.word);break;
 case"word-check":e.stopPropagation();if(el.checked)selected.add(el.dataset.id);else selected.delete(el.dataset.id);renderWords();break;
@@ -2699,16 +2768,7 @@ case"bulk-clear":selected.clear();renderWords();break;
 case"bulk-delete":if(selected.size)openModal({title:"Delete "+selected.size+" words?",msg:"You can undo this right after.",danger:true,okText:"Delete",cb:()=>deleteWords(Array.from(selected))});break;
 case"drawer-close":closeDrawer();break;
 case"dw-speak":speak(dwWord);break;
-case"dw-edit":dwEditing=true;renderDrawer();break;
-case"dw-cancel-edit":dwEditing=false;renderDrawer();break;
-case"dw-add-row":$("dw-rows").insertAdjacentHTML("beforeend",editRowHtml({pos:"noun",def:""}));break;
-case"dw-del-row":el.closest(".edit-row").remove();break;
-case"dw-save-edit":{
-const entry=drawerEntry();if(!entry)break;
-const defs=[];document.querySelectorAll("#dw-rows .edit-row").forEach(r=>{const d=r.querySelector(".dw-def").value.trim();if(d)defs.push({pos:r.querySelector(".dw-pos").value,def:d});});
-if(!defs.length){toast("Keep at least one meaning.","err");break;}
-entry.definitions=defs;save();dwEditing=false;renderDrawer();renderWords();FC.dirty=true;toast("Meanings updated.","ok");break;
-}
+case"dw-edit":{const entry=drawerEntry();if(entry){closeDrawer();openEditor(entry.id);}break;}
 case"dw-delete":{const entry=drawerEntry();if(entry){closeDrawer();deleteWords([entry.id]);}break;}
 case"dw-toggle-known":{const entry=drawerEntry();if(entry){entry.known=!entry.known;save();renderDrawer();renderVaults();renderWords();FC.dirty=true;}break;}
 case"dw-add":{
@@ -2778,10 +2838,6 @@ case"w-inspect":openDrawer(W.target);break;
 case"modal-cancel":closeModal();break;
 }
 });
-document.addEventListener("change",e=>{
-const el=e.target.closest('[data-action="def-toggle"]');
-if(el){tempDefs[+el.dataset.i].sel=el.checked;refreshSaveBtn();}
-});
 /* drag & drop for games */
 document.addEventListener("dragstart",e=>{
 const pp=e.target.closest('.pp[data-idx]');if(pp){B.sel=+pp.dataset.idx;B.renderPieces();e.dataTransfer.setData("text/plain","b"+pp.dataset.idx);return;}
@@ -2799,6 +2855,11 @@ const sc=e.target.closest(".sc[data-r]");if(sc&&S.sel!==null){e.preventDefault()
 /* keyboard router */
 document.addEventListener("keydown",e=>{
 if($("modal").classList.contains("on")){if(e.key==="Escape")closeModal();return;}
+if($("editor").classList.contains("on")){
+if(e.key==="Escape"){closeEditor();return;}
+if(e.key==="Enter"&&(e.ctrlKey||e.metaKey)){e.preventDefault();edSave();}
+return;
+}
 if($("acct").classList.contains("on")){if(e.key==="Escape")closeAcct();return;}
 if($("share").classList.contains("on")){if(e.key==="Escape"){$("share").classList.remove("on");$("share-scrim").classList.remove("on");}return;}
 if($("drawer").classList.contains("on")){if(e.key==="Escape")closeDrawer();return;}

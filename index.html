@@ -426,12 +426,12 @@ input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;heigh
 <button class="mode-card" data-action="mode" data-mode="sentence"><i class="fa-solid fa-pen-nib" style="color:var(--pink)"></i><span>Sentence Lab<small>Write & score</small></span></button>
 </div>
 <div class="card pad mb-3">
-<span class="label"><i class="fa-solid fa-wand-magic-sparkles" style="color:var(--blue)"></i> Add a word to this set</span>
+<span class="label"><i class="fa-solid fa-wand-magic-sparkles" style="color:var(--blue)"></i> Add a word, idiom or phrasal verb</span>
 <div class="row gap-2">
-<input id="new-word" class="field grow" placeholder="Enter an English word… e.g. serendipity" autocomplete="off" spellcheck="false">
+<input id="new-word" class="field grow" placeholder="Word, idiom or phrasal verb… e.g. blaze the trail, give up" autocomplete="off" spellcheck="false">
 <button class="btn btn-p" id="lookup-btn" data-action="lookup"><i class="fa-solid fa-magnifying-glass"></i> Look up</button>
 </div>
-<p class="t-xs dim mt-1">Cambridge Dictionary meanings, or scan a photo to grab a word + its one matching meaning instantly.</p>
+<p class="t-xs dim mt-1">Cambridge Dictionary meanings — single words, idioms (blaze a trail) and phrasal verbs (phr. v.) are all supported. Or scan a photo to grab a word + its one matching meaning instantly.</p>
 <div class="row gap-2 mt-2">
 <button class="btn btn-v grow" data-action="scan-photo"><i class="fa-solid fa-camera"></i> Scan photo · one meaning · fast add</button>
 <input type="file" id="scan-file" accept="image/*" class="hide">
@@ -922,7 +922,7 @@ input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;heigh
 <span class="label">Raw code (paste into Library → From link)</span>
 <textarea id="share-code" class="field mb-2" rows="3" readonly style="font-size:11px"></textarea>
 <div class="row gap-1"><button class="btn btn-g btn-sm grow" data-action="copy-code"><i class="fa-solid fa-copy"></i> Copy code</button></div>
-<p class="t-xs dim mt-2">Anyone who opens the direct link gets the set copied straight into their library — no import button, no account, no API key.</p>
+<p class="t-xs dim mt-2">Anyone who opens the direct link gets the set copied straight into their library — no import button, no account, no API key. Works with words, idioms and phrasal verbs.</p>
 </div></div>
 <!-- word drawer -->
 <div id="drawer-scrim" data-action="drawer-close"></div>
@@ -962,8 +962,13 @@ const rand=n=>Math.floor(Math.random()*n);
 const POS=["noun","verb","adj","adv","phrase","other"];
 const WEIGHTED="AAAAAEEEEIIIIOOOOOUUUUBBCDDFGHJKLMNNPQRRSSTTTTVWXYZ";
 const letter=()=>WEIGHTED[rand(WEIGHTED.length)];
-const b64enc=s=>btoa(unescape(encodeURIComponent(s)));
-const b64dec=s=>decodeURIComponent(escape(atob(s)));
+/* URL-safe base64 (survives messengers & query strings); decode also accepts old standard base64 */
+const b64enc=s=>btoa(unescape(encodeURIComponent(String(s)))).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/,"");
+const b64dec=s=>{
+let t=String(s||"").trim().replace(/-/g,"+").replace(/_/g,"/").replace(/ /g,"+");
+while(t.length%4)t+="=";
+return decodeURIComponent(escape(atob(t)));
+};
 /* ---------- persistent state ---------- */
 const KEY="vocabMaster.v4";
 let state={vaults:{},activeId:"default",sound:true,best:{tetris:0,blocky:0,scrabble:0,bee:0},wordle:{wins:0,streak:0,score:0},sent:{tries:0,best:0,total:0},recent:[],lastVault:null,updatedAt:0,cloud:{on:false,name:"",ref:null}};
@@ -1122,7 +1127,7 @@ function renderSearch(){
 const q=$("home-search").value.trim(),box=$("home-results");
 if(!q){box.classList.add("hide");box.innerHTML="";return;}
 box.classList.remove("hide");
-if(/#set=|#setdata=/.test(q)||/^[A-Za-z0-9+/=]{60,}$/.test(q)){
+if(/#set=|#setdata=/.test(q)||/^[A-Za-z0-9\-_+/=]{60,}$/.test(q)){
 box.innerHTML='<button class="btn btn-p" data-action="import-string" data-q="'+esc(q)+'"><i class="fa-solid fa-cloud-arrow-down"></i> Copy shared set</button>';return;
 }
 const ql=q.toLowerCase();let h="";
@@ -1134,7 +1139,7 @@ if(hits.length)h+='<span class="label mt-2">Words</span>'+hits.map(x=>'<button c
 box.innerHTML=h||'<p class="t-sm dim">No results in your library. Paste a share link or code to copy a set from the internet.</p>';
 }
 $("home-search").addEventListener("input",renderSearch);
-$("home-search").addEventListener("keydown",e=>{if(e.key==="Enter"){const q=$("home-search").value.trim();if(/#set=|#setdata=/.test(q)||/^[A-Za-z0-9+/=]{60,}$/.test(q))copyFromString(q,false);else{const first=document.querySelector("#home-results [data-action='open-set']");if(first)openSet(first.dataset.id);}}});
+$("home-search").addEventListener("keydown",e=>{if(e.key==="Enter"){const q=$("home-search").value.trim();if(/#set=|#setdata=/.test(q)||/^[A-Za-z0-9\-_+/=]{60,}$/.test(q))copyFromString(q,false);else{const first=document.querySelector("#home-results [data-action='open-set']");if(first)openSet(first.dataset.id);}}});
 /* ---------- library ---------- */
 function renderLibrary(){
 $("lib-list").innerHTML=Object.keys(state.vaults).map(id=>{
@@ -1226,16 +1231,17 @@ const arr=words(),from=arr.findIndex(w=>w.id===dragId),to=arr.findIndex(w=>w.id=
 if(from>-1&&to>-1&&from!==to){const [m]=arr.splice(from,1);arr.splice(to,0,m);save();renderWords();}
 dragId=null;
 });
-/* ---------- dictionary lookup (Cambridge, parallel + cached) ---------- */
+/* ---------- dictionary lookup (Cambridge: words, idioms, phrasal verbs) ---------- */
 const defCache=new Map();
 let tempDefs=[],tempWord="",lookupSession=0;
 const CAMB_BASE="https://dictionary.cambridge.org/dictionary/english/";
+const CAMB_PV="https://dictionary.cambridge.org/dictionary/english-phrasal-verbs/";
 const PROXIES=[
 u=>"https://api.allorigins.win/raw?url="+encodeURIComponent(u),
 u=>"https://corsproxy.io/?url="+encodeURIComponent(u),
 u=>"https://api.codetabs.com/v1/proxy?quest="+encodeURIComponent(u)
 ];
-const POS_MAP={noun:"noun",verb:"verb",adjective:"adj",adverb:"adv",phrase:"phrase",idiom:"phrase","phrasal verb":"phrase"};
+const POS_MAP={noun:"noun",verb:"verb",adjective:"adj",adverb:"adv",phrase:"phrase",idiom:"phrase","phrasal verb":"phrase","phrasal-verb":"phrase","phr v":"phrase","phr. v.":"phrase","phr.v.":"phrase"};
 const DEF_KEY="vocabMaster.defs.v1";
 let defStore={};
 try{defStore=JSON.parse(localStorage.getItem(DEF_KEY)||"{}")||{};}catch(e){defStore={};}
@@ -1263,8 +1269,9 @@ defs.push({pos:p,def,ex,guide:guide||""});
 const entries=doc.querySelectorAll(".entry-body__el,.pv-block,.idiom-block");
 if(entries.length){
 entries.forEach(en=>{
-const posEl=en.querySelector(".pos.dpos,.pos");
-const pos=posEl?posEl.textContent:"other";
+let pos=(en.querySelector(".pos.dpos,.pos")||{}).textContent||"other";
+if(en.classList.contains("pv-block"))pos="phrasal verb";
+if(en.classList.contains("idiom-block"))pos="idiom";
 en.querySelectorAll(".def-block").forEach(db=>{
 const sense=db.closest(".dsense,.sense");
 const g=sense?sense.querySelector(".guideword"):null;
@@ -1288,9 +1295,20 @@ if(!defs.length)throw new Error("empty");
 return defs;
 }finally{clearTimeout(timer);}
 }
+function cambridgeCandidates(word){
+const w=String(word||"").trim().toLowerCase().replace(/\s+/g," ");
+const slug=w.replace(/\s+/g,"-");
+const list=[CAMB_BASE+encodeURIComponent(slug)];
+if(w.includes(" ")){
+list.push(CAMB_PV+encodeURIComponent(slug));
+if(/\bthe\b/.test(w))list.push(CAMB_BASE+encodeURIComponent(w.replace(/\bthe\b/g,"a").replace(/\s+/g,"-")));
+}
+return Array.from(new Set(list));
+}
 function fetchCambridge(word){
-const target=CAMB_BASE+encodeURIComponent(word);
-return Promise.any(PROXIES.map(p=>fetchVia(p(target),6000))).catch(()=>null);
+const attempts=[];
+cambridgeCandidates(word).forEach(u=>PROXIES.forEach(p=>attempts.push(fetchVia(p(u),6000))));
+return Promise.any(attempts).catch(()=>null);
 }
 async function fetchFallback(word){
 const ctrl=new AbortController(),timer=setTimeout(()=>ctrl.abort(),5000);
@@ -1316,10 +1334,16 @@ fbGated.then(v=>v||Promise.reject())
 if(out){defCache.set(word,out);stashDef(word,out);}
 return out;
 }
+function normalizeLookup(raw){
+return String(raw||"").trim().toLowerCase()
+.replace(/[’`]/g,"'")
+.replace(/\s*\((?:idiom|phr\.?\s*v\.?|phrasal\s+verb|phrase|noun|verb|adj|adjective|adv|adverb)\)\s*/gi," ")
+.replace(/\s+/g," ").trim();
+}
 async function lookup(){
-const word=$("new-word").value.trim().toLowerCase();
-if(!word){toast("Type a word first.","err");return;}
-if(!/^[a-z][a-z\- ]*$/.test(word)){toast("Please enter a single English word.","err");return;}
+const word=normalizeLookup($("new-word").value);
+if(!word){toast("Type a word, idiom or phrasal verb first.","err");return;}
+if(!/^[a-z][a-z\- ']*$/.test(word)){toast("Use English letters, spaces, hyphens or apostrophes.","err");return;}
 if(words().some(w=>w.word.toLowerCase()===word)){toast('"'+word+'" is already in this set.',"err");return;}
 const sid=++lookupSession;
 const btn=$("lookup-btn");btn.disabled=true;btn.innerHTML='<i class="fa-solid fa-circle-notch fa-spin"></i> Searching';
@@ -2543,7 +2567,7 @@ else{await cloudPush();if(manual)toast("Cloud is up to date.","ok");}
 CLOUD.last=Date.now();renderAcct();
 }catch(e){if(manual)toast("Sync failed — check your connection.","err");}
 }
-/* ---------- share & direct-copy links ---------- */
+/* ---------- share & DIRECT-COPY links ---------- */
 function setSig(name,ws){
 return String(name||"").trim().toLowerCase()+"|"+ws.map(w=>String(w.word||"").toLowerCase()).sort().join(",");
 }
@@ -2573,12 +2597,15 @@ state.vaults[id]={name,words:ws};
 openSet(id);
 return {id,dup:false,name,count:ws.length};
 }
+function decodeDirectPayload(raw){
+return JSON.parse(b64dec(decodeURIComponent(String(raw||""))));
+}
 async function resolveSharePayload(s){
 s=String(s||"").trim();
 if(!s)return null;
-let m=s.match(/[#&?]setdata=([A-Za-z0-9+/=%]+)/);
-let direct=m?decodeURIComponent(m[1]):(/^[A-Za-z0-9+/=]{40,}$/.test(s)?s:null);
-if(direct)return JSON.parse(b64dec(direct));
+let m=s.match(/[#&?]setdata=([A-Za-z0-9\-_=%+/]+)/);
+if(m)return decodeDirectPayload(m[1]);
+if(/^[A-Za-z0-9\-_+/=]{40,}$/.test(s))return decodeDirectPayload(s);
 m=s.match(/[#&?]set=([A-Za-z0-9_-]+)/);
 if(m){
 for(const pr of PROVIDERS){
@@ -2603,11 +2630,38 @@ toast(auto?"Could not copy the shared set from this link.":"That doesn't look li
 }
 function autoCopyFromLink(){
 const h=location.hash||"",q=location.search||"";
-const payload=h||q;
-if(!/[#&?]set(data)?=/.test(payload))return;
+const src=h||q;
+if(!/[#&?]set(data)?=/.test(src))return;
+const dm=src.match(/[#&?]setdata=([A-Za-z0-9\-_=%+/]+)/);
+if(dm){
+try{
+const j=decodeDirectPayload(dm[1]);
+const res=copySharedSet(j);
 history.replaceState(null,"",location.pathname);
+toast(res.dup?'Already in your library — opened "'+res.name+'".':'Copied "'+res.name+'" to your library · '+res.count+" words.","ok");
+}catch(e){
+toast("Could not read the shared data in this link.","err");
+}
+return;
+}
+const cm=src.match(/[#&?]set=([A-Za-z0-9_-]+)/);
+if(cm){
 toast("Opening shared link — copying the set…");
-copyFromString(payload,true);
+(async()=>{
+for(const pr of PROVIDERS){
+try{
+const j=await pr.get(cm[1]);
+if(j&&Array.isArray(j.words)){
+const res=copySharedSet(j);
+history.replaceState(null,"",location.pathname);
+toast(res.dup?'Already in your library — opened "'+res.name+'".':'Copied "'+res.name+'" to your library · '+res.count+" words.","ok");
+return;
+}
+}catch(e){}
+}
+toast("Could not copy the shared set from this link.","err");
+})();
+}
 }
 async function publishSet(){
 const v=vault();

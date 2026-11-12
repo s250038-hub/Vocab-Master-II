@@ -100,6 +100,50 @@ input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;heigh
 .stat-row b{font-size:16px;color:var(--text)}
 #menu-btn{display:none}
 #side-scrim{display:none}
+/* bottom nav (mobile) */
+#bnav{display:none;position:fixed;left:0;right:0;bottom:0;z-index:70;align-items:stretch;justify-content:space-around;gap:4px;padding:8px 10px calc(8px + env(safe-area-inset-bottom));background:rgba(9,14,30,.92);backdrop-filter:blur(16px);border-top:1px solid var(--line)}
+.bn{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;background:none;border:none;color:var(--muted);font:inherit;font-size:11px;font-weight:700;cursor:pointer;padding:4px 0;border-radius:12px;transition:.15s}
+.bn i{font-size:19px}
+.bn.on{color:#9db8ff}
+.bn-plus{width:46px;height:46px;margin-top:-22px;border-radius:50%;display:grid;place-items:center;font-size:19px;color:#fff;background:linear-gradient(135deg,var(--blue),var(--violet));box-shadow:0 10px 24px -8px rgba(90,110,255,.8);border:3px solid var(--bg)}
+.bn:active .bn-plus{transform:scale(.94)}
+.bn.on .bn-plus{box-shadow:0 10px 28px -6px rgba(139,92,246,.95)}
+/* home dashboard */
+.search-pill{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.07);border:1px solid var(--line2);border-radius:999px;padding:13px 20px;box-shadow:var(--shadow)}
+.search-pill i{color:var(--muted)}
+.search-pill input{flex:1;background:none;border:none;outline:none;color:var(--text);font:inherit;font-size:15px}
+.search-pill input::placeholder{color:var(--dim)}
+#home-results{margin-top:10px}
+.recent-row{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:rgba(255,255,255,.035);border:1px solid var(--line);border-radius:13px;padding:12px 14px;color:var(--text);font:inherit;cursor:pointer;transition:.15s;margin-bottom:8px}
+.recent-row:hover{background:rgba(255,255,255,.07);border-color:var(--line2);transform:translateY(-1px)}
+.recent-row b{display:block;font-size:14px}
+.recent-ic{width:42px;height:42px;min-width:42px;border-radius:12px;display:grid;place-items:center;font-size:16px;color:#9db8ff;background:rgba(77,125,255,.14);border:1px solid rgba(77,125,255,.3)}
+.nw-chip{display:inline-flex;align-items:center;gap:7px;padding:6px 12px;border-radius:10px;border:1px solid rgba(245,165,36,.4);background:rgba(245,165,36,.1);color:#ffd48a;font:inherit;font-size:12.5px;font-weight:700;cursor:pointer;transition:.13s;margin:0 6px 6px 0}
+.nw-chip:hover{background:rgba(245,165,36,.2)}
+/* set page */
+.set-pv{position:relative;border-radius:20px;background:linear-gradient(160deg,var(--paper),var(--paper2));color:var(--ink);min-height:210px;display:flex;align-items:center;justify-content:center;padding:30px;cursor:pointer;box-shadow:0 22px 44px -16px rgba(0,0,0,.6),inset 0 0 0 1px rgba(0,0,0,.06)}
+.set-pv::before{content:"";position:absolute;inset:10px;border:1px solid rgba(90,70,20,.18);border-radius:14px;pointer-events:none}
+.set-pv-word{font-size:clamp(28px,6vw,44px);font-weight:600;word-break:break-word;text-align:center}
+.set-pv-nav{position:absolute;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;border:none;background:rgba(0,0,0,.08);color:#3b5bdb;cursor:pointer;font-size:14px;z-index:2}
+.set-pv-nav:hover{background:rgba(0,0,0,.15)}
+#set-dots{display:flex;justify-content:center;gap:7px;margin-top:12px}
+#set-dots i{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.18)}
+#set-dots i.on{background:var(--blue)}
+.mode-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.mode-card{display:flex;align-items:center;gap:12px;padding:15px 16px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--text);font:inherit;font-weight:700;font-size:14px;cursor:pointer;transition:.15s;text-align:left}
+.mode-card:hover{background:rgba(255,255,255,.08);border-color:var(--line2);transform:translateY(-2px)}
+.mode-card i{font-size:19px;width:24px;text-align:center}
+.mode-card small{display:block;font-weight:500;font-size:11px;color:var(--muted)}
+/* library */
+.lib-row{display:flex;align-items:center;gap:12px;padding:15px 16px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.035);margin-bottom:10px;transition:.15s}
+.lib-row:hover{border-color:var(--line2);background:rgba(255,255,255,.06)}
+.lib-row .progress{width:110px}
+/* extra modals */
+#acct-scrim,#share-scrim{position:fixed;inset:0;background:rgba(4,7,15,.6);backdrop-filter:blur(3px);z-index:96;opacity:0;pointer-events:none;transition:opacity .25s}
+#acct-scrim.on,#share-scrim.on{opacity:1;pointer-events:auto}
+#acct,#share{position:fixed;inset:0;z-index:98;display:none;align-items:center;justify-content:center;padding:20px}
+#acct.on,#share.on{display:flex}
+#acct .modal-card,#share .modal-card{max-height:86vh;overflow-y:auto}
 /* word list */
 .word-card{display:flex;gap:12px;align-items:flex-start;padding:15px 16px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.035);transition:border-color .15s,background .15s,transform .15s;cursor:pointer;position:relative}
 .word-card:hover{border-color:var(--line2);background:rgba(255,255,255,.06);transform:translateY(-1px)}
@@ -261,14 +305,13 @@ input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;heigh
 @keyframes toast-in{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 .toast.out{opacity:0;transform:translateY(8px);transition:.3s}
 @media(max-width:1023px){
-#sidebar{transform:translateX(-105%);width:290px}
-#sidebar.open{transform:none}
+#sidebar{display:none}
 #main{margin-left:0}
-#menu-btn{display:inline-flex}
-#side-scrim{display:block;position:fixed;inset:0;z-index:55;background:rgba(4,7,15,.6);opacity:0;pointer-events:none;transition:.25s}
-#side-scrim.on{opacity:1;pointer-events:auto}
-#views{padding:20px 16px 60px}
+#bnav{display:flex}
+#views{padding:20px 16px 110px}
 #topbar{padding:12px 16px}
+#toasts{bottom:96px}
+.mode-grid{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:560px){
 .pad{padding:15px}
@@ -282,6 +325,9 @@ input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;heigh
 .view-h h2{font-size:22px}
 .pad-controls{max-width:100%}
 .sl-score{font-size:38px}
+.mode-grid{grid-template-columns:1fr 1fr;gap:8px}
+.mode-card{padding:13px 12px;font-size:13px}
+.lib-row .progress{width:70px}
 }
 </style>
 </head>
@@ -292,59 +338,113 @@ input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;heigh
 <div class="brand-ic"><i class="fa-solid fa-book-open"></i></div>
 <div><h1>Vocab Master</h1><p>Your personal vocabulary vault</p></div>
 </div>
-<div class="card pad" style="padding:15px">
-<span class="label"><i class="fa-solid fa-vault" style="color:var(--blue)"></i> Active vault</span>
-<div class="row gap-1">
-<select id="vault-select" class="field grow" style="padding:8px 32px 8px 11px;font-size:13px"></select>
-<button class="btn btn-p icon-btn" data-action="vault-new" title="New vault" style="width:36px;height:36px;min-width:36px"><i class="fa-solid fa-plus"></i></button>
-</div>
-<div class="row between mt-1">
-<button class="btn btn-xs btn-g" data-action="vault-rename" style="border:none;color:var(--muted)"><i class="fa-solid fa-pen"></i> Rename</button>
-<button class="btn btn-xs btn-g" data-action="vault-delete" style="border:none;color:var(--muted)"><i class="fa-solid fa-trash"></i> Delete</button>
-</div>
-</div>
+<div class="card pad" style="padding:15px" id="side-acct"></div>
 <nav class="col gap-1" id="nav">
-<button class="nav-btn on" data-action="nav" data-view="home" id="nav-home"><i class="fa-solid fa-house"></i> My Vault</button>
-<button class="nav-btn" data-action="nav" data-view="flashcards" id="nav-flashcards"><i class="fa-solid fa-layer-group"></i> Flashcards</button>
-<button class="nav-btn" data-action="nav" data-view="practice" id="nav-practice"><i class="fa-solid fa-list-check"></i> Practice</button>
-<button class="nav-btn" data-action="nav" data-view="quiz" id="nav-quiz"><i class="fa-solid fa-circle-question"></i> Definition Quiz</button>
-<button class="nav-btn" data-action="nav" data-view="spelling" id="nav-spelling"><i class="fa-solid fa-keyboard"></i> Spelling Quiz</button>
-<button class="nav-btn" data-action="nav" data-view="sentence" id="nav-sentence"><i class="fa-solid fa-pen-nib"></i> Sentence Lab</button>
+<button class="nav-btn on" data-action="nav" data-view="home" id="nav-home"><i class="fa-solid fa-house"></i> Home</button>
+<button class="nav-btn" data-action="nav" data-view="library" id="nav-library"><i class="fa-solid fa-folder-open"></i> Library</button>
 <button class="nav-btn" data-action="nav" data-view="games" id="nav-games"><i class="fa-solid fa-gamepad"></i> Word Games</button>
 </nav>
 <div class="card pad" style="padding:15px">
 <span class="label">Learning stats</span>
 <div class="stat-row"><span>Words in vault</span><b id="stat-words" style="color:#9db8ff">0</b></div>
 <div class="stat-row"><span>Mastered</span><b id="stat-known" style="color:var(--green)">0</b></div>
-<div class="stat-row"><span>Total vaults</span><b id="stat-vaults">1</b></div>
+<div class="stat-row"><span>Total sets</span><b id="stat-vaults">1</b></div>
 </div>
 <div class="row gap-1">
 <button class="btn btn-g btn-sm grow" data-action="export"><i class="fa-solid fa-download"></i> Export</button>
 <button class="btn btn-g btn-sm grow" data-action="import"><i class="fa-solid fa-upload"></i> Import</button>
 <input type="file" id="import-file" accept=".words,.txt,.json" class="hide">
 </div>
-<p class="t-xs dim" style="text-align:center;margin-top:auto">Local-first · your words stay in this browser</p>
+<p class="t-xs dim" style="text-align:center;margin-top:auto">Local-first · free cloud save, no account needed</p>
 </aside>
 <div id="side-scrim" data-action="close-side"></div>
 <div id="main">
 <header id="topbar">
 <button class="btn icon-btn btn-g" id="menu-btn" data-action="open-side"><i class="fa-solid fa-bars"></i></button>
-<span id="view-title">My Vault</span>
+<button class="btn btn-xs btn-g hide" id="back-set" data-action="nav" data-view="set"><i class="fa-solid fa-arrow-left"></i> Set</button>
+<span id="view-title">Home</span>
 <span class="grow"></span>
 <span class="chip chip-b hide" id="top-vault-chip"><i class="fa-solid fa-vault"></i> <span id="top-vault-name"></span></span>
 <button class="btn icon-btn btn-g" id="sound-btn" data-action="sound-toggle" title="Toggle sound"><i class="fa-solid fa-volume-high"></i></button>
+<button class="btn icon-btn btn-g" id="acct-btn" data-action="acct-open" title="Cloud save & sharing"><i class="fa-solid fa-cloud"></i></button>
 </header>
 <div id="views">
-<!-- ============ HOME / VAULT ============ -->
+<!-- ============ HOME ============ -->
 <section class="view active" id="view-home">
-<div class="view-h"><h2>My Vault</h2><span class="chip chip-b" id="vault-badge">My Vault</span></div>
+<div class="search-pill mb-3">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input id="home-search" placeholder="Search your sets & words, or paste a share link…" autocomplete="off" spellcheck="false">
+</div>
+<div id="home-results" class="hide mb-3"></div>
+<div id="cloud-hint" class="mb-3 hide">
+<button class="btn btn-g btn-sm" data-action="acct-open"><i class="fa-solid fa-cloud"></i> Free cloud save & online sharing — no account, no API key</button>
+</div>
+<span class="label" style="font-size:13px">Continue learning</span>
+<div class="card pad mb-3" id="cont-card">
+<div class="row between gap-2 wrap">
+<h3 class="t-lg grow" id="cont-title">My Vault</h3>
+<button class="btn icon-btn btn-g" data-action="cont-open" title="Open set"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+</div>
+<div class="progress mt-2"><i id="cont-bar" style="width:0%"></i></div>
+<p class="t-sm muted mt-1" id="cont-progress">0 / 0 mastered</p>
+<button class="btn btn-p btn-big mt-2" style="width:100%" data-action="cont"><i class="fa-solid fa-play"></i> Continue</button>
+</div>
+<span class="label" style="font-size:13px">Recent</span>
+<div id="recent-list" class="mb-3"></div>
+<div class="card pad mb-3 hide" id="nw-card">
+<div class="row between wrap gap-1 mb-1">
+<span class="label" style="margin:0"><i class="fa-solid fa-bolt" style="color:var(--amber)"></i> New on Cambridge</span>
+<button class="btn btn-xs btn-g" data-action="nw-refresh" style="border:none;color:var(--muted)"><i class="fa-solid fa-rotate"></i> Refresh</button>
+</div>
+<p class="t-xs dim mb-2">Fresh words from the Cambridge Dictionary blog — added automatically to the game & grammar dictionaries. Tap + to keep one in your vault.</p>
+<div id="nw-list"></div>
+</div>
+</section>
+<!-- ============ LIBRARY ============ -->
+<section class="view" id="view-library">
+<div class="view-h"><h2>Library</h2>
+<div class="row gap-1 wrap">
+<button class="btn btn-g btn-sm" data-action="import"><i class="fa-solid fa-upload"></i> Import</button>
+<button class="btn btn-g btn-sm" data-action="import-link"><i class="fa-solid fa-link"></i> From link</button>
+<button class="btn btn-p btn-sm" data-action="new-set"><i class="fa-solid fa-plus"></i> New set</button>
+</div></div>
+<p class="t-xs dim mb-2">Create a set here, then add words inside it with Look up or Scan photo.</p>
+<div id="lib-list"></div>
+</section>
+<!-- ============ SET (vault detail) ============ -->
+<section class="view" id="view-set">
+<div class="view-h">
+<div class="row gap-2 grow" style="min-width:0">
+<button class="btn icon-btn btn-g" data-action="nav" data-view="library" title="Back to library"><i class="fa-solid fa-arrow-left"></i></button>
+<h2 id="set-title" style="word-break:break-word">Set</h2>
+</div>
+<div class="row gap-1 wrap">
+<button class="btn btn-xs btn-g" data-action="set-share"><i class="fa-solid fa-cloud-arrow-up"></i> Share</button>
+<button class="btn btn-xs btn-g" data-action="vault-rename"><i class="fa-solid fa-pen"></i> Rename</button>
+<button class="btn btn-xs btn-g" data-action="vault-delete" style="color:#ff9db1"><i class="fa-solid fa-trash"></i></button>
+</div>
+</div>
+<div class="set-pv" data-action="mode" data-mode="flashcards" title="Start flashcards">
+<button class="set-pv-nav" style="left:12px" data-action="set-prev"><i class="fa-solid fa-chevron-left"></i></button>
+<span class="set-pv-word serif" id="set-pv-word">word</span>
+<button class="set-pv-nav" style="right:12px" data-action="set-next"><i class="fa-solid fa-chevron-right"></i></button>
+</div>
+<div id="set-dots" class="mb-2"></div>
+<p class="t-sm muted mb-3"><i class="fa-solid fa-user" style="color:var(--amber)"></i> <span id="set-author">You</span> · <span id="set-count">0 words</span></p>
+<div class="mode-grid mb-3">
+<button class="mode-card" data-action="mode" data-mode="flashcards"><i class="fa-solid fa-layer-group" style="color:#9db8ff"></i><span>Flashcards<small>Flip & memorize</small></span></button>
+<button class="mode-card" data-action="mode" data-mode="practice"><i class="fa-solid fa-list-check" style="color:var(--green)"></i><span>Learn<small>Multiple choice</small></span></button>
+<button class="mode-card" data-action="mode" data-mode="quiz"><i class="fa-solid fa-circle-question" style="color:var(--cyan)"></i><span>Test<small>Type the word</small></span></button>
+<button class="mode-card" data-action="mode" data-mode="spelling"><i class="fa-solid fa-keyboard" style="color:var(--violet)"></i><span>Spelling<small>Listen & spell</small></span></button>
+<button class="mode-card" data-action="mode" data-mode="sentence"><i class="fa-solid fa-pen-nib" style="color:var(--pink)"></i><span>Sentence Lab<small>Write & score</small></span></button>
+</div>
 <div class="card pad mb-3">
-<span class="label"><i class="fa-solid fa-wand-magic-sparkles" style="color:var(--blue)"></i> Add a new word</span>
+<span class="label"><i class="fa-solid fa-wand-magic-sparkles" style="color:var(--blue)"></i> Add a word to this set</span>
 <div class="row gap-2">
 <input id="new-word" class="field grow" placeholder="Enter an English word… e.g. serendipity" autocomplete="off" spellcheck="false">
 <button class="btn btn-p" id="lookup-btn" data-action="lookup"><i class="fa-solid fa-magnifying-glass"></i> Look up</button>
 </div>
-<p class="t-xs dim mt-1">Press Enter to look up a word on Cambridge Dictionary, or scan a photo to grab a word + its one matching meaning instantly.</p>
+<p class="t-xs dim mt-1">Cambridge Dictionary meanings, or scan a photo to grab a word + its one matching meaning instantly.</p>
 <div class="row gap-2 mt-2">
 <button class="btn btn-v grow" data-action="scan-photo"><i class="fa-solid fa-camera"></i> Scan photo · one meaning · fast add</button>
 <input type="file" id="scan-file" accept="image/*" class="hide">
@@ -354,7 +454,7 @@ input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;heigh
 </div>
 <div class="card pad">
 <div class="row between wrap gap-2 mb-2">
-<h3 class="t-lg">Saved words <span class="chip" id="list-count">0</span></h3>
+<h3 class="t-lg">Words <span class="chip" id="list-count">0</span></h3>
 <div class="row gap-1 wrap">
 <input id="word-search" class="field" style="width:150px;padding:8px 12px;font-size:13px" placeholder="Search…">
 <select id="pos-filter" class="field" style="width:110px;padding:8px 30px 8px 10px;font-size:13px">
@@ -378,7 +478,7 @@ input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;heigh
 <!-- ============ FLASHCARDS ============ -->
 <section class="view" id="view-flashcards">
 <div class="view-h"><h2>Flashcards</h2><span class="chip">← → to browse · Space to flip</span></div>
-<div id="fc-empty" class="card empty hide"><i class="fa-solid fa-box-open"></i><p>This vault is empty. Add a few words first.</p><button class="btn btn-p mt-2" data-action="nav" data-view="home">Go to My Vault</button></div>
+<div id="fc-empty" class="card empty hide"><i class="fa-solid fa-box-open"></i><p>This set is empty. Add a few words first.</p><button class="btn btn-p mt-2" data-action="nav" data-view="set">Go to set</button></div>
 <div id="fc-ui" class="hide">
 <div class="row between mb-2"><span class="chip chip-b" id="fc-counter">1 / 1</span><span class="chip chip-g hide" id="fc-known-badge"><i class="fa-solid fa-circle-check"></i> Mastered</span></div>
 <div class="progress mb-3"><i id="fc-bar" style="width:0%"></i></div>
@@ -410,16 +510,16 @@ input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;heigh
 </section>
 <!-- ============ PRACTICE ============ -->
 <section class="view" id="view-practice">
-<div class="view-h"><h2>Practice</h2><span class="chip">Match each word to its meaning</span></div>
+<div class="view-h"><h2>Learn</h2><span class="chip">Match each word to its meaning</span></div>
 <div id="pr-setup" class="card pad" style="text-align:center">
 <div class="setup-ic" style="background:rgba(34,197,94,.15);color:var(--green)"><i class="fa-solid fa-list-check"></i></div>
 <p class="muted mb-3">Read the word, then choose the correct definition from the options.</p>
 <div style="max-width:300px;margin:0 auto" class="mb-3">
 <label class="label" style="text-align:left">Answer options: <span id="pr-options-val" style="color:var(--blue)">4</span></label>
 <input type="range" id="pr-options" min="2" max="6" value="4">
-<p class="t-xs dim mt-1" style="text-align:left"><span id="pr-avail">0</span> words available in this vault</p>
+<p class="t-xs dim mt-1" style="text-align:left"><span id="pr-avail">0</span> words available in this set</p>
 </div>
-<button class="btn btn-ok btn-big" data-action="pr-start"><i class="fa-solid fa-play"></i> Start practice</button>
+<button class="btn btn-ok btn-big" data-action="pr-start"><i class="fa-solid fa-play"></i> Start learning</button>
 <p id="pr-err" class="hide mt-2 t-sm" style="color:var(--red)"></p>
 </div>
 <div id="pr-active" class="hide">
@@ -433,7 +533,7 @@ input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;heigh
 </div>
 <div id="pr-result" class="hide card pad" style="text-align:center">
 <i class="fa-solid fa-trophy result-ic" style="color:var(--amber)"></i>
-<h3 class="t-lg mb-1">Practice complete!</h3>
+<h3 class="t-lg mb-1">Round complete!</h3>
 <p class="muted mb-2" id="pr-detail"></p>
 <p style="font-size:40px;font-weight:800;color:#9db8ff" id="pr-final">0</p>
 <button class="btn btn-p mt-2" data-action="pr-retry"><i class="fa-solid fa-rotate-right"></i> Try again</button>
@@ -441,16 +541,16 @@ input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;heigh
 </section>
 <!-- ============ DEFINITION QUIZ ============ -->
 <section class="view" id="view-quiz">
-<div class="view-h"><h2>Definition Quiz</h2><span class="chip">Read the meaning · type the word</span></div>
+<div class="view-h"><h2>Test</h2><span class="chip">Read the meaning · type the word</span></div>
 <div id="qz-setup" class="card pad" style="text-align:center">
 <div class="setup-ic" style="background:rgba(34,197,94,.15);color:var(--green)"><i class="fa-solid fa-circle-question"></i></div>
 <p class="muted mb-3">A definition is shown — recall and type the matching vocabulary word.</p>
 <div style="max-width:300px;margin:0 auto" class="mb-3">
 <label class="label" style="text-align:left">Words to test: <span id="qz-count-val" style="color:var(--green)">5</span></label>
 <input type="range" id="qz-count" min="1" max="10" value="5">
-<p class="t-xs dim mt-1" style="text-align:left"><span id="qz-avail">0</span> words available in this vault</p>
+<p class="t-xs dim mt-1" style="text-align:left"><span id="qz-avail">0</span> words available in this set</p>
 </div>
-<button class="btn btn-ok btn-big" data-action="qz-start"><i class="fa-solid fa-play"></i> Start quiz</button>
+<button class="btn btn-ok btn-big" data-action="qz-start"><i class="fa-solid fa-play"></i> Start test</button>
 <p id="qz-err" class="hide mt-2 t-sm" style="color:var(--red)"></p>
 </div>
 <div id="qz-active" class="hide">
@@ -471,21 +571,21 @@ input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;heigh
 </div>
 <div id="qz-result" class="hide card pad" style="text-align:center">
 <i class="fa-solid fa-trophy result-ic" style="color:var(--amber)"></i>
-<h3 class="t-lg mb-2">Quiz complete!</h3>
+<h3 class="t-lg mb-2">Test complete!</h3>
 <p style="font-size:36px;font-weight:800;color:var(--green)" id="qz-final">0 / 0</p>
 <button class="btn btn-p mt-2" data-action="qz-retry"><i class="fa-solid fa-rotate-right"></i> Try again</button>
 </div>
 </section>
 <!-- ============ SPELLING QUIZ ============ -->
 <section class="view" id="view-spelling">
-<div class="view-h"><h2>Spelling Quiz</h2><span class="chip">Listen · then spell it out</span></div>
+<div class="view-h"><h2>Spelling</h2><span class="chip">Listen · then spell it out</span></div>
 <div id="sp-setup" class="card pad" style="text-align:center">
 <div class="setup-ic" style="background:rgba(77,125,255,.15);color:var(--blue)"><i class="fa-solid fa-headphones"></i></div>
 <p class="muted mb-3">Hear the word pronounced, then type its correct spelling.</p>
 <div style="max-width:300px;margin:0 auto" class="mb-3">
 <label class="label" style="text-align:left">Words to test: <span id="sp-count-val" style="color:var(--blue)">5</span></label>
 <input type="range" id="sp-count" min="1" max="10" value="5">
-<p class="t-xs dim mt-1" style="text-align:left"><span id="sp-avail">0</span> words available in this vault</p>
+<p class="t-xs dim mt-1" style="text-align:left"><span id="sp-avail">0</span> words available in this set</p>
 </div>
 <button class="btn btn-p btn-big" data-action="sp-start"><i class="fa-solid fa-play"></i> Start spelling test</button>
 <p id="sp-err" class="hide mt-2 t-sm" style="color:var(--red)"></p>
@@ -515,7 +615,7 @@ input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;heigh
 <!-- ============ SENTENCE LAB ============ -->
 <section class="view" id="view-sentence">
 <div class="view-h"><h2>Sentence Lab</h2><span class="chip">Write · check errors · get a score</span></div>
-<div id="sl-empty" class="card empty hide"><i class="fa-solid fa-box-open"></i><p>Add a few words to your vault first — then practice building sentences with them here.</p><button class="btn btn-p mt-2" data-action="nav" data-view="home">Go to My Vault</button></div>
+<div id="sl-empty" class="card empty hide"><i class="fa-solid fa-box-open"></i><p>Add a few words to this set first — then practice building sentences with them here.</p><button class="btn btn-p mt-2" data-action="nav" data-view="set">Go to set</button></div>
 <div id="sl-ui" class="hide">
 <div class="row gap-2 wrap mb-3">
 <span class="chip chip-v"><i class="fa-solid fa-pen-nib"></i> Attempts <b id="sl-tries">0</b></span>
@@ -810,6 +910,29 @@ input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;heigh
 </section>
 </div>
 </div>
+<!-- bottom nav (mobile): Games takes the center slot -->
+<nav id="bnav">
+<button class="bn on" data-action="nav" data-view="home" id="bn-home"><i class="fa-solid fa-house"></i><span>Home</span></button>
+<button class="bn" data-action="nav" data-view="games" id="bn-games"><span class="bn-plus"><i class="fa-solid fa-gamepad"></i></span><span>Games</span></button>
+<button class="bn" data-action="nav" data-view="library" id="bn-library"><i class="fa-solid fa-folder-open"></i><span>Library</span></button>
+</nav>
+<!-- account modal -->
+<div id="acct-scrim" data-action="acct-close"></div>
+<div id="acct"><div class="card modal-card">
+<div class="row between mb-2"><h3 class="t-lg">Cloud save & sharing</h3><button class="btn icon-btn btn-g" data-action="acct-close"><i class="fa-solid fa-xmark"></i></button></div>
+<div id="acct-body"></div>
+</div></div>
+<!-- share modal -->
+<div id="share-scrim" data-action="share-close"></div>
+<div id="share"><div class="card modal-card">
+<div class="row between mb-2"><h3 class="t-lg">Share this set</h3><button class="btn icon-btn btn-g" data-action="share-close"><i class="fa-solid fa-xmark"></i></button></div>
+<span class="label">Share link (opens straight into the app)</span>
+<div class="row gap-1 mb-2"><input id="share-link" class="field grow" readonly><button class="btn btn-p btn-sm" data-action="copy-link"><i class="fa-solid fa-copy"></i></button></div>
+<span class="label">Offline share code (works even if the cloud is down)</span>
+<textarea id="share-code" class="field mb-2" rows="3" readonly style="font-size:11px"></textarea>
+<div class="row gap-1"><button class="btn btn-g btn-sm grow" data-action="copy-code"><i class="fa-solid fa-copy"></i> Copy code</button></div>
+<p class="t-xs dim mt-2">Anyone can paste the link or code into the Home search bar (or Library → From link) to import a copy. Links use free anonymous cloud storage — no account, no API key.</p>
+</div></div>
 <!-- word drawer -->
 <div id="drawer-scrim" data-action="drawer-close"></div>
 <aside id="drawer">
@@ -850,13 +973,13 @@ const WEIGHTED="AAAAAEEEEIIIIOOOOOUUUUBBCDDFGHJKLMNNPQRRSSTTTTVWXYZ";
 const letter=()=>WEIGHTED[rand(WEIGHTED.length)];
 /* ---------- persistent state ---------- */
 const KEY="vocabMaster.v4";
-let state={vaults:{},activeId:"default",sound:true,best:{tetris:0,blocky:0,scrabble:0,bee:0},wordle:{wins:0,streak:0,score:0},sent:{tries:0,best:0,total:0}};
+let state={vaults:{},activeId:"default",sound:true,best:{tetris:0,blocky:0,scrabble:0,bee:0},wordle:{wins:0,streak:0,score:0},sent:{tries:0,best:0,total:0},recent:[],lastVault:null,updatedAt:0,cloud:{on:false,name:"",ref:null}};
 function seed(){state.vaults={default:{name:"My Vault",words:[]}};}
-function save(){try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){}}
+function save(){state.updatedAt=Date.now();try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){}cloudSchedule();}
 function load(){
 try{
 const raw=localStorage.getItem(KEY);
-if(raw){const p=JSON.parse(raw);if(p&&p.vaults&&Object.keys(p.vaults).length){state=Object.assign(state,p);state.best=Object.assign({tetris:0,blocky:0,scrabble:0,bee:0},p.best||{});state.wordle=Object.assign({wins:0,streak:0,score:0},p.wordle||{});state.sent=Object.assign({tries:0,best:0,total:0},p.sent||{});if(!state.vaults[state.activeId])state.activeId=Object.keys(state.vaults)[0];return;}}
+if(raw){const p=JSON.parse(raw);if(p&&p.vaults&&Object.keys(p.vaults).length){state=Object.assign(state,p);state.best=Object.assign({tetris:0,blocky:0,scrabble:0,bee:0},p.best||{});state.wordle=Object.assign({wins:0,streak:0,score:0},p.wordle||{});state.sent=Object.assign({tries:0,best:0,total:0},p.sent||{});state.cloud=Object.assign({on:false,name:"",ref:null},p.cloud||{});if(!state.cloud.ref)state.cloud.on=false;state.recent=Array.isArray(p.recent)?p.recent:[];state.lastVault=p.lastVault||null;state.updatedAt=p.updatedAt||0;if(!state.vaults[state.activeId])state.activeId=Object.keys(state.vaults)[0];return;}}
 const old=localStorage.getItem("vocabMaster.v3")||localStorage.getItem("vocabMasterVaults");
 if(old){
 let p=JSON.parse(old),ov=p&&p.vaults?p.vaults:p;
@@ -935,17 +1058,23 @@ $("modal-ok").addEventListener("click",()=>{const cb=modalCb,val=$("modal-input"
 $("modal-scrim").addEventListener("click",closeModal);
 $("modal-input").addEventListener("keydown",e=>{if(e.key==="Enter"){e.preventDefault();$("modal-ok").click();}});
 /* ---------- navigation ---------- */
-const TITLES={home:"My Vault",flashcards:"Flashcards",practice:"Practice",quiz:"Definition Quiz",spelling:"Spelling Quiz",sentence:"Sentence Lab",games:"Word Games"};
+const TITLES={home:"Home",library:"Library",set:"Set",flashcards:"Flashcards",practice:"Learn",quiz:"Test",spelling:"Spelling",sentence:"Sentence Lab",games:"Word Games"};
+const STUDY=["flashcards","practice","quiz","spelling","sentence"];
 let currentView="home";
 function setView(v){
 if(currentView==="games"&&v!=="games")T.pause(true);
 currentView=v;
 document.querySelectorAll(".view").forEach(s=>s.classList.remove("active"));
 $("view-"+v).classList.add("active");
-document.querySelectorAll(".nav-btn").forEach(b=>b.classList.toggle("on",b.dataset.view===v));
-$("view-title").textContent=TITLES[v];
-$("top-vault-chip").classList.toggle("hide",v==="home");
+document.querySelectorAll(".nav-btn").forEach(b=>b.classList.toggle("on",b.dataset.view===v||(v==="set"&&b.dataset.view==="library")));
+["home","library","games"].forEach(k=>{const b=$("bn-"+k);if(b)b.classList.toggle("on",v===k||(k==="library"&&v==="set"));});
+$("view-title").textContent=v==="set"?vault().name:TITLES[v];
+$("top-vault-chip").classList.toggle("hide",v==="home"||v==="set");
+$("back-set").classList.toggle("hide",!(STUDY.includes(v)&&state.vaults[state.lastVault||state.activeId]));
 closeSide();
+if(v==="home")renderHome();
+if(v==="library")renderLibrary();
+if(v==="set"){renderSet();renderWords();}
 if(v==="flashcards")FC.init();
 if(v==="practice")PR.refresh();
 if(v==="quiz")QZ.refresh();
@@ -958,20 +1087,98 @@ function openSide(){$("sidebar").classList.add("open");$("side-scrim").classList
 function closeSide(){$("sidebar").classList.remove("open");$("side-scrim").classList.remove("on");}
 /* ---------- vaults ---------- */
 function renderVaults(){
-$("vault-select").innerHTML=Object.keys(state.vaults).map(id=>'<option value="'+id+'"'+(id===state.activeId?" selected":"")+">"+esc(state.vaults[id].name)+"</option>").join("");
-$("vault-badge").textContent=vault().name;
 $("top-vault-name").textContent=vault().name;
 $("stat-words").textContent=words().length;
 $("stat-known").textContent=words().filter(w=>w.known).length;
 $("stat-vaults").textContent=Object.keys(state.vaults).length;
+if(currentView==="library")renderLibrary();
+if(currentView==="home")renderHome();
+if(currentView==="set")renderSet();
 }
 function switchVault(id){
 if(!state.vaults[id])return;
 state.activeId=id;selected.clear();save();
 renderVaults();renderWords();FC.dirty=true;
-toast('Switched to "'+vault().name+'"');
 }
-$("vault-select").addEventListener("change",e=>switchVault(e.target.value));
+function newSet(){
+openModal({title:"New set",msg:"Name your set — you'll add words inside it with Look up or Scan photo.",input:true,value:"",placeholder:"e.g. Unit 4 — Travel",okText:"Create",cb:v=>{
+if(!v||!v.trim())return;
+const id="v_"+uid();
+state.vaults[id]={name:v.trim(),words:[]};
+openSet(id);
+toast("Set created — add words below.","ok");
+setTimeout(()=>{const f=$("new-word");if(f)f.focus();},120);
+}});
+}
+/* ---------- home dashboard ---------- */
+function renderHome(){
+const lv=state.vaults[state.lastVault]||vault();
+const lid=state.vaults[state.lastVault]?state.lastVault:state.activeId;
+$("cont-title").textContent=lv.name;
+$("cont-card").dataset.id=lid;
+const total=lv.words.length,kn=lv.words.filter(w=>w.known).length;
+$("cont-progress").textContent=kn+" / "+total+" mastered";
+$("cont-bar").style.width=(total?Math.round(kn/total*100):0)+"%";
+const rec=(state.recent||[]).map(id=>({id,v:state.vaults[id]})).filter(x=>x.v);
+const list=(rec.length?rec:Object.keys(state.vaults).map(id=>({id,v:state.vaults[id]}))).slice(0,6);
+$("recent-list").innerHTML=list.map(x=>'<button class="recent-row" data-action="open-set" data-id="'+x.id+'"><span class="recent-ic"><i class="fa-solid fa-layer-group"></i></span><span class="grow"><b>'+esc(x.v.name)+'</b><span class="t-xs dim">'+x.v.words.length+" words · "+x.v.words.filter(w=>w.known).length+' mastered</span></span><i class="fa-solid fa-chevron-right dim"></i></button>').join("")||'<p class="t-sm dim">No sets yet — create one in Library.</p>';
+$("cloud-hint").classList.toggle("hide",state.cloud.on);
+renderNewWords();
+}
+function renderSearch(){
+const q=$("home-search").value.trim(),box=$("home-results");
+if(!q){box.classList.add("hide");box.innerHTML="";return;}
+box.classList.remove("hide");
+if(/#set=|#setdata=/.test(q)||/^[A-Za-z0-9+/=]{60,}$/.test(q)){
+box.innerHTML='<button class="btn btn-p" data-action="import-string" data-q="'+esc(q)+'"><i class="fa-solid fa-cloud-arrow-down"></i> Import shared set</button>';return;
+}
+const ql=q.toLowerCase();let h="";
+const sets=Object.keys(state.vaults).filter(id=>state.vaults[id].name.toLowerCase().includes(ql)).slice(0,6);
+if(sets.length)h+='<span class="label">Sets</span>'+sets.map(id=>'<button class="recent-row" data-action="open-set" data-id="'+id+'"><span class="recent-ic"><i class="fa-solid fa-folder-open"></i></span><span class="grow"><b>'+esc(state.vaults[id].name)+'</b><span class="t-xs dim">'+state.vaults[id].words.length+' words</span></span><i class="fa-solid fa-chevron-right dim"></i></button>').join("");
+const hits=[];
+Object.keys(state.vaults).forEach(id=>{state.vaults[id].words.forEach(w=>{if(hits.length>=12)return;if(w.word.toLowerCase().includes(ql)||w.definitions.some(d=>d.def.toLowerCase().includes(ql)))hits.push({id,w});});});
+if(hits.length)h+='<span class="label mt-2">Words</span>'+hits.map(x=>'<button class="recent-row" data-action="search-word" data-id="'+x.id+'" data-word="'+esc(x.w.word)+'"><span class="recent-ic" style="color:#c4b0ff;background:rgba(139,92,246,.14);border-color:rgba(139,92,246,.3)"><i class="fa-solid fa-book-open"></i></span><span class="grow"><b>'+esc(x.w.word.toLowerCase())+'</b><span class="t-xs dim">'+esc(state.vaults[x.id].name)+"</span></span><i class='fa-solid fa-chevron-right dim'></i></button>").join("");
+box.innerHTML=h||'<p class="t-sm dim">No results in your library. Paste a share link or code to import a set from the internet.</p>';
+}
+$("home-search").addEventListener("input",renderSearch);
+$("home-search").addEventListener("keydown",e=>{if(e.key==="Enter"){const q=$("home-search").value.trim();if(/#set=|#setdata=/.test(q)||/^[A-Za-z0-9+/=]{60,}$/.test(q))importFromString(q);else{const first=document.querySelector("#home-results [data-action='open-set']");if(first)openSet(first.dataset.id);}}});
+/* ---------- library ---------- */
+function renderLibrary(){
+$("lib-list").innerHTML=Object.keys(state.vaults).map(id=>{
+const v=state.vaults[id],kn=v.words.filter(w=>w.known).length,pct=v.words.length?Math.round(kn/v.words.length*100):0;
+return '<div class="lib-row"><span class="recent-ic"><i class="fa-solid fa-layer-group"></i></span>'
++'<button class="grow" style="background:none;border:none;color:var(--text);font:inherit;text-align:left;cursor:pointer;min-width:0" data-action="open-set" data-id="'+id+'"><b class="t-sm" style="display:block;word-break:break-word">'+esc(v.name)+'</b><span class="t-xs dim">'+v.words.length+" words · "+kn+' mastered</span></button>'
++'<div class="progress"><i style="width:'+pct+'%"></i></div>'
++'<button class="btn btn-xs btn-g" data-action="lib-share" data-id="'+id+'" title="Share"><i class="fa-solid fa-cloud-arrow-up"></i></button>'
++'<button class="btn btn-xs btn-g" data-action="lib-rename" data-id="'+id+'" title="Rename"><i class="fa-solid fa-pen"></i></button>'
++'<button class="btn btn-xs btn-g" data-action="lib-del" data-id="'+id+'" title="Delete" style="color:#ff9db1"><i class="fa-solid fa-trash"></i></button></div>';
+}).join("")||'<div class="card empty"><i class="fa-solid fa-box-open"></i><p>No sets yet.</p><button class="btn btn-p mt-2" data-action="new-set"><i class="fa-solid fa-plus"></i> Create your first set</button></div>';
+}
+/* ---------- set page ---------- */
+let setIdx=0;
+function openSet(id){
+if(!state.vaults[id])return;
+state.activeId=id;state.lastVault=id;
+state.recent=[id].concat((state.recent||[]).filter(x=>x!==id)).slice(0,12);
+selected.clear();setIdx=0;save();
+renderVaults();FC.dirty=true;
+setView("set");
+}
+function renderSet(){
+const v=vault();
+$("set-title").textContent=v.name;
+$("set-count").textContent=v.words.length+" words";
+$("set-author").textContent=state.cloud.on?(state.cloud.name||"You"):"You";
+if(currentView==="set")$("view-title").textContent=v.name;
+setPreview();
+}
+function setPreview(){
+const ws=vault().words,n=Math.max(1,ws.length);
+if(setIdx>=n)setIdx=0;
+$("set-pv-word").textContent=ws.length?ws[setIdx].word.toLowerCase():"Add your first word below";
+$("set-dots").innerHTML=ws.slice(0,6).map((_,i)=>'<i class="'+(i===setIdx?"on":"")+'"></i>').join("");
+}
+function openMode(m){if(m==="games")setView("games");else setView(m);}
 /* ---------- word list ---------- */
 let selected=new Set(),dragId=null,undoStash=null;
 function filteredWords(){
@@ -988,7 +1195,7 @@ const list=filteredWords(),box=$("word-list"),custom=$("sort-mode").value==="cus
 $("list-count").textContent=list.length;
 $("bulk-bar").classList.toggle("hide",selected.size===0);
 $("bulk-count").textContent=selected.size+" selected";
-if(!list.length){box.innerHTML='<div class="empty"><i class="fa-solid fa-feather"></i><p>'+(words().length?"No words match your filters.":"This vault is empty — add your first word above.")+"</p></div>";return;}
+if(!list.length){box.innerHTML='<div class="empty"><i class="fa-solid fa-feather"></i><p>'+(words().length?"No words match your filters.":"This set is empty — add your first word above.")+"</p></div>";return;}
 box.innerHTML=list.map(w=>{
 const defs=w.definitions.slice(0,2).map(d=>'<li><span class="tag">'+esc(d.pos)+'</span><span>'+esc(d.def)+"</span></li>").join("");
 const more=w.definitions.length>2?'<li class="dim t-xs">+ '+(w.definitions.length-2)+" more…</li>":"";
@@ -1120,7 +1327,7 @@ async function lookup(){
 const word=$("new-word").value.trim().toLowerCase();
 if(!word){toast("Type a word first.","err");return;}
 if(!/^[a-z][a-z\- ]*$/.test(word)){toast("Please enter a single English word.","err");return;}
-if(words().some(w=>w.word.toLowerCase()===word)){toast('"'+word+'" is already in this vault.',"err");return;}
+if(words().some(w=>w.word.toLowerCase()===word)){toast('"'+word+'" is already in this set.',"err");return;}
 const sid=++lookupSession;
 const btn=$("lookup-btn");btn.disabled=true;btn.innerHTML='<i class="fa-solid fa-circle-notch fa-spin"></i> Searching';
 $("add-panel").classList.remove("hide");
@@ -1141,7 +1348,7 @@ h+="</div>";
 }else if(!failed){h+='<p class="t-sm dim mb-1">No online definitions found. You can still save the word with your own meaning.</p>';}
 h+='<div class="row gap-1 mt-2 wrap"><select id="custom-pos" class="field" style="width:100px;padding:8px 28px 8px 10px;font-size:13px">'+POS.map(p=>"<option>"+p+"</option>").join("")+"</select>"
 +'<input id="custom-def" class="field grow" placeholder="Add a custom meaning or translation…" style="font-size:13px"></div>'
-+'<button class="btn btn-ok mt-2" style="width:100%" data-action="save-word" id="save-word-btn" disabled><i class="fa-solid fa-plus"></i> Save word to vault</button>';
++'<button class="btn btn-ok mt-2" style="width:100%" data-action="save-word" id="save-word-btn" disabled><i class="fa-solid fa-plus"></i> Save word to set</button>';
 $("add-panel").innerHTML=h;
 $("custom-def").addEventListener("input",refreshSaveBtn);
 }
@@ -1154,16 +1361,16 @@ const defs=tempDefs.filter(d=>d.sel).map(d=>({pos:d.pos,def:d.def}));
 const cd=$("custom-def");
 if(cd&&cd.value.trim())defs.push({pos:$("custom-pos").value,def:cd.value.trim()});
 if(!defs.length||!tempWord)return;
-if(words().some(w=>w.word.toLowerCase()===tempWord)){toast("Already in this vault.","err");return;}
+if(words().some(w=>w.word.toLowerCase()===tempWord)){toast("Already in this set.","err");return;}
 words().unshift({id:uid(),word:tempWord,definitions:defs,addedAt:Date.now(),known:false});
 save();renderVaults();renderWords();FC.dirty=true;
 $("new-word").value="";$("add-panel").classList.add("hide");tempDefs=[];tempWord="";
-Sfx.tap();toast("Word saved to your vault!","ok");
+Sfx.tap();toast("Word saved to your set!","ok");
 }
 $("new-word").addEventListener("keydown",e=>{if(e.key==="Enter"){e.preventDefault();lookup();}});
 /* ---------- import / export ---------- */
 async function exportVault(){
-if(!words().length){toast("This vault is empty — nothing to export.","err");return;}
+if(!words().length){toast("This set is empty — nothing to export.","err");return;}
 const data=JSON.stringify(words(),null,2);
 const name="VocabMaster_"+vault().name.replace(/[^a-z0-9]/gi,"_").toLowerCase()+"_"+new Date().toISOString().slice(0,10)+".words";
 try{
@@ -1219,7 +1426,7 @@ foot.innerHTML='<button class="btn btn-g" data-action="dw-cancel-edit">Cancel</b
 return;
 }
 let defs=entry?entry.definitions:null,source="vault";
-if(!defs){
+if(!defs||!defs.length){
 body.innerHTML='<p class="muted t-sm" style="text-align:center;padding:20px"><i class="fa-solid fa-circle-notch fa-spin"></i> Checking Cambridge Dictionary…</p>';
 foot.innerHTML="";
 const res=await fetchDefs(dwWord);
@@ -1236,7 +1443,7 @@ foot.innerHTML='<button class="btn btn-d btn-sm" data-action="dw-delete"><i clas
 +'<button class="btn btn-g btn-sm" data-action="dw-toggle-known"><i class="fa-solid fa-'+(entry.known?"rotate-left":"check")+'"></i> '+(entry.known?"Mark learning":"Mark mastered")+"</button>"
 +'<button class="btn btn-p btn-sm" data-action="dw-edit"><i class="fa-solid fa-pen"></i> Edit</button>';
 }else{
-foot.innerHTML='<button class="btn btn-p" data-action="dw-add"><i class="fa-solid fa-plus"></i> Add to current vault</button>';
+foot.innerHTML='<button class="btn btn-p" data-action="dw-add"><i class="fa-solid fa-plus"></i> Add to current set</button>';
 body.dataset.defs=JSON.stringify(defs.map(d=>({pos:d.pos,def:d.def})));
 }
 }
@@ -1279,10 +1486,11 @@ const r=$("pr-options");r.max=Math.max(2,Math.min(6,words().length));
 if(+r.value>+r.max)r.value=r.max;$("pr-options-val").textContent=r.value;
 },
 start(){
-if(words().length<2){$("pr-err").textContent="Add at least 2 words to start practice.";$("pr-err").classList.remove("hide");return;}
+if(words().length<2){$("pr-err").textContent="Add at least 2 words to start.";$("pr-err").classList.remove("hide");return;}
 $("pr-err").classList.add("hide");
 this.opts=Math.min(+$("pr-options").value,words().length);
-this.qs=shuffle(words());this.i=0;this.score=0;this.session++;
+this.qs=shuffle(words().filter(w=>w.definitions.length));this.i=0;this.score=0;this.session++;
+if(this.qs.length<2){$("pr-err").textContent="Wait for meanings to load, then try again.";$("pr-err").classList.remove("hide");return;}
 $("pr-setup").classList.add("hide");$("pr-result").classList.add("hide");$("pr-active").classList.remove("hide");
 this.render();
 },
@@ -1293,7 +1501,7 @@ $("pr-progress").textContent="Question "+(this.i+1)+" / "+this.qs.length;
 $("pr-score").textContent="Score "+this.score;
 $("pr-word").textContent=t.word.toLowerCase();
 const correct=t.definitions[rand(t.definitions.length)].def;
-const wrong=shuffle(words().filter(w=>w.id!==t.id)).slice(0,this.opts-1).map(w=>w.definitions[0].def);
+const wrong=shuffle(words().filter(w=>w.id!==t.id&&w.definitions.length)).slice(0,this.opts-1).map(w=>w.definitions[0].def);
 const opts=shuffle([{text:correct,ok:true},...wrong.map(d=>({text:d,ok:false}))]);
 $("pr-options-list").innerHTML=opts.map(o=>'<button class="opt-btn" data-action="pr-answer" data-ok="'+(o.ok?1:0)+'">'+esc(o.text)+"</button>").join("");
 },
@@ -1320,9 +1528,10 @@ const r=$("qz-count");r.max=Math.max(1,Math.min(20,words().length));
 if(+r.value>+r.max)r.value=r.max;$("qz-count-val").textContent=r.value;
 },
 start(){
-if(!words().length){$("qz-err").textContent="Add at least 1 word to start the quiz.";$("qz-err").classList.remove("hide");return;}
+const pool=words().filter(w=>w.definitions.length);
+if(!pool.length){$("qz-err").textContent="Add at least 1 word with a meaning to start.";$("qz-err").classList.remove("hide");return;}
 $("qz-err").classList.add("hide");
-this.qs=shuffle(words()).slice(0,+$("qz-count").value);this.i=0;this.correct=0;
+this.qs=shuffle(pool).slice(0,+$("qz-count").value);this.i=0;this.correct=0;
 $("qz-setup").classList.add("hide");$("qz-result").classList.add("hide");$("qz-active").classList.remove("hide");
 this.render();
 },
@@ -1376,7 +1585,7 @@ if(!state.sound||!("speechSynthesis" in window))this.hint();else this.play();
 $("sp-input").focus();
 },
 play(){const t=this.qs[this.i];if(t)speak(t.word);},
-hint(){const t=this.qs[this.i];if(!t)return;const d=t.definitions[0];$("sp-hint").innerHTML='<b><i class="fa-solid fa-lightbulb"></i> Hint:</b> <span class="tag">'+esc(d.pos)+"</span> "+esc(d.def)+" <span class='dim'>("+t.word.length+" letters)</span>";$("sp-hint").classList.remove("hide");},
+hint(){const t=this.qs[this.i];if(!t)return;const d=t.definitions[0]||{pos:"word",def:"Listen and spell the word."};$("sp-hint").innerHTML='<b><i class="fa-solid fa-lightbulb"></i> Hint:</b> <span class="tag">'+esc(d.pos)+"</span> "+esc(d.def)+" <span class='dim'>("+t.word.length+" letters)</span>";$("sp-hint").classList.remove("hide");},
 submit(){
 const t=this.qs[this.i],ans=$("sp-input").value.trim().toLowerCase();
 if(!ans)return;
@@ -1415,12 +1624,12 @@ const res=await fetch(url,{signal:ctrl.signal});clearTimeout(timer);
 if(!res.ok)continue;
 const text=await res.text();
 text.split(/\r?\n/).forEach(w=>{const c=w.trim().toUpperCase();if(/^[A-Z]{2,}$/.test(c))this.set.add(c);});
-this.buildMasks();this.ready=true;this.loading=false;
+nwApply();this.buildMasks();this.ready=true;this.loading=false;
 this.badge('<i class="fa-solid fa-circle-check" style="color:var(--green)"></i> Dictionary · '+this.set.size.toLocaleString()+" words","chip-g");
 return;
 }catch(e){}
 }
-this.buildMasks();this.loading=false;
+nwApply();this.buildMasks();this.loading=false;
 this.badge('<i class="fa-solid fa-triangle-exclamation" style="color:var(--amber)"></i> Offline dictionary · '+this.set.size.toLocaleString()+" words","chip-a");
 },
 buildMasks(){
@@ -1429,6 +1638,61 @@ this.set.forEach(w=>{if(w.length>=4&&w.length<=15){let m=0,ok=true;for(const ch 
 }
 };
 const maskOf=w=>{let m=0;for(const ch of w)m|=1<<(ch.charCodeAt(0)-65);return m;};
+/* ---------- Cambridge auto-update (new words → game + grammar dictionaries) ---------- */
+const NW_KEY="vocabMaster.newwords.v1";
+let NW={at:0,words:[]};
+try{const p=JSON.parse(localStorage.getItem(NW_KEY)||"{}");if(p&&Array.isArray(p.words))NW=p;}catch(e){}
+const SL_LEARNED=new Map();
+function nwApply(){
+(NW.words||[]).forEach(o=>{
+if(!o||!o.w)return;
+SL_LEARNED.set(o.w,o.pos||"other");
+if(/^[a-z]{2,15}$/.test(o.w))Dict.set.add(o.w.toUpperCase());
+});
+}
+async function proxyText(url){
+return Promise.any(PROXIES.map(p=>{
+const c=new AbortController(),t=setTimeout(()=>c.abort(),9000);
+return fetch(p(url),{signal:c.signal}).then(r=>{clearTimeout(t);if(!r.ok)throw new Error("http");return r.text();}).catch(e=>{clearTimeout(t);throw e;});
+})).catch(()=>null);
+}
+async function nwUpdate(force){
+if(!force&&Date.now()-(NW.at||0)<86400000)return;
+const html=await proxyText("https://dictionaryblog.cambridge.org/category/new-words/");
+if(!html)return;
+const doc=new DOMParser().parseFromString(html,"text/html");
+const seen=new Set(),cands=[];
+doc.querySelectorAll("h1 a,h2 a,h3 a,.entry-title a").forEach(a=>{
+const t=a.textContent.trim().toLowerCase().replace(/\s+/g," ");
+if(!/^[a-z][a-z\- ]{2,30}$/.test(t)||t.split(" ").length>3||/new words|about|category|blog|comment/.test(t)||seen.has(t))return;
+seen.add(t);cands.push(t);
+});
+const added=[];
+for(const w of cands.slice(0,8)){
+if((NW.words||[]).some(o=>o.w===w))continue;
+const res=await fetchDefs(w.replace(/\s+/g,"-"));
+if(res&&res.defs.length){const d=res.defs[0];const o={w,pos:d.pos,def:d.def,at:Date.now()};NW.words.unshift(o);added.push(o);}
+}
+NW.at=Date.now();NW.words=(NW.words||[]).slice(0,60);
+try{localStorage.setItem(NW_KEY,JSON.stringify(NW));}catch(e){}
+nwApply();
+if(Dict.ready||Dict.masks.length){Dict.buildMasks();if(Dict.ready)Dict.badge('<i class="fa-solid fa-circle-check" style="color:var(--green)"></i> Dictionary · '+Dict.set.size.toLocaleString()+" words","chip-g");}
+renderNewWords();
+if(added.length)toast("Cambridge update: "+added.length+" new word"+(added.length>1?"s":"")+" added to the game & grammar dictionaries.","ok");
+}
+function renderNewWords(){
+const list=(NW.words||[]).slice(0,12);
+$("nw-card").classList.toggle("hide",!list.length);
+$("nw-list").innerHTML=list.map(o=>'<button class="nw-chip" data-action="nw-add" data-word="'+esc(o.w)+'" title="'+esc(o.def)+'"><i class="fa-solid fa-plus" style="font-size:10px"></i> '+esc(o.w)+' <span class="tag" style="font-size:9px">'+esc(o.pos)+"</span></button>").join("");
+}
+function nwAdd(w){
+const o=(NW.words||[]).find(x=>x.w===w);if(!o)return;
+const target=state.vaults[state.lastVault]||vault();
+if(target.words.some(x=>x.word.toLowerCase()===w)){toast("Already in your set.","err");return;}
+target.words.unshift({id:uid(),word:w,definitions:[{pos:o.pos,def:o.def}],addedAt:Date.now(),known:false});
+save();renderVaults();renderWords();FC.dirty=true;Sfx.clear();
+toast('"'+w+'" added to '+target.name+".","ok");
+}
 /* ---------- games hub ---------- */
 const Games={tab:"tetris"};
 function showGame(g){
@@ -1856,7 +2120,7 @@ $("w-over-msg").textContent=msg;
 $("w-over").classList.remove("hide");
 }
 };
-/* ---------- photo scan → one context-matched meaning → fast add ---------- */
+/* ---------- photo scan ---------- */
 const SCAN_STOP=new Set("the a an and or but if then else when while of to in on at by for with about against between into through during before after above below from up down out off over under again further once here there all any both each few more most other some such no nor not only own same so than too very can will just should now is are was were be been being am do does did doing have has had having i you he she it we they me him her us them my your his its our their this that these those what which who whom as".split(" "));
 let scanSession=0,tessLoading=null;
 function loadTesseract(){
@@ -2007,7 +2271,7 @@ card.innerHTML='<div class="card pad" style="background:rgba(139,92,246,.08)">'
 +(this.ctx?'<div class="scan-ctx mb-2">“'+esc(this.ctx)+'”</div>':"")
 +'<div class="def-item"><span class="tag">'+esc(d.pos)+"</span>"+(d.guide?' <span class="chip chip-v" style="font-size:10px">'+esc(d.guide)+"</span>":"")+"<p>"+esc(d.def)+"</p>"+(d.ex?'<p class="t-xs dim mt-1" style="font-style:italic">“'+esc(d.ex)+'”</p>':"")+"</div>"
 +'<div class="row gap-1 wrap mt-2">'
-+'<button class="btn btn-ok grow" data-action="scan-add"><i class="fa-solid fa-bolt"></i> Add to vault</button>'
++'<button class="btn btn-ok grow" data-action="scan-add"><i class="fa-solid fa-bolt"></i> Add to set</button>'
 +(this.ranked.length>1?'<button class="btn btn-g" data-action="scan-cycle" title="Show the next candidate meaning, one at a time"><i class="fa-solid fa-rotate"></i> Not this one</button>':"")
 +'<button class="btn btn-g" data-action="scan-skip"><i class="fa-solid fa-forward"></i> Skip</button>'
 +"</div></div>";
@@ -2017,10 +2281,10 @@ skip(){if(!this.cur)return;this.handled.add(this.cur);this.nextWord();},
 add(){
 const w=this.cur,d=this.ranked[this.ri];
 if(!w||!d)return;
-if(words().some(x=>x.word.toLowerCase()===w)){toast("Already in this vault.","err");this.handled.add(w);this.nextWord();return;}
+if(words().some(x=>x.word.toLowerCase()===w)){toast("Already in this set.","err");this.handled.add(w);this.nextWord();return;}
 words().unshift({id:uid(),word:w,definitions:[{pos:d.pos,def:d.def}],addedAt:Date.now(),known:false});
 save();renderVaults();renderWords();FC.dirty=true;
-this.handled.add(w);Sfx.clear();toast('"'+w+'" added to your vault ⚡',"ok");
+this.handled.add(w);Sfx.clear();toast('"'+w+'" added to your set ⚡',"ok");
 this.renderChips();this.nextWord();
 }
 };
@@ -2043,8 +2307,10 @@ const issues=[];let misused=false;
 const t=String(target).toLowerCase();
 const entry=words().find(w=>w.word.toLowerCase()===t);
 const posSet=new Set((entry?entry.definitions:[]).map(d=>d.pos));
+if(!posSet.size&&SL_LEARNED.has(t))posSet.add(SL_LEARNED.get(t));
 const adjSet=new Set(SL_ADJ_BASE);
 words().forEach(w=>{if((w.definitions||[]).some(d=>d.pos==="adj"))adjSet.add(w.word.toLowerCase());});
+SL_LEARNED.forEach((p,w)=>{if(p==="adj")adjSet.add(w);});
 const adjTarget=posSet.has("adj")||SL_ADJ_BASE.includes(t);
 const dangling=w=>{
 const re=new RegExp("\\b(a|an)\\s+(?:(?:very|really|quite|too|so|extremely|incredibly|absolutely|totally|utterly|highly|deeply|slightly|rather|pretty|fairly)\\s+)*"+rxEsc(w)+"\\b","i");
@@ -2184,22 +2450,231 @@ $("sl-result").classList.remove("hide");
 $("sl-word").addEventListener("change",e=>SL.pick(e.target.value));
 $("sl-input").addEventListener("input",()=>{const n=($("sl-input").value.trim().match(/\S+/g)||[]).length;$("sl-count").textContent=n+" word"+(n===1?"":"s");});
 $("sl-input").addEventListener("keydown",e=>{if(e.key==="Enter"&&(e.ctrlKey||e.metaKey)){e.preventDefault();SL.check();}});
+/* ---------- free cloud (no account, no API key) ---------- */
+const CLOUD={busy:false,last:0};
+let cloudApplying=false,cloudTimer=null;
+async function jfetch(url,opt,ms){
+const c=new AbortController(),t=setTimeout(()=>c.abort(),ms||9000);
+try{
+const r=await fetch(url,Object.assign({signal:c.signal},opt||{}));
+if(!r.ok)throw new Error("http "+r.status);
+return r;
+}finally{clearTimeout(t);}
+}
+const PROVIDERS=[
+{p:"jb",
+create:async d=>{
+const r=await jfetch("https://jsonblob.com/api/jsonBlob",{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify(d)});
+const id=r.headers.get("X-jsonblob")||(r.headers.get("Location")||"").split("/").pop();
+if(!id)throw new Error("no id");
+return id;
+},
+get:async id=>(await jfetch("https://jsonblob.com/api/jsonBlob/"+encodeURIComponent(id),{headers:{Accept:"application/json"}})).json(),
+put:async(id,d)=>{await jfetch("https://jsonblob.com/api/jsonBlob/"+encodeURIComponent(id),{method:"PUT",headers:{"Content-Type":"application/json"},body:JSON.stringify(d)});}},
+{p:"ec",
+create:async d=>{
+const j=await(await jfetch("https://json.extendsclass.com/bin",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(d)})).json();
+if(!j.id)throw new Error("no id");
+return j.id;
+},
+get:async id=>(await jfetch("https://json.extendsclass.com/bin/"+encodeURIComponent(id))).json(),
+put:async(id,d)=>{await jfetch("https://json.extendsclass.com/bin/"+encodeURIComponent(id),{method:"PUT",headers:{"Content-Type":"application/json"},body:JSON.stringify(d)});}}
+];
+const prov=p=>PROVIDERS.find(x=>x.p===p)||PROVIDERS[0];
+function cloudPayload(){
+return{v:4,app:"vocabmaster",name:state.cloud.name||"My vocabulary",updatedAt:state.updatedAt||0,vaults:state.vaults,activeId:state.activeId,best:state.best,wordle:state.wordle,sent:state.sent,sound:state.sound,recent:state.recent,lastVault:state.lastVault};
+}
+function cloudSchedule(){
+if(!state.cloud.on||!state.cloud.ref||cloudApplying)return;
+clearTimeout(cloudTimer);cloudTimer=setTimeout(()=>cloudPush().catch(()=>{}),3000);
+}
+async function cloudPush(){
+if(!state.cloud.on||!state.cloud.ref||CLOUD.busy)return;
+CLOUD.busy=true;
+try{await prov(state.cloud.ref.p).put(state.cloud.ref.id,cloudPayload());CLOUD.last=Date.now();renderAcct();}catch(e){}
+CLOUD.busy=false;
+}
+function cloudApply(rem){
+cloudApplying=true;
+state.vaults=rem.vaults;
+state.activeId=rem.activeId&&rem.vaults[rem.activeId]?rem.activeId:Object.keys(rem.vaults)[0];
+state.best=Object.assign(state.best,rem.best||{});
+state.wordle=Object.assign(state.wordle,rem.wordle||{});
+state.sent=Object.assign(state.sent,rem.sent||{});
+state.recent=Array.isArray(rem.recent)?rem.recent:[];
+state.lastVault=rem.lastVault||null;
+state.updatedAt=rem.updatedAt||Date.now();
+try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){}
+cloudApplying=false;
+selected.clear();FC.dirty=true;
+renderVaults();renderWords();renderHome();bestChip();
+if(currentView==="set")setView("set");
+}
+async function cloudCreate(){
+const name=($("acct-name")&&$("acct-name").value.trim())||"My vocabulary";
+state.cloud.name=name;
+toast("Creating your cloud save…");
+for(const pr of PROVIDERS){
+try{
+const id=await pr.create(cloudPayload());
+state.cloud={on:true,name,ref:{p:pr.p,id}};
+save();renderAcct();renderHome();
+toast("Cloud save created! Copy your sync code and keep it safe.","ok");
+return;
+}catch(e){}
+}
+toast("Cloud services are unreachable right now — try again later. Offline share codes still work.","err");
+}
+async function cloudRestore(code){
+code=String(code||"").trim();if(!code)return;
+toast("Looking up your cloud save…");
+for(const pr of PROVIDERS){
+try{
+const rem=await pr.get(code);
+if(!rem||!rem.vaults)continue;
+cloudApply(rem);
+state.cloud={on:true,name:rem.name||state.cloud.name||"My vocabulary",ref:{p:pr.p,id:code}};
+save();renderAcct();renderHome();
+toast("Cloud save restored & linked to this device.","ok");
+return;
+}catch(e){}
+}
+toast("No cloud save found for that code.","err");
+}
+async function cloudSync(manual){
+if(!state.cloud.on||!state.cloud.ref){if(manual)openAcct();return;}
+try{
+const rem=await prov(state.cloud.ref.p).get(state.cloud.ref.id);
+if(rem&&rem.vaults&&(rem.updatedAt||0)>(state.updatedAt||0)){cloudApply(rem);toast("Synced from cloud.","ok");}
+else{await cloudPush();if(manual)toast("Cloud is up to date.","ok");}
+CLOUD.last=Date.now();renderAcct();
+}catch(e){if(manual)toast("Sync failed — check your connection.","err");}
+}
+async function publishSet(){
+const v=vault();
+if(!v.words.length){toast("This set is empty — nothing to share.","err");return;}
+const data=JSON.stringify({app:"vocabmaster",name:v.name,words:v.words});
+toast("Publishing online…");
+for(const pr of PROVIDERS){
+try{
+const id=await pr.create(JSON.parse(data));
+showShare(location.origin+location.pathname+"#set="+id,data);
+toast("Published! Anyone with the link can import this set — no account needed.","ok");
+return;
+}catch(e){}
+}
+showShare("",data);
+toast("Cloud unreachable — use the offline share code instead.","err");
+}
+function shareCode(data){return btoa(unescape(encodeURIComponent(data)));}
+function showShare(link,data){
+const code=shareCode(data);
+$("share-link").value=link||(location.origin+location.pathname+"#setdata="+code);
+$("share-code").value=code;
+$("share").classList.add("on");$("share-scrim").classList.add("on");
+}
+function copyField(id){
+const el=$(id);if(!el)return;
+el.select();el.setSelectionRange(0,999999);
+try{navigator.clipboard.writeText(el.value).then(()=>toast("Copied!","ok"),()=>{document.execCommand("copy");toast("Copied!","ok");});}
+catch(e){try{document.execCommand("copy");toast("Copied!","ok");}catch(err){toast("Copy failed — select the text manually.","err");}}
+}
+function importShared(j){
+if(!j||!Array.isArray(j.words)||!j.words.length)throw new Error("bad");
+const id="v_"+uid();
+let name=String(j.name||"Shared set");
+if(Object.values(state.vaults).some(v=>v.name===name))name+=" (shared)";
+state.vaults[id]={name,words:j.words.filter(w=>w&&w.word).map(w=>({id:uid(),word:String(w.word).toLowerCase(),definitions:Array.isArray(w.definitions)&&w.definitions.length?w.definitions.map(d=>({pos:POS.includes(d.pos)?d.pos:"other",def:String(d.def||"")})):[{pos:"other",def:"Imported word."}],addedAt:w.addedAt||Date.now(),known:!!w.known}))};
+openSet(id);
+toast('Imported "'+name+'" · '+state.vaults[id].words.length+" words","ok");
+}
+async function importFromString(s){
+s=String(s||"").trim();if(!s)return;
+let m=s.match(/[#&?]set=([A-Za-z0-9_-]+)/);
+if(m){
+toast("Downloading shared set…");
+for(const pr of PROVIDERS){
+try{const j=await pr.get(m[1]);if(j&&j.words){importShared(j);return;}}catch(e){}
+}
+toast("Could not load that shared set.","err");
+return;
+}
+m=s.match(/[#&?]setdata=([A-Za-z0-9+/=%]+)/);
+const raw=m?decodeURIComponent(m[1]):(/^[A-Za-z0-9+/=]{40,}$/.test(s)?s:null);
+if(raw){
+try{importShared(JSON.parse(decodeURIComponent(escape(atob(raw)))));}
+catch(e){toast("Invalid share code.","err");}
+return;
+}
+toast("That doesn't look like a share link or code.","err");
+}
+function hashImport(){
+const h=location.hash||"";
+if(/[#&]set=|[#&]setdata=/.test(h)){importFromString(h);history.replaceState(null,"",location.pathname+location.search);}
+}
+function openAcct(){renderAcct();$("acct").classList.add("on");$("acct-scrim").classList.add("on");}
+function closeAcct(){$("acct").classList.remove("on");$("acct-scrim").classList.remove("on");}
+function renderAcct(){
+const on=state.cloud.on&&state.cloud.ref;
+$("acct-btn").innerHTML=on?'<i class="fa-solid fa-cloud" style="color:var(--green)"></i>':'<i class="fa-solid fa-cloud"></i>';
+const connected='<div class="row gap-2 mb-2"><span class="recent-ic" style="color:#8ce7ad;background:rgba(34,197,94,.14);border-color:rgba(34,197,94,.3)"><i class="fa-solid fa-cloud"></i></span><div class="grow"><b class="t-sm">'+esc(state.cloud.name||"My vocabulary")+'</b><p class="t-xs dim">Cloud save active · auto-syncs on every change</p></div></div>'
++'<span class="label">Your sync code — keep it secret & safe</span>'
++'<div class="row gap-1 mb-2"><input id="sync-code-field" class="field grow mono" style="font-size:12px" readonly value="'+esc(state.cloud.ref.id)+'"><button class="btn btn-p btn-sm" data-action="copy-sync"><i class="fa-solid fa-copy"></i></button></div>'
++'<p class="t-xs dim mb-2">Enter this code on any device (Cloud → Restore) to load & keep syncing the same data. Anyone with the code can access it. Free anonymous storage may expire after long inactivity — the app refreshes it on every visit; use Export for permanent backups.</p>'
++'<div class="row gap-1 wrap"><button class="btn btn-p btn-sm grow" data-action="cloud-sync"><i class="fa-solid fa-rotate"></i> Sync now</button><button class="btn btn-g btn-sm" data-action="cloud-out">Disconnect</button></div>'
++(CLOUD.last?'<p class="t-xs dim mt-2"><i class="fa-solid fa-circle-check" style="color:var(--green)"></i> Last sync '+new Date(CLOUD.last).toLocaleTimeString()+"</p>":"");
+const fresh='<p class="t-sm muted mb-2"><b style="color:var(--text)">Free cloud save — no account, no API key.</b> Your sets are stored on a free anonymous cloud so you can sync across devices and publish share links. You get a secret sync code; keep it safe.</p>'
++'<span class="label">Display name (optional)</span><input id="acct-name" class="field mb-2" placeholder="e.g. Alex" value="'+esc(state.cloud.name||"")+'">'
++'<button class="btn btn-p" style="width:100%" data-action="cloud-create"><i class="fa-solid fa-cloud-arrow-up"></i> Create cloud save</button>'
++'<div class="divider"></div>'
++'<button class="btn btn-g btn-sm" style="width:100%" data-action="cloud-restore"><i class="fa-solid fa-cloud-arrow-down"></i> Restore from sync code</button>'
++'<p class="t-xs dim mt-2">No login, no keys, nothing to configure. Sharing sets online also works without an account.</p>';
+$("acct-body").innerHTML=on?connected:fresh;
+$("side-acct").innerHTML=on
+?'<div class="row gap-2"><span class="recent-ic" style="width:36px;height:36px;min-width:36px;color:#8ce7ad;background:rgba(34,197,94,.14);border-color:rgba(34,197,94,.3)"><i class="fa-solid fa-cloud"></i></span><div class="grow" style="min-width:0"><b class="t-sm" style="display:block;overflow:hidden;text-overflow:ellipsis">'+esc(state.cloud.name||"Cloud save")+'</b><span class="t-xs dim">Auto-sync on</span></div></div><div class="row gap-1 mt-2"><button class="btn btn-xs btn-p grow" data-action="cloud-sync"><i class="fa-solid fa-rotate"></i> Sync</button><button class="btn btn-xs btn-g" data-action="acct-open">Account</button></div>'
+:'<span class="label"><i class="fa-solid fa-cloud" style="color:var(--blue)"></i> Cloud</span><button class="btn btn-p btn-sm" style="width:100%" data-action="acct-open"><i class="fa-solid fa-cloud-arrow-up"></i> Free cloud save</button><p class="t-xs dim mt-1">No account · no API key.</p>';
+}
 /* ---------- global event delegation ---------- */
 document.addEventListener("click",e=>{
 const el=e.target.closest("[data-action]");if(!el)return;
 const a=el.dataset.action;
-if(a==="speak"||a==="fc-speak-word"||a==="dw-speak"||a==="pr-speak"||a==="sl-speak"){e.stopPropagation();}
+if(a==="speak"||a==="fc-speak-word"||a==="dw-speak"||a==="pr-speak"||a==="sl-speak"||a==="set-prev"||a==="set-next"){e.stopPropagation();}
 switch(a){
 case"nav":setView(el.dataset.view);break;
 case"open-side":openSide();break;
 case"close-side":closeSide();break;
 case"sound-toggle":state.sound=!state.sound;save();renderSound();if(!state.sound&&"speechSynthesis" in window)window.speechSynthesis.cancel();toast(state.sound?"Sound on":"Sound muted");break;
-case"vault-new":openModal({title:"Create a new vault",msg:"Give your collection a name.",input:true,value:"",placeholder:"e.g. Biology Terms",okText:"Create",cb:v=>{if(!v||!v.trim())return;const id="v_"+uid();state.vaults[id]={name:v.trim(),words:[]};switchVault(id);}});break;
-case"vault-rename":openModal({title:"Rename vault",msg:"",input:true,value:vault().name,okText:"Rename",cb:v=>{if(!v||!v.trim())return;vault().name=v.trim();save();renderVaults();toast("Vault renamed.","ok");}});break;
+case"new-set":newSet();break;
+case"import-link":openModal({title:"Import shared set",msg:"Paste a share link or offline code.",input:true,value:"",placeholder:"https://…#set=… or code",okText:"Import",cb:v=>importFromString(v)});break;
+case"import-string":importFromString(el.dataset.q);break;
+case"open-set":openSet(el.dataset.id);break;
+case"cont":openSet($("cont-card").dataset.id||state.activeId);openMode("flashcards");break;
+case"cont-open":openSet($("cont-card").dataset.id||state.activeId);break;
+case"search-word":switchVault(el.dataset.id);renderWords();openDrawer(el.dataset.word);break;
+case"mode":openMode(el.dataset.mode);break;
+case"set-prev":{const n=Math.max(1,vault().words.length);setIdx=(setIdx-1+n)%n;setPreview();Sfx.tap();break;}
+case"set-next":{const n=Math.max(1,vault().words.length);setIdx=(setIdx+1)%n;setPreview();Sfx.tap();break;}
+case"set-share":publishSet();break;
+case"lib-share":switchVault(el.dataset.id);publishSet();break;
+case"lib-rename":switchVault(el.dataset.id);openModal({title:"Rename set",msg:"",input:true,value:vault().name,okText:"Rename",cb:v=>{if(!v||!v.trim())return;vault().name=v.trim();save();renderVaults();toast("Set renamed.","ok");}});break;
+case"lib-del":switchVault(el.dataset.id);
 case"vault-delete":
-if(Object.keys(state.vaults).length<=1){toast("You must keep at least one vault.","err");break;}
-openModal({title:"Delete this vault?",msg:'"'+vault().name+'" and its '+words().length+" words will be removed.",danger:true,okText:"Delete",cb:()=>{delete state.vaults[state.activeId];state.activeId=Object.keys(state.vaults)[0];selected.clear();save();renderVaults();renderWords();FC.dirty=true;toast("Vault deleted.");}});
+if(Object.keys(state.vaults).length<=1){toast("You must keep at least one set.","err");break;}
+openModal({title:"Delete this set?",msg:'"'+vault().name+'" and its '+words().length+" words will be removed.",danger:true,okText:"Delete",cb:()=>{const wasSet=currentView==="set";delete state.vaults[state.activeId];state.activeId=Object.keys(state.vaults)[0];state.recent=(state.recent||[]).filter(x=>state.vaults[x]);if(!state.vaults[state.lastVault])state.lastVault=null;selected.clear();save();renderVaults();renderWords();FC.dirty=true;toast("Set deleted.");if(wasSet)setView("library");}});
 break;
+case"vault-rename":openModal({title:"Rename set",msg:"",input:true,value:vault().name,okText:"Rename",cb:v=>{if(!v||!v.trim())return;vault().name=v.trim();save();renderVaults();toast("Set renamed.","ok");}});break;
+case"nw-add":nwAdd(el.dataset.word);break;
+case"nw-refresh":toast("Checking Cambridge for new words…");nwUpdate(true);break;
+case"acct-open":openAcct();break;
+case"acct-close":closeAcct();break;
+case"cloud-create":cloudCreate();break;
+case"cloud-restore":openModal({title:"Restore cloud save",msg:"Enter your sync code.",input:true,value:"",placeholder:"Sync code",okText:"Restore",cb:v=>cloudRestore(v)});break;
+case"cloud-sync":cloudSync(true);break;
+case"cloud-out":state.cloud={on:false,name:"",ref:null};save();renderAcct();renderHome();toast("Disconnected. Your data stays on this device.");break;
+case"copy-sync":copyField("sync-code-field");break;
+case"share-close":$("share").classList.remove("on");$("share-scrim").classList.remove("on");break;
+case"copy-link":copyField("share-link");break;
+case"copy-code":copyField("share-code");break;
 case"export":exportVault();break;
 case"import":$("import-file").click();break;
 case"lookup":lookup();break;
@@ -2237,10 +2712,10 @@ entry.definitions=defs;save();dwEditing=false;renderDrawer();renderWords();FC.di
 case"dw-delete":{const entry=drawerEntry();if(entry){closeDrawer();deleteWords([entry.id]);}break;}
 case"dw-toggle-known":{const entry=drawerEntry();if(entry){entry.known=!entry.known;save();renderDrawer();renderVaults();renderWords();FC.dirty=true;}break;}
 case"dw-add":{
-if(words().some(w=>w.word.toLowerCase()===dwWord)){toast("Already in this vault.","err");break;}
+if(words().some(w=>w.word.toLowerCase()===dwWord)){toast("Already in this set.","err");break;}
 let defs=[];try{defs=JSON.parse($("dw-body").dataset.defs||"[]");}catch(err){}
 words().unshift({id:uid(),word:dwWord,definitions:defs.length?defs:[{pos:"other",def:"A valid English dictionary word."}],addedAt:Date.now(),known:false});
-save();renderVaults();renderWords();FC.dirty=true;renderDrawer();Sfx.tap();toast('"'+dwWord+'" added to your vault.',"ok");break;
+save();renderVaults();renderWords();FC.dirty=true;renderDrawer();Sfx.tap();toast('"'+dwWord+'" added to your set.',"ok");break;
 }
 case"fc-flip":FC.flip();break;
 case"fc-next":FC.next();break;
@@ -2324,6 +2799,8 @@ const sc=e.target.closest(".sc[data-r]");if(sc&&S.sel!==null){e.preventDefault()
 /* keyboard router */
 document.addEventListener("keydown",e=>{
 if($("modal").classList.contains("on")){if(e.key==="Escape")closeModal();return;}
+if($("acct").classList.contains("on")){if(e.key==="Escape")closeAcct();return;}
+if($("share").classList.contains("on")){if(e.key==="Escape"){$("share").classList.remove("on");$("share-scrim").classList.remove("on");}return;}
 if($("drawer").classList.contains("on")){if(e.key==="Escape")closeDrawer();return;}
 const tag=e.target.tagName;
 if(tag==="INPUT"||tag==="TEXTAREA"||tag==="SELECT")return;
@@ -2353,10 +2830,14 @@ else if(k.length===1&&k>="A"&&k<="Z"){e.preventDefault();W.type(k);}
 });
 document.addEventListener("visibilitychange",()=>{if(document.hidden)T.pause(true);});
 $("game-tabs").addEventListener("wheel",e=>{if(e.deltaY!==0){e.preventDefault();$("game-tabs").scrollLeft+=e.deltaY;}},{passive:false});
+window.addEventListener("hashchange",hashImport);
 /* ---------- init ---------- */
-load();renderVaults();renderWords();renderSound();bestChip();
+load();nwApply();renderVaults();renderWords();renderSound();bestChip();renderAcct();renderHome();
 $("w-wins").textContent=state.wordle.wins;$("w-streak").textContent=state.wordle.streak;$("w-score").textContent=state.wordle.score;
+hashImport();
 setTimeout(()=>Dict.load(),900);
+setTimeout(()=>nwUpdate(false),2600);
+if(state.cloud.on&&state.cloud.ref)setTimeout(()=>cloudSync(false),1600);
 })();
 </script>
 </body>

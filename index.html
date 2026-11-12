@@ -130,9 +130,11 @@ input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;heigh
 .mode-card:hover{background:rgba(255,255,255,.08);border-color:var(--line2);transform:translateY(-2px)}
 .mode-card i{font-size:19px;width:24px;text-align:center}
 .mode-card small{display:block;font-weight:500;font-size:11px;color:var(--muted)}
-.lib-row{display:flex;align-items:center;gap:12px;padding:15px 16px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.035);margin-bottom:10px;transition:.15s}
+.lib-row{display:flex;align-items:center;gap:12px;padding:15px 16px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.035);margin-bottom:10px;transition:border-color .25s,background .25s,box-shadow .25s}
 .lib-row:hover{border-color:var(--line2);background:rgba(255,255,255,.06)}
 .lib-row .progress{width:110px}
+.lib-row.lib-new{border-color:rgba(34,197,94,.65);background:rgba(34,197,94,.1);box-shadow:0 0 0 2px rgba(34,197,94,.22),0 0 34px -8px rgba(34,197,94,.65);animation:libpop .55s cubic-bezier(.3,.9,.3,1)}
+@keyframes libpop{0%{transform:scale(.975);opacity:.35}60%{transform:scale(1.012)}100%{transform:scale(1);opacity:1}}
 #acct-scrim,#share-scrim{position:fixed;inset:0;background:rgba(4,7,15,.6);backdrop-filter:blur(3px);z-index:96;opacity:0;pointer-events:none;transition:opacity .25s}
 #acct-scrim.on,#share-scrim.on{opacity:1;pointer-events:auto}
 #acct,#share{position:fixed;inset:0;z-index:98;display:none;align-items:center;justify-content:center;padding:20px}
@@ -314,7 +316,7 @@ input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;heigh
 .sl-score{font-size:38px}
 .mode-grid{grid-template-columns:1fr 1fr;gap:8px}
 .mode-card{padding:13px 12px;font-size:13px}
-.lib-row .progress{width:70px}
+.lib-row .progress{display:none}
 }
 </style>
 </head>
@@ -333,9 +335,9 @@ input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;heigh
 </nav>
 <div class="card pad" style="padding:15px">
 <span class="label">Learning stats</span>
-<div class="stat-row"><span>Words in vault</span><b id="stat-words" style="color:#9db8ff">0</b></div>
+<div class="stat-row"><span>Words in set</span><b id="stat-words" style="color:#9db8ff">0</b></div>
 <div class="stat-row"><span>Mastered</span><b id="stat-known" style="color:var(--green)">0</b></div>
-<div class="stat-row"><span>Total sets</span><b id="stat-vaults">1</b></div>
+<div class="stat-row"><span>Sets in library</span><b id="stat-vaults">1</b></div>
 </div>
 <div class="row gap-1">
 <button class="btn btn-g btn-sm grow" data-action="export"><i class="fa-solid fa-download"></i> Export</button>
@@ -383,7 +385,7 @@ input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;heigh
 <span class="label" style="margin:0"><i class="fa-solid fa-bolt" style="color:var(--amber)"></i> New on Cambridge</span>
 <button class="btn btn-xs btn-g" data-action="nw-refresh" style="border:none;color:var(--muted)"><i class="fa-solid fa-rotate"></i> Refresh</button>
 </div>
-<p class="t-xs dim mb-2">Fresh words from the Cambridge Dictionary blog — added automatically to the game & grammar dictionaries. Tap + to keep one in your vault.</p>
+<p class="t-xs dim mb-2">Fresh words from the Cambridge Dictionary blog — added automatically to the game & grammar dictionaries. Tap + to keep one in your set.</p>
 <div id="nw-list"></div>
 </div>
 </section>
@@ -392,10 +394,10 @@ input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;heigh
 <div class="view-h"><h2>Library</h2>
 <div class="row gap-1 wrap">
 <button class="btn btn-g btn-sm" data-action="import"><i class="fa-solid fa-upload"></i> Import</button>
-<button class="btn btn-g btn-sm" data-action="import-link"><i class="fa-solid fa-link"></i> From link</button>
+<button class="btn btn-g btn-sm" data-action="add-link"><i class="fa-solid fa-link"></i> Add from link</button>
 <button class="btn btn-p btn-sm" data-action="new-set"><i class="fa-solid fa-plus"></i> New set</button>
 </div></div>
-<p class="t-xs dim mb-2">Create a set here, then add words inside it with Look up or Scan photo.</p>
+<p class="t-xs dim mb-2">Sets shared with you land here automatically. Open a set to add words with Look up or Scan photo.</p>
 <div id="lib-list"></div>
 </section>
 <!-- ============ SET ============ -->
@@ -897,7 +899,7 @@ input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;heigh
 </section>
 </div>
 </div>
-<!-- bottom nav (mobile): Games in the center slot -->
+<!-- bottom nav (mobile) -->
 <nav id="bnav">
 <button class="bn on" data-action="nav" data-view="home" id="bn-home"><i class="fa-solid fa-house"></i><span>Home</span></button>
 <button class="bn" data-action="nav" data-view="games" id="bn-games"><span class="bn-plus"><i class="fa-solid fa-gamepad"></i></span><span>Games</span></button>
@@ -913,16 +915,16 @@ input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;heigh
 <div id="share-scrim" data-action="share-close"></div>
 <div id="share"><div class="card modal-card">
 <div class="row between mb-2"><h3 class="t-lg">Share this set</h3><button class="btn icon-btn btn-g" data-action="share-close"><i class="fa-solid fa-xmark"></i></button></div>
-<span class="label">Direct link — data is inside; opening it copies the set automatically</span>
+<span class="label">Share link — opening it adds this set to their Library</span>
 <div class="row gap-1 mb-2"><input id="share-link" class="field grow" readonly><button class="btn btn-p btn-sm" data-action="copy-link"><i class="fa-solid fa-copy"></i></button></div>
 <div id="share-short-row" class="hide">
 <span class="label">Short cloud link</span>
 <div class="row gap-1 mb-2"><input id="share-short" class="field grow" readonly><button class="btn btn-g btn-sm" data-action="copy-short"><i class="fa-solid fa-copy"></i></button></div>
 </div>
-<span class="label">Raw code (paste into Library → From link)</span>
+<span class="label">Raw code (paste into Library → Add from link)</span>
 <textarea id="share-code" class="field mb-2" rows="3" readonly style="font-size:11px"></textarea>
 <div class="row gap-1"><button class="btn btn-g btn-sm grow" data-action="copy-code"><i class="fa-solid fa-copy"></i> Copy code</button></div>
-<p class="t-xs dim mt-2">Anyone who opens the direct link gets the set copied straight into their library — no import button, no account, no API key. Works with words, idioms and phrasal verbs.</p>
+<p class="t-xs dim mt-2">Click the link → the set appears in their Library, ready to study. No import button, no account, no API key.</p>
 </div></div>
 <!-- word drawer -->
 <div id="drawer-scrim" data-action="drawer-close"></div>
@@ -962,7 +964,6 @@ const rand=n=>Math.floor(Math.random()*n);
 const POS=["noun","verb","adj","adv","phrase","other"];
 const WEIGHTED="AAAAAEEEEIIIIOOOOOUUUUBBCDDFGHJKLMNNPQRRSSTTTTVWXYZ";
 const letter=()=>WEIGHTED[rand(WEIGHTED.length)];
-/* URL-safe base64 (survives messengers & query strings); decode also accepts old standard base64 */
 const b64enc=s=>btoa(unescape(encodeURIComponent(String(s)))).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/,"");
 const b64dec=s=>{
 let t=String(s||"").trim().replace(/-/g,"+").replace(/_/g,"/").replace(/ /g,"+");
@@ -1067,7 +1068,7 @@ $("view-"+v).classList.add("active");
 document.querySelectorAll(".nav-btn").forEach(b=>b.classList.toggle("on",b.dataset.view===v||(v==="set"&&b.dataset.view==="library")));
 ["home","library","games"].forEach(k=>{const b=$("bn-"+k);if(b)b.classList.toggle("on",v===k||(k==="library"&&v==="set"));});
 $("view-title").textContent=v==="set"?vault().name:TITLES[v];
-$("top-vault-chip").classList.toggle("hide",v==="home"||v==="set");
+$("top-vault-chip").classList.toggle("hide",v==="home"||v==="set"||v==="library");
 $("back-set").classList.toggle("hide",!(STUDY.includes(v)&&state.vaults[state.lastVault||state.activeId]));
 closeSide();
 if(v==="home")renderHome();
@@ -1128,7 +1129,7 @@ const q=$("home-search").value.trim(),box=$("home-results");
 if(!q){box.classList.add("hide");box.innerHTML="";return;}
 box.classList.remove("hide");
 if(/#set=|#setdata=/.test(q)||/^[A-Za-z0-9\-_+/=]{60,}$/.test(q)){
-box.innerHTML='<button class="btn btn-p" data-action="import-string" data-q="'+esc(q)+'"><i class="fa-solid fa-cloud-arrow-down"></i> Copy shared set</button>';return;
+box.innerHTML='<button class="btn btn-p" data-action="add-string" data-q="'+esc(q)+'"><i class="fa-solid fa-folder-plus"></i> Add this set to Library</button>';return;
 }
 const ql=q.toLowerCase();let h="";
 const sets=Object.keys(state.vaults).filter(id=>state.vaults[id].name.toLowerCase().includes(ql)).slice(0,6);
@@ -1136,21 +1137,33 @@ if(sets.length)h+='<span class="label">Sets</span>'+sets.map(id=>'<button class=
 const hits=[];
 Object.keys(state.vaults).forEach(id=>{state.vaults[id].words.forEach(w=>{if(hits.length>=12)return;if(w.word.toLowerCase().includes(ql)||w.definitions.some(d=>d.def.toLowerCase().includes(ql)))hits.push({id,w});});});
 if(hits.length)h+='<span class="label mt-2">Words</span>'+hits.map(x=>'<button class="recent-row" data-action="search-word" data-id="'+x.id+'" data-word="'+esc(x.w.word)+'"><span class="recent-ic" style="color:#c4b0ff;background:rgba(139,92,246,.14);border-color:rgba(139,92,246,.3)"><i class="fa-solid fa-book-open"></i></span><span class="grow"><b>'+esc(x.w.word.toLowerCase())+'</b><span class="t-xs dim">'+esc(state.vaults[x.id].name)+"</span></span><i class='fa-solid fa-chevron-right dim'></i></button>").join("");
-box.innerHTML=h||'<p class="t-sm dim">No results in your library. Paste a share link or code to copy a set from the internet.</p>';
+box.innerHTML=h||'<p class="t-sm dim">No results in your library. Paste a share link to add a set from the internet.</p>';
 }
 $("home-search").addEventListener("input",renderSearch);
-$("home-search").addEventListener("keydown",e=>{if(e.key==="Enter"){const q=$("home-search").value.trim();if(/#set=|#setdata=/.test(q)||/^[A-Za-z0-9\-_+/=]{60,}$/.test(q))copyFromString(q,false);else{const first=document.querySelector("#home-results [data-action='open-set']");if(first)openSet(first.dataset.id);}}});
+$("home-search").addEventListener("keydown",e=>{if(e.key==="Enter"){const q=$("home-search").value.trim();if(/#set=|#setdata=/.test(q)||/^[A-Za-z0-9\-_+/=]{60,}$/.test(q))addFromString(q,false);else{const first=document.querySelector("#home-results [data-action='open-set']");if(first)openSet(first.dataset.id);}}});
 /* ---------- library ---------- */
+let libHighlight=null;
 function renderLibrary(){
+const hl=libHighlight;libHighlight=null;
 $("lib-list").innerHTML=Object.keys(state.vaults).map(id=>{
 const v=state.vaults[id],kn=v.words.filter(w=>w.known).length,pct=v.words.length?Math.round(kn/v.words.length*100):0;
-return '<div class="lib-row"><span class="recent-ic"><i class="fa-solid fa-layer-group"></i></span>'
-+'<button class="grow" style="background:none;border:none;color:var(--text);font:inherit;text-align:left;cursor:pointer;min-width:0" data-action="open-set" data-id="'+id+'"><b class="t-sm" style="display:block;word-break:break-word">'+esc(v.name)+'</b><span class="t-xs dim">'+v.words.length+" words · "+kn+' mastered</span></button>'
+const isNew=id===hl;
+return '<div class="lib-row'+(isNew?" lib-new":"")+'" id="lib-'+id+'"><span class="recent-ic"'+(isNew?' style="color:#8ce7ad;background:rgba(34,197,94,.16);border-color:rgba(34,197,94,.45)"':"")+'><i class="fa-solid fa-layer-group"></i></span>'
++'<button class="grow" style="background:none;border:none;color:var(--text);font:inherit;text-align:left;cursor:pointer;min-width:0" data-action="open-set" data-id="'+id+'"><span class="row gap-1 wrap"><b class="t-sm" style="word-break:break-word">'+esc(v.name)+'</b>'+(isNew?'<span class="chip chip-g" style="font-size:10px;padding:2px 8px">Just added</span>':"")+'</span><span class="t-xs dim">'+v.words.length+" words · "+kn+' mastered</span></button>'
 +'<div class="progress"><i style="width:'+pct+'%"></i></div>'
 +'<button class="btn btn-xs btn-g" data-action="lib-share" data-id="'+id+'" title="Share"><i class="fa-solid fa-cloud-arrow-up"></i></button>'
 +'<button class="btn btn-xs btn-g" data-action="lib-rename" data-id="'+id+'" title="Rename"><i class="fa-solid fa-pen"></i></button>'
 +'<button class="btn btn-xs btn-g" data-action="lib-del" data-id="'+id+'" title="Delete" style="color:#ff9db1"><i class="fa-solid fa-trash"></i></button></div>';
 }).join("")||'<div class="card empty"><i class="fa-solid fa-box-open"></i><p>No sets yet.</p><button class="btn btn-p mt-2" data-action="new-set"><i class="fa-solid fa-plus"></i> Create your first set</button></div>';
+if(hl){
+requestAnimationFrame(()=>{
+const el=$("lib-"+hl);
+if(el){
+try{el.scrollIntoView({block:"center",behavior:"smooth"});}catch(e){el.scrollIntoView();}
+setTimeout(()=>{const e2=$("lib-"+hl);if(e2)e2.classList.remove("lib-new");},2800);
+}
+});
+}
 }
 /* ---------- set page ---------- */
 let setIdx=0;
@@ -2540,7 +2553,7 @@ toast("Cloud save created! Copy your sync code and keep it safe.","ok");
 return;
 }catch(e){}
 }
-toast("Cloud services are unreachable right now — try again later. Offline share codes still work.","err");
+toast("Cloud services are unreachable right now — try again later. Share links still work.","err");
 }
 async function cloudRestore(code){
 code=String(code||"").trim();if(!code)return;
@@ -2567,7 +2580,7 @@ else{await cloudPush();if(manual)toast("Cloud is up to date.","ok");}
 CLOUD.last=Date.now();renderAcct();
 }catch(e){if(manual)toast("Sync failed — check your connection.","err");}
 }
-/* ---------- share & DIRECT-COPY links ---------- */
+/* ---------- ADD TO LIBRARY (link → library, no copy step) ---------- */
 function setSig(name,ws){
 return String(name||"").trim().toLowerCase()+"|"+ws.map(w=>String(w.word||"").toLowerCase()).sort().join(",");
 }
@@ -2576,25 +2589,43 @@ const sig=setSig(name,ws);
 return Object.keys(state.vaults).find(id=>setSig(state.vaults[id].name,state.vaults[id].words)===sig)||null;
 }
 function normalizeSharedWords(list){
-return list.filter(w=>w&&w.word).map(w=>({
-id:uid(),
-word:String(w.word).trim().toLowerCase(),
-definitions:Array.isArray(w.definitions)&&w.definitions.length?w.definitions.filter(d=>d&&d.def).map(d=>({pos:POS.includes(d.pos)?d.pos:"other",def:String(d.def)})):[{pos:"other",def:"Imported word."}],
+const seen=new Set(),out=[];
+list.forEach(w=>{
+if(!w||!w.word)return;
+const word=String(w.word).trim().toLowerCase();
+if(!word||seen.has(word))return;seen.add(word);
+out.push({
+id:uid(),word,
+definitions:Array.isArray(w.definitions)&&w.definitions.length?w.definitions.filter(d=>d&&d.def).map(d=>({pos:POS.includes(d.pos)?d.pos:"other",def:String(d.def)})):[{pos:"other",def:"No definition saved."}],
 addedAt:w.addedAt||Date.now(),
 known:!!w.known
-}));
+});
+});
+return out;
 }
-function copySharedSet(j){
+/* Adds the set straight into the Library and lands there — no copy dialog, no set page. */
+function addToLibrary(j){
 if(!j||!Array.isArray(j.words)||!j.words.length)throw new Error("bad");
 const ws=normalizeSharedWords(j.words);
 if(!ws.length)throw new Error("empty");
-const exist=findExistingSet(j.name,ws);
-if(exist){openSet(exist);return {id:exist,dup:true,name:state.vaults[exist].name,count:state.vaults[exist].words.length};}
+const name=String(j.name||"Shared set").trim()||"Shared set";
+const exist=findExistingSet(name,ws);
+if(exist){
+state.activeId=exist;state.lastVault=exist;
+state.recent=[exist].concat((state.recent||[]).filter(x=>x!==exist)).slice(0,12);
+save();libHighlight=exist;FC.dirty=true;
+setView("library");
+return {id:exist,dup:true,name:state.vaults[exist].name,count:state.vaults[exist].words.length};
+}
 const id="v_"+uid();
-let name=String(j.name||"Shared set").trim()||"Shared set";
-if(Object.values(state.vaults).some(v=>v.name===name))name+=" (shared)";
 state.vaults[id]={name,words:ws};
-openSet(id);
+state.activeId=id;state.lastVault=id;
+state.recent=[id].concat((state.recent||[]).filter(x=>x!==id)).slice(0,12);
+selected.clear();FC.dirty=true;save();
+libHighlight=id;
+renderVaults();
+setView("library");
+Sfx.clear();
 return {id,dup:false,name,count:ws.length};
 }
 function decodeDirectPayload(raw){
@@ -2614,52 +2645,51 @@ try{const j=await pr.get(m[1]);if(j&&Array.isArray(j.words))return j;}catch(e){}
 }
 return null;
 }
-async function copyFromString(s,auto){
+function announceAdd(res){
+if(res.dup)toast('“'+res.name+'” is already in your Library.',"ok");
+else toast('Added “'+res.name+'” to your Library · '+res.count+" words.","ok");
+}
+async function addFromString(s,auto){
 s=String(s||"").trim();
 if(!s)return;
-if(!auto)toast("Copying shared set…");
+if(!auto)toast("Adding set to your Library…");
 try{
 const j=await resolveSharePayload(s);
 if(!j)throw new Error("no data");
-const res=copySharedSet(j);
-if(res.dup)toast('Already in your library — opened "'+res.name+'".',"ok");
-else toast('Copied "'+res.name+'" to your library · '+res.count+" words.","ok");
+announceAdd(addToLibrary(j));
+$("home-search").value="";renderSearch();
 }catch(e){
-toast(auto?"Could not copy the shared set from this link.":"That doesn't look like a valid share link or code.","err");
+toast(auto?"Could not add the set from this link.":"That doesn't look like a valid share link or code.","err");
 }
 }
-function autoCopyFromLink(){
-const h=location.hash||"",q=location.search||"";
-const src=h||q;
+function autoAddFromLink(){
+const src=(location.hash||"")||(location.search||"");
 if(!/[#&?]set(data)?=/.test(src))return;
 const dm=src.match(/[#&?]setdata=([A-Za-z0-9\-_=%+/]+)/);
 if(dm){
 try{
-const j=decodeDirectPayload(dm[1]);
-const res=copySharedSet(j);
+const res=addToLibrary(decodeDirectPayload(dm[1]));
 history.replaceState(null,"",location.pathname);
-toast(res.dup?'Already in your library — opened "'+res.name+'".':'Copied "'+res.name+'" to your library · '+res.count+" words.","ok");
-}catch(e){
-toast("Could not read the shared data in this link.","err");
-}
+announceAdd(res);
+}catch(e){toast("Could not read the shared set in this link.","err");}
 return;
 }
 const cm=src.match(/[#&?]set=([A-Za-z0-9_-]+)/);
 if(cm){
-toast("Opening shared link — copying the set…");
+toast("Adding shared set to your Library…");
 (async()=>{
 for(const pr of PROVIDERS){
 try{
 const j=await pr.get(cm[1]);
 if(j&&Array.isArray(j.words)){
-const res=copySharedSet(j);
+const res=addToLibrary(j);
 history.replaceState(null,"",location.pathname);
-toast(res.dup?'Already in your library — opened "'+res.name+'".':'Copied "'+res.name+'" to your library · '+res.count+" words.","ok");
+announceAdd(res);
 return;
 }
 }catch(e){}
 }
-toast("Could not copy the shared set from this link.","err");
+toast("Could not add the shared set from this link.","err");
 })();
 }
 }
@@ -2674,7 +2704,7 @@ for(const pr of PROVIDERS){
 try{const id=await pr.create(JSON.parse(data));short=location.origin+location.pathname+"#set="+id;break;}catch(e){}
 }
 showShare(direct,short,data);
-toast("Share link ready. Opening it copies the set automatically.","ok");
+toast("Link ready — clicking it adds this set to their Library.","ok");
 }
 function showShare(direct,short,data){
 $("share-link").value=direct;
@@ -2723,8 +2753,8 @@ case"open-side":openSide();break;
 case"close-side":closeSide();break;
 case"sound-toggle":state.sound=!state.sound;save();renderSound();if(!state.sound&&"speechSynthesis" in window)window.speechSynthesis.cancel();toast(state.sound?"Sound on":"Sound muted");break;
 case"new-set":newSet();break;
-case"import-link":openModal({title:"Copy from share link",msg:"Paste a share link or raw code. The set is copied into your library automatically.",input:true,value:"",placeholder:"https://…#setdata=… or code",okText:"Copy set",cb:v=>copyFromString(v,false)});break;
-case"import-string":copyFromString(el.dataset.q,false);break;
+case"add-link":openModal({title:"Add set from link",msg:"Paste a share link or code — the set is added straight to your Library.",input:true,value:"",placeholder:"https://…#setdata=… or code",okText:"Add to Library",cb:v=>addFromString(v,false)});break;
+case"add-string":addFromString(el.dataset.q,false);break;
 case"open-set":openSet(el.dataset.id);break;
 case"cont":openSet($("cont-card").dataset.id||state.activeId);openMode("flashcards");break;
 case"cont-open":openSet($("cont-card").dataset.id||state.activeId);break;
@@ -2909,11 +2939,11 @@ else if(k.length===1&&k>="A"&&k<="Z"){e.preventDefault();W.type(k);}
 });
 document.addEventListener("visibilitychange",()=>{if(document.hidden)T.pause(true);});
 $("game-tabs").addEventListener("wheel",e=>{if(e.deltaY!==0){e.preventDefault();$("game-tabs").scrollLeft+=e.deltaY;}},{passive:false});
-window.addEventListener("hashchange",autoCopyFromLink);
+window.addEventListener("hashchange",autoAddFromLink);
 /* ---------- init ---------- */
 load();nwApply();renderVaults();renderWords();renderSound();bestChip();renderAcct();renderHome();
 $("w-wins").textContent=state.wordle.wins;$("w-streak").textContent=state.wordle.streak;$("w-score").textContent=state.wordle.score;
-autoCopyFromLink();
+autoAddFromLink();
 setTimeout(()=>Dict.load(),900);
 setTimeout(()=>nwUpdate(false),2600);
 if(state.cloud.on&&state.cloud.ref)setTimeout(()=>cloudSync(false),1600);

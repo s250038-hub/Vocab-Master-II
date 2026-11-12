@@ -63,6 +63,7 @@ a{color:var(--blue)}
 .field{width:100%;background:rgba(6,10,22,.7);border:1px solid var(--line2);border-radius:12px;color:var(--text);padding:11px 14px;font:inherit;font-size:14px;outline:none;transition:border-color .15s,box-shadow .15s}
 .field:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(77,125,255,.22)}
 .field::placeholder{color:var(--dim)}
+textarea.field{display:block}
 select.field{appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);background-position:calc(100% - 18px) 50%,calc(100% - 13px) 50%;background-size:5px 5px;background-repeat:no-repeat;padding-right:34px;cursor:pointer}
 select.field option{background:#0d1529;color:var(--text)}
 input[type=range]{accent-color:var(--blue);width:100%;cursor:pointer}
@@ -280,6 +281,7 @@ input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;heigh
 .wc{width:42px;height:42px;font-size:19px}
 .view-h h2{font-size:22px}
 .pad-controls{max-width:100%}
+.sl-score{font-size:38px}
 }
 </style>
 </head>
@@ -406,7 +408,7 @@ input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;heigh
 <div class="center row mt-2"><button class="btn btn-xs btn-g" data-action="fc-shuffle" style="border:none;color:var(--muted)"><i class="fa-solid fa-shuffle"></i> Shuffle & restart</button></div>
 </div>
 </section>
-<!-- ============ PRACTICE (multiple choice) ============ -->
+<!-- ============ PRACTICE ============ -->
 <section class="view" id="view-practice">
 <div class="view-h"><h2>Practice</h2><span class="chip">Match each word to its meaning</span></div>
 <div id="pr-setup" class="card pad" style="text-align:center">
@@ -1024,7 +1026,7 @@ const arr=words(),from=arr.findIndex(w=>w.id===dragId),to=arr.findIndex(w=>w.id=
 if(from>-1&&to>-1&&from!==to){const [m]=arr.splice(from,1);arr.splice(to,0,m);save();renderWords();}
 dragId=null;
 });
-/* ---------- add word / dictionary lookup (Cambridge, fast parallel) ---------- */
+/* ---------- dictionary lookup (Cambridge, parallel + cached) ---------- */
 const defCache=new Map();
 let tempDefs=[],tempWord="",lookupSession=0;
 const CAMB_BASE="https://dictionary.cambridge.org/dictionary/english/";
@@ -1199,7 +1201,8 @@ r.readAsText(f);e.target.value="";
 /* ---------- word drawer ---------- */
 let dwWord=null,dwEditing=false;
 async function openDrawer(word){
-dwWord=word.trim().toLowerCase();dwEditing=false;
+dwWord=String(word||"").trim().toLowerCase();if(!dwWord)return;
+dwEditing=false;
 $("dw-word").textContent=dwWord;
 $("drawer").classList.add("on");$("drawer-scrim").classList.add("on");
 renderDrawer();
@@ -1391,7 +1394,7 @@ end(){$("sp-active").classList.add("hide");$("sp-result").classList.remove("hide
 };
 $("sp-count").addEventListener("input",e=>$("sp-count-val").textContent=e.target.value);
 $("sp-form").addEventListener("submit",e=>{e.preventDefault();SP.submit();});
-/* ---------- dictionary (game word validation) ---------- */
+/* ---------- game word list ---------- */
 const FALLBACK=("AA AB AD AE AG AH AI AL AM AN AR AS AT AW AX AY BA BE BI BO BY DA DE DO ED EF EH EL EM EN ER ES ET EX FA FE GO HA HE HI HO ID IF IN IS IT JO KA LA LI LO MA ME MI MM MO MU MY NA NE NO NU OD OE OF OH OI OK OM ON OP OR OS OW OX OY PA PE PI PO RE SH SI SO TA TE TI TO UH UM UN UP US UT WE WO XI XU YA YE YO ZA "+
 "ABLE ACID AGED ALSO AREA ARMY AWAY BABY BACK BALL BAND BANK BASE BATH BEAR BEAT BEEN BEER BELL BELT BEST BILL BIRD BITE BLOW BLUE BOAT BODY BONE BOOK BOOM BORN BOSS BOTH BOWL BULK BURN BUSH BUSY CAKE CALL CALM CAME CAMP CARD CARE CASE CASH CAST CELL CHAT CHIP CITY CLUB COAL COAT CODE COLD COME COOK COOL COPE COPY CORE COST CREW CROP DARK DATA DATE DAWN DAYS DEAD DEAL DEAN DEAR DEBT DEEP DENY DESK DIAL DICE DIET DISK DOES DONE DOOR DOSE DOWN DRAW DREW DROP DRUG DUAL DUKE DUST DUTY EACH EARN EASE EAST EASY EDGE ELSE EVEN EVER EVIL EXIT FACE FACT FAIL FAIR FALL FAME FARM FAST FATE FEAR FEED FEEL FEET FELL FELT FILE FILL FILM FIND FINE FIRE FIRM FISH FIVE FLAT FLEW FLOW FOAM FOLD FOLK FOOD FOOL FOOT FORD FORM FORT FOUR FREE FROM FUEL FULL FUND GAIN GAME GATE GAVE GEAR GENE GIFT GIRL GIVE GLAD GOAL GOES GOLD GOLF GONE GOOD GRAY GREW GREY GROW GULF HAIR HALF HALL HAND HANG HARD HARM HATE HAVE HEAD HEAR HEAT HELD HELL HELP HERE HERO HIGH HILL HIRE HOLD HOLE HOLY HOME HOPE HOST HOUR HUGE HUNG HUNT HURT IDEA INCH INTO IRON ITEM JACK JANE JEAN JOHN JOIN JUMP JURY JUST KEEN KEEP KENT KEPT KICK KIND KING KNEE KNEW KNOW LACK LADY LAID LAKE LAND LANE LAST LATE LEAD LEFT LESS LIFE LIFT LIKE LINE LINK LIST LIVE LOAD LOAN LOCK LOGO LONG LOOK LORD LOSE LOSS LOST LOVE LUCK MADE MAIL MAIN MAKE MALE MALL MANY MARK MASS MATE MATH MEAL MEAN MEAT MEET MENU MERE MIKE MILE MILK MILL MIND MINE MISS MODE MOOD MOON MORE MOST MOVE MUCH MUST NAME NAVY NEAR NECK NEED NEWS NEXT NICE NICK NINE NONE NOSE NOTE OKAY ONCE ONLY ONTO OPEN ORAL OVER PACE PACK PAGE PAID PAIN PAIR PALM PARK PART PASS PAST PATH PEAK PICK PINK PIPE PLAN PLAY PLOT PLUG PLUS POEM POET POLE POLL POOL POOR PORT POST PULL PURE PUSH RACE RAIL RAIN RANK RARE RATE READ REAL REAR RELY RENT REST RICE RICH RIDE RING RISE RISK ROAD ROCK ROLE ROLL ROOF ROOM ROOT ROSE RULE RUSH RUTH SAFE SAID SAKE SALE SALT SAME SAND SAVE SEAT SEED SEEK SEEM SEEN SELF SELL SEND SENT SEPT SHIP SHOP SHOT SHOW SHUT SICK SIDE SIGN SITE SIZE SKIN SLIP SLOW SNOW SOFT SOIL SOLD SOLE SOME SONG SOON SORT SOUL SPOT STAR STAY STEP STOP SUCH SUIT SURE TAKE TALE TALK TALL TANK TAPE TASK TEAM TELL TEND TERM THAN THAT THEM THEN THEY THIN THIS THUS TILL TIME TINY TOLD TOLL TONE TONY TOOK TOOL TOUR TOWN TREE TRIP TRUE TUNE TURN TWIN TYPE UNIT UPON USED USER VARY VAST VERY VICE VIEW VOTE WAGE WAIT WAKE WALK WALL WANT WARD WARM WASH WAVE WAYS WEAK WEAR WEEK WELL WENT WERE WEST WHAT WHEN WHOM WIDE WIFE WILD WILL WIND WINE WING WIRE WISE WISH WITH WOOD WORD WORE WORK YARD YEAH YEAR YOUR ZERO ZONE "+
 "ABOUT ABOVE ACTOR ADAPT ADDON ADMIT ADOPT ADULT AFTER AGAIN AGENT AGREE AHEAD ALARM ALBUM ALERT ALIEN ALIGN ALIKE ALIVE ALLOW ALONE ALONG ALTER AMONG ANGEL ANGER ANGLE ANGRY APART APPLE APPLY ARENA ARGUE ARISE ARRAY ARROW ASIDE ASSET AUDIO AUDIT AVOID AWAKE AWARD AWARE BADGE BAKER BASIC BASIS BEACH BEGAN BEGIN BEING BELOW BENCH BERRY BIRTH BLACK BLADE BLAME BLANK BLAST BLAZE BLEND BLESS BLIND BLOCK BLOOD BLOOM BOARD BOOST BOOTH BOUND BRAIN BRAND BRAVE BREAD BREAK BREED BRICK BRIDE BRIEF BRING BROAD BROKE BROWN BRUSH BUILD BUILT BURST BUYER CABLE CANDY CARGO CARRY CATCH CAUSE CHAIN CHAIR CHALK CHARM CHART CHASE CHEAP CHECK CHEEK CHEER CHESS CHEST CHIEF CHILD CHILL CHINA CHOIR CHOSE CIVIL CLAIM CLASS CLEAN CLEAR CLERK CLICK CLIFF CLIMB CLOCK CLOSE CLOTH CLOUD COACH COAST COLOR COMET COMIC CORAL COUCH COULD COUNT COURT COVER CRACK CRAFT CRANE CRASH CRAWL CRAZE CRAZY CREAM CREEK CREEP CREPT CRIME CRISP CROSS CROWD CROWN CRUEL CRUSH CURVE CYCLE DAILY DAIRY DANCE DEALT DEATH DEBUT DECOR DELAY DELTA DENSE DEPTH DERBY DEVIL DIARY DIGIT DIRTY DOUBT DOZEN DRAFT DRAIN DRAMA DRANK DRAWN DREAM DRESS DRIED DRIFT DRILL DRINK DRIVE DROVE DRUNK DUSTY DWELL EAGER EAGLE EARLY EARTH EIGHT ELBOW ELDER ELECT ELITE EMPTY ENEMY ENJOY ENTER ENTRY EQUAL ERROR EVENT EVERY EXACT EXIST EXTRA FABLE FAINT FAITH FALSE FANCY FATAL FAULT FAVOR FEAST FENCE FERRY FETCH FEVER FIBER FIELD FIERY FIGHT FINAL FIRST FLAME FLASH FLEET FLESH FLICK FLING FLOAT FLOCK FLOOD FLOOR FLOUR FLUID FLUTE FOCUS FORCE FORGE FORTH FORTY FORUM FOUND FRAME FRANK FRAUD FRESH FRONT FROST FROZE FRUIT FUDGE FULLY FUNNY GHOST GIANT GIVEN GLARE GLASS GLEAM GLIDE GLOBE GLOOM GLORY GLOVE GRACE GRADE GRAIN GRAND GRANT GRAPE GRAPH GRASP GRASS GRAVE GREAT GREEN GREET GRIEF GRILL GRIND GRIPE GROAN GROOM GROSS GROUP GROVE GROWN GUARD GUESS GUEST GUIDE GUILT HABIT HAPPY HARSH HASTE HATCH HAUNT HAVEN HEART HEAVY HEDGE HELLO HENCE HERON HINGE HOBBY HOIST HONEY HONOR HORSE HOTEL HOUND HOUSE HOVER HUMAN HUMID HUMOR HURRY IDEAL IMAGE IMPLY INDEX INFER INNER INPUT IRONY ISSUE IVORY JELLY JEWEL JOINT JOLLY JUDGE JUICE JUICY JUMBO KAYAK KNACK KNEEL KNELT KNIFE KNOCK KNOWN LABEL LABOR LADEN LARGE LASER LATCH LATER LAUGH LAYER LEARN LEASE LEAST LEAVE LEDGE LEGAL LEMON LEVEL LEVER LIGHT LIMIT LINEN LIVER LOBBY LOCAL LODGE LOGIC LOOSE LORRY LOVER LOWER LOYAL LUCID LUMPY LUNAR LUNCH LYING LYRIC MAGIC MAJOR MAKER MANGO MANOR MAPLE MARCH MARRY MARSH MATCH MAYBE MAYOR MEANT MEDAL MEDIA MERCY MERGE MERIT MERRY METAL METER MIDST MIGHT MINER MINOR MINUS MIXED MODEL MOIST MONEY MONTH MORAL MOTOR MOUNT MOUSE MOUTH MOVIE MOWER MUCUS MUDDY MURAL MUSIC NAKED NASTY NAVAL NERVE NEVER NEWLY NIECE NIGHT NINTH NOBLE NOISE NORTH NOTCH NOTED NOVEL NURSE NYLON OASIS OCCUR OCEAN OFFER OFTEN OLIVE ONION ONSET OPERA ORBIT ORDER ORGAN OTHER OUGHT OUNCE OUTER OVERT OWING OXIDE OZONE PAINT PANEL PANIC PAPER PARTY PASTE PATCH PAUSE PEACE PEACH PEARL PEDAL PENNY PERCH PERIL PETAL PHASE PHONE PHOTO PIANO PIECE PILOT PINCH PITCH PIVOT PIZZA PLACE PLAID PLAIN PLANE PLANK PLANT PLATE PLAZA PLEAD PLEAT PLUCK PLUMB PLUME PLUMP PLUNGE PLUSH POINT POISE POLAR PORCH POSER POUCH POUND POWER PRESS PRICE PRIDE PRIME PRINT PRIOR PRISM PRIZE PROBE PRONE PROOF PROSE PROUD PROVE PROWL PROXY PRUNE PSALM PULSE PUNCH PUPIL PURSE QUACK QUAIL QUAKE QUALM QUART QUASI QUEEN QUERY QUEST QUEUE QUICK QUIET QUILL QUILT QUIRK QUOTA QUOTE RABID RADAR RADIO RAISE RALLY RANCH RANGE RAPID RATIO RAVEN REACH REACT READY REALM REBEL RECUR REFER REIGN RELAX RELAY RELIC REMIT RENAL RENEW REPAY REPEL REPLY RERUN RESET RESIN RETRO RETRY REUSE REVEL RHINO RHYME RIDER RIDGE RIFLE RIGHT RIGID RIGOR RINSE RIPEN RISEN RISKY RIVAL RIVER ROAST ROBIN ROBOT ROCKY ROGUE ROMAN ROOST ROUGE ROUGH ROUND ROUSE ROUTE ROVER ROYAL RUGBY RULER RUMOR RUPEE RURAL RUSTY SADLY SAFER SAINT SALAD SALON SALSA SALTY SALVE SANDY SAPPY SASSY SATIN SAUCE SAUCY SAUNA SAVOR SAVVY SCALD SCALE SCALP SCALY SCAMP SCANT SCARE SCARF SCARY SCENE SCENT SCION SCOFF SCOLD SCONE SCOOP SCOOT SCOPE SCORE SCORN SCOUR SCOUT SCOWL SCRAM SCRAP SCREW SCRUB SEDAN SEEDY SEIZE SENSE SERUM SERVE SETUP SEVEN SEVER SHACK SHADE SHADY SHAFT SHAKE SHAKY SHALL SHAME SHAPE SHARE SHARK SHARP SHAVE SHAWL SHEAR SHEEN SHEEP SHEER SHEET SHELF SHELL SHIFT SHINE SHINY SHIRE SHIRK SHIRT SHOCK SHONE SHOOK SHOOT SHORE SHORT SHOUT SHOVE SHOWN SHOWY SHRUB SHRUG SHUCK SHUNT SHUSH SIGHT SIGMA SILKY SILLY SINCE SINEW SINGE SIREN SISSY SIXTH SIXTY SKATE SKEIN SKIFF SKILL SKIMP SKIRT SKULK SKULL SKUNK SLACK SLAIN SLANG SLANT SLASH SLATE SLAVE SLEEK SLEEP SLEET SLEPT SLICE SLICK SLIDE SLIME SLIMY SLING SLINK SLOPE SLOSH SLOTH SLUMP SLUNG SLUNK SLURP SLUSH SMALL SMART SMASH SMEAR SMELL SMELT SMILE SMIRK SMITE SMOKE SMOKY SNACK SNAIL SNAKE SNARE SNARL SNEAK SNEER SNIDE SNIFF SNIPE SNOOP SNORE SNORT SNOUT SNOWY SNUCK SNUFF SOAPY SOBER SOLAR SOLID SOLVE SONIC SOOTH SOOTY SORRY SOUND SOUTH SPACE SPACY SPADE SPANK SPARE SPARK SPASM SPAWN SPEAK SPEAR SPECK SPEED SPELL SPELT SPEND SPENT SPICE SPICY SPIED SPIKE SPIKY SPILL SPINE SPINY SPIRE SPITE SPLAT SPLIT SPOIL SPOKE SPOOF SPOOK SPOOL SPOON SPORE SPORT SPOUT SPRAY SPREE SPRIG SPUNK SPURN SPURT SQUAD SQUAT SQUID STACK STAFF STAGE STAID STAIN STAIR STAKE STALE STALK STALL STAMP STAND STANK STARE STARK START STASH STATE STAVE STEAD STEAK STEAL STEAM STEED STEEL STEEP STEER STEIN STERN STICK STIFF STILL STING STINK STINT STOCK STOIC STOKE STOLE STOMP STONE STONY STOOD STOOL STOOP STORE STORK STORM STORY STOUT STOVE STRAP STRAW STRAY STRIP STRUM STRUT STUCK STUDY STUFF STUMP STUNG STUNK STUNT STYLE SUAVE SUGAR SUING SUITE SULKY SUNNY SUPER SURER SURGE SURLY SUSHI SWAMP SWARM SWEAR SWEAT SWEEP SWEET SWELL SWEPT SWIFT SWINE SWING SWIRL SWOON SWOOP SWORD SWORE SWORN SWUNG SYRUP TABLE TABOO TACIT TACKY TAFFY TAINT TAKEN TALKY TALLY TALON TAMER TANGO TANGY TAPER TAPIR TARDY TAROT TASTE TASTY TAUNT TAWNY TEACH TEASE TEDDY TEETH TEMPO TENSE TENTH TEPEE TERSE THANK THEFT THEIR THEME THERE THESE THICK THIEF THIGH THING THINK THIRD THONG THORN THOSE THREE THREW THROB THROW THRUM THUMB THUMP THYME TIARA TIBIA TIDAL TIGER TIGHT TILDE TIMER TIMID TIPSY TITAN TITLE TOAST TODAY TODDY TOKEN TONAL TONGA TONIC TOOTH TOPAZ TOPIC TORCH TORSO TORUS TOTAL TOTEM TOUCH TOUGH TOWEL TOWER TOXIC TRACE TRACK TRACT TRADE TRAIL TRAIN TRAIT TRAMP TRASH TRAWL TREAD TREAT TREND TRIAD TRIAL TRIBE TRICK TRIED TRIPE TRITE TROLL TROOP TROPE TROUT TROVE TRUCE TRUCK TRULY TRUMP TRUNK TRUSS TRUST TRUTH TRYST TUBER TULIP TUMOR TUNIC TURBO TUTOR TWANG TWEAK TWEED TWEET TWICE TWINE TWIRL TWIST TYING UDDER ULCER ULTRA UMBRA UNCUT UNDER UNDID UNDUE UNFIT UNIFY UNION UNITE UNITY UNLIT UNMET UNTIE UNTIL UPPER UPSET URBAN USAGE USHER USING USUAL UTTER VAGUE VALID VALOR VALUE VALVE VAPID VAPOR VAULT VAUNT VENOM VENUE VERGE VERSE VIDEO VIGIL VIGOR VILLA VINYL VIOLA VIPER VIRAL VIRUS VISIT VISOR VISTA VITAL VIVID VIXEN VOCAL VODKA VOGUE VOICE VOILA VOTER VOUCH VOWEL VYING WACKY WAFER WAGER WAGON WAIST WAIVE WALTZ WASTE WATCH WATER WAVER WAXEN WEARY WEAVE WEDGE WEEDY WEIGH WEIRD WHALE WHARF WHEAT WHEEL WHELP WHERE WHICH WHIFF WHILE WHINE WHIRL WHISK WHITE WHOLE WHOOP WHOSE WIDEN WIDOW WIDTH WIELD WIGHT WILDE WIMPY WINCE WINCH WINDY WISPY WITCH WITTY WOKEN WOMAN WOMEN WOODY WOOER WOOLY WOOZY WORDY WORLD WORRY WORSE WORST WORTH WOULD WOUND WOVEN WRACK WRATH WREAK WRECK WREST WRING WRIST WRITE WRONG WROTE WROTH WRUNG WRYLY YACHT YEARN YEAST YIELD YOUNG YOUTH YUMMY ZEBRA ZESTY ZONAL "+
@@ -1450,7 +1453,7 @@ const list=$(prefix+"-found"),btn=$(prefix+"-found-toggle");
 const open=list.classList.toggle("hide");
 btn.textContent=open?"Show list":"Hide list";
 }
-function bestChip(){ $("t-best").textContent=state.best.tetris;$("b-best").textContent=state.best.blocky;$("s-best").textContent=state.best.scrabble;$("bee-best").textContent=state.best.bee; }
+function bestChip(){$("t-best").textContent=state.best.tetris;$("b-best").textContent=state.best.blocky;$("s-best").textContent=state.best.scrabble;$("bee-best").textContent=state.best.bee;}
 /* ---------- VOCABTETRIS ---------- */
 const T_SHAPES=[[[1]],[[1,1]],[[1,1,1]],[[1,1,1,1]],[[1,1],[1,1]],[[1,1,1],[0,1,0]],[[1,0],[1,0],[1,1]],[[0,1],[0,1],[1,1]]];
 const T={
@@ -1741,9 +1744,7 @@ if(best.size>=(this.count===7?15:6))break;
 }
 this.center=bestCenter;this.outer=letters.filter(l=>l!==bestCenter);this.possible=best||new Map();
 },
-render(){
-$("bee-score").textContent=this.score;this.progress();this.hive();this.display();
-},
+render(){$("bee-score").textContent=this.score;this.progress();this.hive();this.display();},
 progress(){
 const total=this.possible.size,found=this.found.size,pct=total?Math.floor(found/total*100):0;
 $("bee-progress-chip").textContent=found+" / "+total;
@@ -1883,7 +1884,7 @@ function rankDefs(word,defs,ctx){
 const stem=t=>t.replace(/(ing|ed|es|s)$/,"");
 const toks=s=>((s||"").toLowerCase().match(/[a-z]{3,}/g)||[]).filter(t=>!SCAN_STOP.has(t)&&t!==word);
 const ctxT=[...new Set(toks(ctx))];
-const m=(ctx||"").toLowerCase().match(new RegExp("\\b([a-z]+)\\s+"+word+"\\b"));
+const m=(ctx||"").toLowerCase().match(new RegExp("\\b([a-z]+)\\s+"+rxEsc(word)+"\\b"));
 const prev=m?m[1]:"";
 const scored=defs.map((d,i)=>{
 const dT=new Set(toks(d.def+" "+(d.guide||"")).map(stem));
@@ -1911,10 +1912,7 @@ $("scan-panel").innerHTML=this.head()
 +'<p class="t-sm muted mb-1"><i class="fa-solid fa-circle-notch fa-spin"></i> '+esc(msg)+"</p>"
 +'<div class="progress"><i style="width:'+(pct||0)+'%"></i></div>';
 },
-fail(msg){
-this.open();
-$("scan-panel").innerHTML=this.head()+'<p class="t-sm" style="color:var(--red)">'+esc(msg)+"</p>";
-},
+fail(msg){this.open();$("scan-panel").innerHTML=this.head()+'<p class="t-sm" style="color:var(--red)">'+esc(msg)+"</p>";},
 async start(file){
 const sid=++scanSession;
 this.text="";this.cands=[];this.handled=new Set();this.cur="";this.ranked=[];
@@ -1947,7 +1945,7 @@ if(SCAN_STOP.has(w)||seen.has(w))return;seen.add(w);out.push(w);
 return out.slice(0,60);
 },
 context(word){
-const re=new RegExp("\\b"+word+"\\b","i");
+const re=new RegExp("\\b"+rxEsc(word)+"\\b","i");
 const seg=this.text.split(/[.!?\n]+/).find(p=>re.test(p));
 return seg?seg.trim():"";
 },
@@ -1963,7 +1961,7 @@ this.renderText();this.renderChips();
 renderText(){
 const box=$("scan-text");if(!box)return;
 let h=esc(this.text);
-if(this.cur)h=h.replace(new RegExp("\\b("+this.cur+")\\b","gi"),"<mark>$1</mark>");
+if(this.cur)h=h.replace(new RegExp("\\b("+rxEsc(this.cur)+")\\b","gi"),"<mark>$1</mark>");
 box.innerHTML=h||'<span class="dim">—</span>';
 },
 renderChips(){
@@ -2027,24 +2025,67 @@ this.renderChips();this.nextWord();
 }
 };
 $("scan-file").addEventListener("change",e=>{const f=e.target.files[0];if(f)Scan.start(f);e.target.value="";});
-/* ---------- sentence lab ---------- */
+/* ---------- sentence lab (part-of-speech aware) ---------- */
 function slForms(w){
-w=w.toLowerCase();
+w=String(w).toLowerCase();
 const f=new Set([w,w+"s",w+"es",w+"ed",w+"d",w+"ing"]);
 if(w.endsWith("e")){f.add(w.slice(0,-1)+"ing");f.add(w.slice(0,-1)+"ed");}
 if(w.endsWith("y")){f.add(w.slice(0,-1)+"ies");f.add(w.slice(0,-1)+"ied");}
 if(/[^aeiou][aeiou][^aeiouwxy]$/.test(w)&&w.length<=5){const c=w[w.length-1];f.add(w+c+"ed");f.add(w+c+"ing");}
 return Array.from(f);
 }
-function slHas(text,w){
-return slForms(w).some(f=>new RegExp("\\b"+rxEsc(f)+"\\b","i").test(text));
+function slHas(text,w){return slForms(w).some(f=>new RegExp("\\b"+rxEsc(f)+"\\b","i").test(text));}
+const SL_ADV=new Set(["very","really","quite","too","so","extremely","incredibly","absolutely","totally","utterly","highly","deeply","slightly","rather","pretty","fairly"]);
+const SL_BE=["am","is","are","was","were","be","been","being","seem","seems","seemed","look","looks","looked","feel","feels","felt","become","becomes","became","get","gets","got","sound","sounds","sounded","stay","stays","remains","remain"];
+const SL_ADJ_BASE=("delusional beautiful amazing terrible wonderful horrible brilliant anxious nervous confident arrogant honest brave friendly lonely jealous grateful guilty innocent crazy insane curious dangerous difficult expensive famous foolish generous gentle gorgeous graceful healthy helpful hopeless important impossible intelligent lazy lively lovely lucky miserable mysterious naughty obedient ordinary outstanding painful perfect pleasant polite powerful precious proud selfish serious shiny silly sincere sleepy smooth spicy splendid spotless sticky stiff strange successful thankful thoughtful thirsty tiny tired tragic ugly unique unusual useful useless vicious victorious violent wealthy weary weird witty worried zealous happy sad angry hungry careful careless accurate adorable adventurous aggressive ambitious amusing annoying attractive awkward bashful boring cautious charming cheerful clever clumsy comfortable concerned confused cooperative courageous creepy crowded cruel cute dazzling defeated defiant delightful depressed determined different disturbed dizzy doubtful dramatic eager elegant embarrassed enchanting encouraging energetic enthusiastic envious excited faithful fantastic fierce filthy fragile frantic frightened furious glamorous gleaming glorious grumpy handsome harsh hateful helpless hilarious homeless icy illegal immense impatient imperfect impolite inactive inadequate infamous inferior inquisitive insecure insignificant interesting irritated itchy jolly joyous klutzy knotty knowledgeable lame large likable livid lone long loose loud loyal luminous lustrous mad magnificent marvelous massive meek mellow merciful messy mighty minty misty modest monstrous mortified motherly motionless muddy mundane murky mushy musty muted naive narrow nasty nautical neat necessary needy neglected negligible neighboring new next nice nifty nimble noisy normal notable noted noteworthy noxious numb nutritious nutty obese oblong obscure observant obsolete obvious occasional odd offbeat ominous opaque optimal optimistic opulent ornate ornery outgoing outlandish outlying outrageous overcooked overdue overjoyed pale paltry parched passionate peaceful peppery perfumed periodic perky personal pertinent pesky pessimistic petty piercing playful pleased pleasing plump plush polished political poor portly posh possible potable prestigious pretty previous pricey prickly pristine probable productive profitable profuse proper protective prudent punctual pungent puny pure pushy puzzled puzzling quaint qualified quarrelsome queasy querulous questionable quick quintessential quixotic quizzical ragged rare realistic reasonable reckless rectangular reflective regal reliable relieved remarkable remorseful repentant repetitive repulsive required responsible responsive restful rich rigid ripe roasted robust rosy rotten ruddy rude rural salty sane sarcastic sardonic satisfied scarce scared scary scented scholarly scientific scornful scratchy scrawny selective sentimental separate serene serpentine severe shabby shadowy shady shameful shameless sheer shivering shocking showy shrill shy sick silent silky similar sinful skeletal skinny slight slim slimy slippery slow smoggy snappy snarling sneaky sociable soft soggy somber sophisticated sorrowful soulful soupy sparkling sparse specific spectacular speedy spherical spiffy spirited spiteful spotted spotty spry squeaky squiggly staid stained stale starchy stark starry steep stimulating stingy stormy strict strident striking striped strong studious stunning stupendous sturdy subdued submissive substantial subtle suburban sudden sugary sunny super superb superficial supportive supreme sure surprising suspicious svelte swampy sweaty sweltering swift sympathetic tall tame tangible tasty taut teeming tempestuous tense tepid terrific testy thick thin thoughtless thrifty thunderous tidy tight timely tinted torn tremendous triangular tricky trifling trivial troubled trusting trustworthy trusty truthful tubby turbulent typical unable unacceptable unaware uncertain uncommon unconscious understated unequaled uneven unfinished unfit unhappy unhealthy unimportant united unkempt unlawful unlined unlucky unnatural unpleasant unrealistic unripe unruly unselfish unsightly unsteady unsung untidy untimely untried untrue unused unwelcome unwieldy unwilling unwitting unwritten upbeat uptight urban usable utilized utter vacant vague vain valid vapid vast velvety venerated vengeful verifiable vibrant vigilant vigorous villainous virtual virtuous visible vital vivacious vivid voluminous voracious vulgar wacky wandering warlike warm warped wary wasteful watchful waterlogged watery wavy webbed wee weepy weighty whimsical whispered wicked wide wiggly willful willing wilted winding windy winged wiry wise wishful wobbly woeful wooden woozy wordy worldly worn worrisome worse worst worthless worthwhile worthy wrathful wretched writhing wry yielding young youthful yummy zany zesty").split(" ");
+function slUsage(text,target){
+const issues=[];let misused=false;
+const t=String(target).toLowerCase();
+const entry=words().find(w=>w.word.toLowerCase()===t);
+const posSet=new Set((entry?entry.definitions:[]).map(d=>d.pos));
+const adjSet=new Set(SL_ADJ_BASE);
+words().forEach(w=>{if((w.definitions||[]).some(d=>d.pos==="adj"))adjSet.add(w.word.toLowerCase());});
+const adjTarget=posSet.has("adj")||SL_ADJ_BASE.includes(t);
+const dangling=w=>{
+const re=new RegExp("\\b(a|an)\\s+(?:(?:very|really|quite|too|so|extremely|incredibly|absolutely|totally|utterly|highly|deeply|slightly|rather|pretty|fairly)\\s+)*"+rxEsc(w)+"\\b","i");
+const m=re.exec(text);if(!m)return null;
+const after=text.slice(m.index+m[0].length);
+const toks=(after.toLowerCase().match(/[a-z']+|[.,!?;:)]/g)||[]);
+let i=0;
+while(i<toks.length&&(SL_ADV.has(toks[i])||adjSet.has(toks[i])||toks[i]==="and"||toks[i]==="or"||toks[i]==="but"))i++;
+const tok=toks[i];
+if(!tok||/^[.,!?;:)]$/.test(tok)||SL_BE.includes(tok))return m[1].toLowerCase();
+return null;
+};
+if(adjTarget){
+const art=dangling(t);
+if(art){
+misused=true;
+issues.push({msg:"“"+art+" "+t+"” is incorrect — “"+t+"” is an adjective, so it can't stand alone after “"+art+"”.",fix:"Drop the article (“I am "+t+"”) or add a noun (“"+art+" "+t+" person”).",cost:20});
+}else if(new RegExp("\\b(am|is|are|was|were|be|been|being)\\s+(the|this|that|my|his|her|its|our|their)\\s+"+rxEsc(t)+"\\b(?=\\s*(?:[.,!?;:]|$))","i").test(text)){
+misused=true;
+issues.push({msg:"After “am/is/are…”, don't put “the/my/this…” before the adjective “"+t+"”.",fix:"Say “I am "+t+"”, or add a noun: “the "+t+" person”.",cost:20});
+}
+}
+if(!misused){
+for(const w of adjSet){
+if(w===t||w.length<3)continue;
+const art=dangling(w);
+if(art){issues.push({msg:"“"+art+" "+w+"” needs a noun after it — “"+w+"” is an adjective.",fix:"Say “"+art+" "+w+" person/thing”, or remove “"+art+"”.",cost:15});break;}
+}
+}
+if(posSet.has("noun")&&new RegExp("\\b(very|really|quite|too|so|extremely)\\s+"+rxEsc(t)+"\\b","i").test(text)){
+misused=true;
+issues.push({msg:"“very/really/quite…” can't modify the noun “"+t+"”.",fix:"Use an adjective instead, or “a lot of "+t+"”.",cost:15});
+}
+return{issues,misused};
 }
 function slAnalyze(text,target){
 const issues=[],wins=[];
 const add=(msg,fix,cost)=>issues.push({msg,fix,cost});
 const toks=(text.toLowerCase().match(/[a-z']+/g)||[]);
 const n=toks.length;
-const used=slHas(text,target.toLowerCase());
+const used=slHas(text,String(target).toLowerCase());
 if(!/^[A-Z]/.test(text))add("Start with a capital letter.","",5);
 if(!/[.!?]["')\]]*$/.test(text))add("End the sentence with . ! or ?","",5);
 if(n<4)add("Too short — write at least 4 words so the meaning is clear.","",10);
@@ -2077,11 +2118,13 @@ if(/\b(should|could|would|must|might) of\b/i.test(text))add("“…of” should 
 if(/\balot\b/i.test(text))add("“alot” should be two words: “a lot”.","",4);
 if(/\byour welcome\b/i.test(text))add("“your welcome” should be “you're welcome”.","",5);
 if(/\bits (a|an|the|very|really|not|been|time)\b/i.test(text))add("Here “its” probably needs an apostrophe: “it's” (= it is).","",4);
+const usage=slUsage(text,target);
+usage.issues.forEach(i=>issues.push(i));
 let bonus=0;
 const extra=[];
 words().forEach(w=>{
 const t=w.word.toLowerCase();
-if(t===target.toLowerCase()||t.length<4||/\s/.test(t))return;
+if(t===String(target).toLowerCase()||t.length<4||/\s/.test(t))return;
 if(slHas(text,t))extra.push(t);
 });
 if(extra.length){const pts=Math.min(12,extra.length*4);bonus+=pts;wins.push({msg:"Used more vault words: "+extra.slice(0,3).join(", ")+".",pts});}
@@ -2090,8 +2133,9 @@ if(n>=8&&n<=24){bonus+=5;wins.push({msg:"Great sentence length ("+n+" words).",p
 if(n>=8&&new Set(toks).size/n>=0.8){bonus+=3;wins.push({msg:"Varied vocabulary — little repetition.",pts:3});}
 let score=Math.max(0,Math.min(100,100-issues.reduce((s,i)=>s+i.cost,0)+bonus));
 if(!used)score=Math.min(score,30);
-const grade=!used?"Use the target word to unlock a real score":score>=90?"Excellent! 🏆":score>=75?"Great job!":score>=60?"Good — fix the small issues":"Needs work — try again";
-return{score,grade,issues,wins,n,used};
+else if(usage.misused)score=Math.min(score,50);
+const grade=!used?"Use the target word to unlock a real score":usage.misused?"The word “"+target+"” isn't used correctly yet":score>=90?"Excellent! 🏆":score>=75?"Great job!":score>=60?"Good — fix the small issues":"Needs work — try again";
+return{score,grade,issues,wins,n,used,misused:usage.misused};
 }
 const SL={
 word:"",
@@ -2117,6 +2161,7 @@ clear(){$("sl-input").value="";$("sl-count").textContent="0 words";$("sl-result"
 check(){
 const text=$("sl-input").value.trim();
 if(!text){toast("Write a sentence first.","err");$("sl-input").focus();return;}
+if(!this.word){toast("Pick a target word first.","err");return;}
 const r=slAnalyze(text,this.word);
 state.sent.tries++;state.sent.total+=r.score;if(r.score>state.sent.best)state.sent.best=r.score;
 save();this.stats();this.render(r);
@@ -2129,7 +2174,8 @@ $("sl-result").innerHTML='<div class="divider"></div>'
 +'<div class="col gap-1 t-xs dim" style="text-align:right"><span>'+r.n+" words</span><span>"+r.issues.length+" issue"+(r.issues.length===1?"":"s")+"</span><span>"+r.wins.length+" bonus"+(r.wins.length===1?"":"es")+"</span></div></div>"
 +'<div class="progress mb-2"><i style="width:'+r.score+"%;background:"+col+'"></i></div>'
 +(!r.used?'<div class="feedback no mb-2"><b><i class="fa-solid fa-bullseye"></i> You must use the target word “'+esc(this.word)+'”.</b><p class="t-sm mt-1">The score is capped at 30 until the word (or a form like -s / -ed / -ing) appears in your sentence.</p></div>':"")
-+(r.issues.length?'<span class="label">Fix these</span><div class="col gap-1 mb-2">'+r.issues.map(i=>'<div class="sl-item bad"><i class="fa-solid fa-circle-exclamation" style="color:var(--red)"></i><div><p>'+esc(i.msg)+"</p>"+(i.fix?'<p class="t-xs dim mt-1">Suggestion: '+esc(i.fix)+"</p>":"")+"</div></div>").join("")+"</div>":(r.used?'<div class="feedback ok mb-2"><b><i class="fa-solid fa-circle-check"></i> No errors found. Beautiful sentence!</b></div>':""))
++(r.misused?'<div class="feedback no mb-2"><b><i class="fa-solid fa-triangle-exclamation"></i> The target word is in your sentence, but it isn’t used correctly.</b><p class="t-sm mt-1">Fix the usage issue below — the score is capped at 50 until then.</p></div>':"")
++(r.issues.length?'<span class="label">Fix these</span><div class="col gap-1 mb-2">'+r.issues.map(i=>'<div class="sl-item bad"><i class="fa-solid fa-circle-exclamation" style="color:var(--red)"></i><div><p>'+esc(i.msg)+"</p>"+(i.fix?'<p class="t-xs dim mt-1">Suggestion: '+esc(i.fix)+"</p>":"")+"</div></div>").join("")+"</div>":(r.used?'<div class="feedback ok mb-2"><b><i class="fa-solid fa-circle-check"></i> No common errors detected. Nice sentence!</b><p class="t-xs mt-1" style="opacity:.75">Rule-based check — it catches common mistakes, not every possible error.</p></div>':""))
 +(r.wins.length?'<span class="label">Bonus points</span><div class="col gap-1 mb-2">'+r.wins.map(w=>'<div class="sl-item good"><i class="fa-solid fa-star" style="color:var(--amber)"></i><p>'+esc(w.msg)+" <b>+"+w.pts+"</b></p></div>").join("")+"</div>":"")
 +'<div class="row gap-1 wrap"><button class="btn btn-p grow" data-action="sl-edit"><i class="fa-solid fa-pen"></i> Edit & recheck</button><button class="btn btn-v grow" data-action="sl-next"><i class="fa-solid fa-shuffle"></i> Next word</button></div>';
 $("sl-result").classList.remove("hide");
@@ -2142,7 +2188,7 @@ $("sl-input").addEventListener("keydown",e=>{if(e.key==="Enter"&&(e.ctrlKey||e.m
 document.addEventListener("click",e=>{
 const el=e.target.closest("[data-action]");if(!el)return;
 const a=el.dataset.action;
-if(a==="speak"||a==="fc-speak-word"||a==="dw-speak"||a==="pr-speak"){e.stopPropagation();}
+if(a==="speak"||a==="fc-speak-word"||a==="dw-speak"||a==="pr-speak"||a==="sl-speak"){e.stopPropagation();}
 switch(a){
 case"nav":setView(el.dataset.view);break;
 case"open-side":openSide();break;
@@ -2170,7 +2216,7 @@ case"sl-clear":SL.clear();break;
 case"sl-check":SL.check();break;
 case"sl-edit":$("sl-input").focus();break;
 case"sl-next":SL.clear();SL.random();break;
-case"open-word":openDrawer(el.dataset.word||el.dataset.id&&words().find(w=>w.id===el.dataset.id).word);break;
+case"open-word":openDrawer(el.dataset.word||(words().find(w=>w.id===el.dataset.id)||{}).word);break;
 case"speak":speak(el.dataset.word);break;
 case"word-check":e.stopPropagation();if(el.checked)selected.add(el.dataset.id);else selected.delete(el.dataset.id);renderWords();break;
 case"bulk-all":filteredWords().forEach(w=>selected.add(w.id));renderWords();break;
@@ -2306,7 +2352,6 @@ else if(k.length===1&&k>="A"&&k<="Z"){e.preventDefault();W.type(k);}
 }
 });
 document.addEventListener("visibilitychange",()=>{if(document.hidden)T.pause(true);});
-/* horizontal wheel scroll on game tabs */
 $("game-tabs").addEventListener("wheel",e=>{if(e.deltaY!==0){e.preventDefault();$("game-tabs").scrollLeft+=e.deltaY;}},{passive:false});
 /* ---------- init ---------- */
 load();renderVaults();renderWords();renderSound();bestChip();

@@ -77,7 +77,6 @@ input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;heigh
 .tag{display:inline-block;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:#9db8ff;background:rgba(77,125,255,.16);border:1px solid rgba(77,125,255,.3);padding:2px 7px;border-radius:6px}
 .label{display:block;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin-bottom:8px}
 .divider{height:1px;background:var(--line);margin:16px 0}
-/* layout */
 #sidebar{position:fixed;left:0;top:0;bottom:0;width:282px;z-index:60;display:flex;flex-direction:column;gap:18px;padding:22px 18px;overflow-y:auto;background:rgba(9,14,30,.86);backdrop-filter:blur(16px);border-right:1px solid var(--line);transition:transform .28s ease}
 #main{margin-left:282px;min-height:100vh;display:flex;flex-direction:column}
 #topbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:12px;padding:14px 28px;background:rgba(7,11,22,.72);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
@@ -100,7 +99,6 @@ input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;heigh
 .stat-row b{font-size:16px;color:var(--text)}
 #menu-btn{display:none}
 #side-scrim{display:none}
-/* bottom nav (mobile) */
 #bnav{display:none;position:fixed;left:0;right:0;bottom:0;z-index:70;align-items:stretch;justify-content:space-around;gap:4px;padding:8px 10px calc(8px + env(safe-area-inset-bottom));background:rgba(9,14,30,.92);backdrop-filter:blur(16px);border-top:1px solid var(--line)}
 .bn{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;background:none;border:none;color:var(--muted);font:inherit;font-size:11px;font-weight:700;cursor:pointer;padding:4px 0;border-radius:12px;transition:.15s}
 .bn i{font-size:19px}
@@ -108,7 +106,6 @@ input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;heigh
 .bn-plus{width:46px;height:46px;margin-top:-22px;border-radius:50%;display:grid;place-items:center;font-size:19px;color:#fff;background:linear-gradient(135deg,var(--blue),var(--violet));box-shadow:0 10px 24px -8px rgba(90,110,255,.8);border:3px solid var(--bg)}
 .bn:active .bn-plus{transform:scale(.94)}
 .bn.on .bn-plus{box-shadow:0 10px 28px -6px rgba(139,92,246,.95)}
-/* home dashboard */
 .search-pill{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.07);border:1px solid var(--line2);border-radius:999px;padding:13px 20px;box-shadow:var(--shadow)}
 .search-pill i{color:var(--muted)}
 .search-pill input{flex:1;background:none;border:none;outline:none;color:var(--text);font:inherit;font-size:15px}
@@ -120,7 +117,6 @@ input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;heigh
 .recent-ic{width:42px;height:42px;min-width:42px;border-radius:12px;display:grid;place-items:center;font-size:16px;color:#9db8ff;background:rgba(77,125,255,.14);border:1px solid rgba(77,125,255,.3)}
 .nw-chip{display:inline-flex;align-items:center;gap:7px;padding:6px 12px;border-radius:10px;border:1px solid rgba(245,165,36,.4);background:rgba(245,165,36,.1);color:#ffd48a;font:inherit;font-size:12.5px;font-weight:700;cursor:pointer;transition:.13s;margin:0 6px 6px 0}
 .nw-chip:hover{background:rgba(245,165,36,.2)}
-/* set page */
 .set-pv{position:relative;border-radius:20px;background:linear-gradient(160deg,var(--paper),var(--paper2));color:var(--ink);min-height:210px;display:flex;align-items:center;justify-content:center;padding:30px;cursor:pointer;box-shadow:0 22px 44px -16px rgba(0,0,0,.6),inset 0 0 0 1px rgba(0,0,0,.06)}
 .set-pv::before{content:"";position:absolute;inset:10px;border:1px solid rgba(90,70,20,.18);border-radius:14px;pointer-events:none}
 .set-pv-word{font-size:clamp(28px,6vw,44px);font-weight:600;word-break:break-word;text-align:center}
@@ -134,17 +130,14 @@ input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;heigh
 .mode-card:hover{background:rgba(255,255,255,.08);border-color:var(--line2);transform:translateY(-2px)}
 .mode-card i{font-size:19px;width:24px;text-align:center}
 .mode-card small{display:block;font-weight:500;font-size:11px;color:var(--muted)}
-/* library */
 .lib-row{display:flex;align-items:center;gap:12px;padding:15px 16px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.035);margin-bottom:10px;transition:.15s}
 .lib-row:hover{border-color:var(--line2);background:rgba(255,255,255,.06)}
 .lib-row .progress{width:110px}
-/* extra modals */
 #acct-scrim,#share-scrim{position:fixed;inset:0;background:rgba(4,7,15,.6);backdrop-filter:blur(3px);z-index:96;opacity:0;pointer-events:none;transition:opacity .25s}
 #acct-scrim.on,#share-scrim.on{opacity:1;pointer-events:auto}
 #acct,#share{position:fixed;inset:0;z-index:98;display:none;align-items:center;justify-content:center;padding:20px}
 #acct.on,#share.on{display:flex}
 #acct .modal-card,#share .modal-card{max-height:86vh;overflow-y:auto}
-/* word list */
 .word-card{display:flex;gap:12px;align-items:flex-start;padding:15px 16px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.035);transition:border-color .15s,background .15s,transform .15s;cursor:pointer;position:relative}
 .word-card:hover{border-color:var(--line2);background:rgba(255,255,255,.06);transform:translateY(-1px)}
 .word-card.drag-over{border-color:var(--blue);box-shadow:0 0 0 2px rgba(77,125,255,.35)}
@@ -161,7 +154,6 @@ input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;heigh
 .def-sug:hover{background:rgba(255,255,255,.05);border-color:var(--line)}
 .def-sug input{margin-top:3px}
 .def-sug p{font-size:13px;color:var(--text)}
-/* flashcards */
 .fc-scene{perspective:1400px;width:100%;max-width:560px;height:320px;margin:0 auto}
 .fc-card{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .6s cubic-bezier(.4,.1,.2,1);cursor:pointer}
 .fc-card.flip{transform:rotateY(180deg)}
@@ -176,7 +168,6 @@ input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;heigh
 .fc-defs .tag{color:#7a5b12;background:rgba(200,160,60,.18);border-color:rgba(160,120,30,.35)}
 .progress{height:8px;border-radius:99px;background:rgba(255,255,255,.08);overflow:hidden}
 .progress>i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--blue),var(--violet));transition:width .35s ease}
-/* quiz / practice */
 .opt-btn{width:100%;text-align:left;padding:14px 16px;border-radius:13px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--text);font:inherit;font-size:14px;cursor:pointer;transition:.15s}
 .opt-btn:hover:not(:disabled){border-color:var(--blue);background:rgba(77,125,255,.1)}
 .opt-btn.good{border-color:var(--green);background:rgba(34,197,94,.16)}
@@ -187,7 +178,6 @@ input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;heigh
 .feedback.no{background:rgba(244,63,94,.11);border-color:rgba(244,63,94,.4);color:#ffc2cd}
 .big-word{font-size:clamp(26px,5vw,40px);font-weight:600;word-break:break-word}
 .result-ic{font-size:52px;margin-bottom:12px}
-/* games */
 .tabs{display:flex;gap:6px;padding:6px;border-radius:14px;background:rgba(255,255,255,.05);border:1px solid var(--line);overflow-x:auto;margin-bottom:20px}
 .tab-btn{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:9px 13px;border-radius:10px;border:none;background:transparent;color:var(--muted);font:inherit;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;transition:.15s}
 .tab-btn:hover{color:var(--text)}
@@ -269,20 +259,17 @@ input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;heigh
 .found-chip{display:inline-flex;align-items:center;gap:6px;padding:5px 11px;border-radius:9px;border:1px solid var(--line);background:rgba(255,255,255,.05);color:var(--text);font:inherit;font-size:12px;font-weight:700;cursor:pointer;transition:.13s}
 .found-chip:hover{background:rgba(255,255,255,.12);transform:translateY(-1px)}
 .found-chip.pangram{background:linear-gradient(135deg,#f5a524,#d97706);color:#241500;border-color:transparent}
-/* photo scan */
 .scan-text{max-height:96px;overflow-y:auto;font-size:12.5px;color:var(--muted);background:rgba(6,10,22,.6);border:1px solid var(--line);border-radius:10px;padding:10px 12px;line-height:1.7}
 .scan-text mark{background:rgba(245,165,36,.35);color:#ffd48a;border-radius:4px;padding:0 3px;font-weight:700}
 .scan-chips{display:flex;flex-wrap:wrap;gap:6px;max-height:130px;overflow-y:auto}
 .found-chip.on{outline:2px solid var(--blue);background:rgba(77,125,255,.16)}
 .found-chip.done{opacity:.5}
 .scan-ctx{font-size:12.5px;color:var(--muted);font-style:italic;border-left:3px solid var(--amber);padding:6px 10px;background:rgba(245,165,36,.07);border-radius:0 8px 8px 0}
-/* sentence lab */
 .sl-score{font-size:46px;font-weight:800;line-height:1;font-family:'Space Grotesk Variable',sans-serif}
 .sl-item{display:flex;gap:9px;align-items:flex-start;padding:9px 12px;border-radius:10px;border:1px solid var(--line);background:rgba(255,255,255,.03);font-size:13px}
 .sl-item i{margin-top:3px}
 .sl-item.bad{border-color:rgba(244,63,94,.35)}
 .sl-item.good{border-color:rgba(34,197,94,.35)}
-/* drawer / modal / toast */
 #drawer-scrim,#modal-scrim{position:fixed;inset:0;background:rgba(4,7,15,.6);backdrop-filter:blur(3px);z-index:80;opacity:0;pointer-events:none;transition:opacity .25s}
 #drawer-scrim.on,#modal-scrim.on{opacity:1;pointer-events:auto}
 #drawer{position:fixed;top:0;right:0;bottom:0;width:min(440px,100%);z-index:90;display:flex;flex-direction:column;background:#0d1529;border-left:1px solid var(--line2);box-shadow:-20px 0 60px rgba(0,0,0,.5);transform:translateX(105%);transition:transform .3s cubic-bezier(.3,.8,.3,1)}
@@ -411,7 +398,7 @@ input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;heigh
 <p class="t-xs dim mb-2">Create a set here, then add words inside it with Look up or Scan photo.</p>
 <div id="lib-list"></div>
 </section>
-<!-- ============ SET (vault detail) ============ -->
+<!-- ============ SET ============ -->
 <section class="view" id="view-set">
 <div class="view-h">
 <div class="row gap-2 grow" style="min-width:0">
@@ -910,7 +897,7 @@ input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;heigh
 </section>
 </div>
 </div>
-<!-- bottom nav (mobile): Games takes the center slot -->
+<!-- bottom nav (mobile): Games in the center slot -->
 <nav id="bnav">
 <button class="bn on" data-action="nav" data-view="home" id="bn-home"><i class="fa-solid fa-house"></i><span>Home</span></button>
 <button class="bn" data-action="nav" data-view="games" id="bn-games"><span class="bn-plus"><i class="fa-solid fa-gamepad"></i></span><span>Games</span></button>
@@ -926,12 +913,16 @@ input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;heigh
 <div id="share-scrim" data-action="share-close"></div>
 <div id="share"><div class="card modal-card">
 <div class="row between mb-2"><h3 class="t-lg">Share this set</h3><button class="btn icon-btn btn-g" data-action="share-close"><i class="fa-solid fa-xmark"></i></button></div>
-<span class="label">Share link (opens straight into the app)</span>
+<span class="label">Direct link — data is inside; opening it copies the set automatically</span>
 <div class="row gap-1 mb-2"><input id="share-link" class="field grow" readonly><button class="btn btn-p btn-sm" data-action="copy-link"><i class="fa-solid fa-copy"></i></button></div>
-<span class="label">Offline share code (works even if the cloud is down)</span>
+<div id="share-short-row" class="hide">
+<span class="label">Short cloud link</span>
+<div class="row gap-1 mb-2"><input id="share-short" class="field grow" readonly><button class="btn btn-g btn-sm" data-action="copy-short"><i class="fa-solid fa-copy"></i></button></div>
+</div>
+<span class="label">Raw code (paste into Library → From link)</span>
 <textarea id="share-code" class="field mb-2" rows="3" readonly style="font-size:11px"></textarea>
 <div class="row gap-1"><button class="btn btn-g btn-sm grow" data-action="copy-code"><i class="fa-solid fa-copy"></i> Copy code</button></div>
-<p class="t-xs dim mt-2">Anyone can paste the link or code into the Home search bar (or Library → From link) to import a copy. Links use free anonymous cloud storage — no account, no API key.</p>
+<p class="t-xs dim mt-2">Anyone who opens the direct link gets the set copied straight into their library — no import button, no account, no API key.</p>
 </div></div>
 <!-- word drawer -->
 <div id="drawer-scrim" data-action="drawer-close"></div>
@@ -971,6 +962,8 @@ const rand=n=>Math.floor(Math.random()*n);
 const POS=["noun","verb","adj","adv","phrase","other"];
 const WEIGHTED="AAAAAEEEEIIIIOOOOOUUUUBBCDDFGHJKLMNNPQRRSSTTTTVWXYZ";
 const letter=()=>WEIGHTED[rand(WEIGHTED.length)];
+const b64enc=s=>btoa(unescape(encodeURIComponent(s)));
+const b64dec=s=>decodeURIComponent(escape(atob(s)));
 /* ---------- persistent state ---------- */
 const KEY="vocabMaster.v4";
 let state={vaults:{},activeId:"default",sound:true,best:{tetris:0,blocky:0,scrabble:0,bee:0},wordle:{wins:0,streak:0,score:0},sent:{tries:0,best:0,total:0},recent:[],lastVault:null,updatedAt:0,cloud:{on:false,name:"",ref:null}};
@@ -1130,7 +1123,7 @@ const q=$("home-search").value.trim(),box=$("home-results");
 if(!q){box.classList.add("hide");box.innerHTML="";return;}
 box.classList.remove("hide");
 if(/#set=|#setdata=/.test(q)||/^[A-Za-z0-9+/=]{60,}$/.test(q)){
-box.innerHTML='<button class="btn btn-p" data-action="import-string" data-q="'+esc(q)+'"><i class="fa-solid fa-cloud-arrow-down"></i> Import shared set</button>';return;
+box.innerHTML='<button class="btn btn-p" data-action="import-string" data-q="'+esc(q)+'"><i class="fa-solid fa-cloud-arrow-down"></i> Copy shared set</button>';return;
 }
 const ql=q.toLowerCase();let h="";
 const sets=Object.keys(state.vaults).filter(id=>state.vaults[id].name.toLowerCase().includes(ql)).slice(0,6);
@@ -1138,10 +1131,10 @@ if(sets.length)h+='<span class="label">Sets</span>'+sets.map(id=>'<button class=
 const hits=[];
 Object.keys(state.vaults).forEach(id=>{state.vaults[id].words.forEach(w=>{if(hits.length>=12)return;if(w.word.toLowerCase().includes(ql)||w.definitions.some(d=>d.def.toLowerCase().includes(ql)))hits.push({id,w});});});
 if(hits.length)h+='<span class="label mt-2">Words</span>'+hits.map(x=>'<button class="recent-row" data-action="search-word" data-id="'+x.id+'" data-word="'+esc(x.w.word)+'"><span class="recent-ic" style="color:#c4b0ff;background:rgba(139,92,246,.14);border-color:rgba(139,92,246,.3)"><i class="fa-solid fa-book-open"></i></span><span class="grow"><b>'+esc(x.w.word.toLowerCase())+'</b><span class="t-xs dim">'+esc(state.vaults[x.id].name)+"</span></span><i class='fa-solid fa-chevron-right dim'></i></button>").join("");
-box.innerHTML=h||'<p class="t-sm dim">No results in your library. Paste a share link or code to import a set from the internet.</p>';
+box.innerHTML=h||'<p class="t-sm dim">No results in your library. Paste a share link or code to copy a set from the internet.</p>';
 }
 $("home-search").addEventListener("input",renderSearch);
-$("home-search").addEventListener("keydown",e=>{if(e.key==="Enter"){const q=$("home-search").value.trim();if(/#set=|#setdata=/.test(q)||/^[A-Za-z0-9+/=]{60,}$/.test(q))importFromString(q);else{const first=document.querySelector("#home-results [data-action='open-set']");if(first)openSet(first.dataset.id);}}});
+$("home-search").addEventListener("keydown",e=>{if(e.key==="Enter"){const q=$("home-search").value.trim();if(/#set=|#setdata=/.test(q)||/^[A-Za-z0-9+/=]{60,}$/.test(q))copyFromString(q,false);else{const first=document.querySelector("#home-results [data-action='open-set']");if(first)openSet(first.dataset.id);}}});
 /* ---------- library ---------- */
 function renderLibrary(){
 $("lib-list").innerHTML=Object.keys(state.vaults).map(id=>{
@@ -1638,7 +1631,7 @@ this.set.forEach(w=>{if(w.length>=4&&w.length<=15){let m=0,ok=true;for(const ch 
 }
 };
 const maskOf=w=>{let m=0;for(const ch of w)m|=1<<(ch.charCodeAt(0)-65);return m;};
-/* ---------- Cambridge auto-update (new words → game + grammar dictionaries) ---------- */
+/* ---------- Cambridge auto-update ---------- */
 const NW_KEY="vocabMaster.newwords.v1";
 let NW={at:0,words:[]};
 try{const p=JSON.parse(localStorage.getItem(NW_KEY)||"{}");if(p&&Array.isArray(p.words))NW=p;}catch(e){}
@@ -2289,7 +2282,7 @@ this.renderChips();this.nextWord();
 }
 };
 $("scan-file").addEventListener("change",e=>{const f=e.target.files[0];if(f)Scan.start(f);e.target.value="";});
-/* ---------- sentence lab (part-of-speech aware) ---------- */
+/* ---------- sentence lab ---------- */
 function slForms(w){
 w=String(w).toLowerCase();
 const f=new Set([w,w+"s",w+"es",w+"ed",w+"d",w+"ing"]);
@@ -2550,27 +2543,90 @@ else{await cloudPush();if(manual)toast("Cloud is up to date.","ok");}
 CLOUD.last=Date.now();renderAcct();
 }catch(e){if(manual)toast("Sync failed — check your connection.","err");}
 }
+/* ---------- share & direct-copy links ---------- */
+function setSig(name,ws){
+return String(name||"").trim().toLowerCase()+"|"+ws.map(w=>String(w.word||"").toLowerCase()).sort().join(",");
+}
+function findExistingSet(name,ws){
+const sig=setSig(name,ws);
+return Object.keys(state.vaults).find(id=>setSig(state.vaults[id].name,state.vaults[id].words)===sig)||null;
+}
+function normalizeSharedWords(list){
+return list.filter(w=>w&&w.word).map(w=>({
+id:uid(),
+word:String(w.word).trim().toLowerCase(),
+definitions:Array.isArray(w.definitions)&&w.definitions.length?w.definitions.filter(d=>d&&d.def).map(d=>({pos:POS.includes(d.pos)?d.pos:"other",def:String(d.def)})):[{pos:"other",def:"Imported word."}],
+addedAt:w.addedAt||Date.now(),
+known:!!w.known
+}));
+}
+function copySharedSet(j){
+if(!j||!Array.isArray(j.words)||!j.words.length)throw new Error("bad");
+const ws=normalizeSharedWords(j.words);
+if(!ws.length)throw new Error("empty");
+const exist=findExistingSet(j.name,ws);
+if(exist){openSet(exist);return {id:exist,dup:true,name:state.vaults[exist].name,count:state.vaults[exist].words.length};}
+const id="v_"+uid();
+let name=String(j.name||"Shared set").trim()||"Shared set";
+if(Object.values(state.vaults).some(v=>v.name===name))name+=" (shared)";
+state.vaults[id]={name,words:ws};
+openSet(id);
+return {id,dup:false,name,count:ws.length};
+}
+async function resolveSharePayload(s){
+s=String(s||"").trim();
+if(!s)return null;
+let m=s.match(/[#&?]setdata=([A-Za-z0-9+/=%]+)/);
+let direct=m?decodeURIComponent(m[1]):(/^[A-Za-z0-9+/=]{40,}$/.test(s)?s:null);
+if(direct)return JSON.parse(b64dec(direct));
+m=s.match(/[#&?]set=([A-Za-z0-9_-]+)/);
+if(m){
+for(const pr of PROVIDERS){
+try{const j=await pr.get(m[1]);if(j&&Array.isArray(j.words))return j;}catch(e){}
+}
+}
+return null;
+}
+async function copyFromString(s,auto){
+s=String(s||"").trim();
+if(!s)return;
+if(!auto)toast("Copying shared set…");
+try{
+const j=await resolveSharePayload(s);
+if(!j)throw new Error("no data");
+const res=copySharedSet(j);
+if(res.dup)toast('Already in your library — opened "'+res.name+'".',"ok");
+else toast('Copied "'+res.name+'" to your library · '+res.count+" words.","ok");
+}catch(e){
+toast(auto?"Could not copy the shared set from this link.":"That doesn't look like a valid share link or code.","err");
+}
+}
+function autoCopyFromLink(){
+const h=location.hash||"",q=location.search||"";
+const payload=h||q;
+if(!/[#&?]set(data)?=/.test(payload))return;
+history.replaceState(null,"",location.pathname);
+toast("Opening shared link — copying the set…");
+copyFromString(payload,true);
+}
 async function publishSet(){
 const v=vault();
 if(!v.words.length){toast("This set is empty — nothing to share.","err");return;}
 const data=JSON.stringify({app:"vocabmaster",name:v.name,words:v.words});
-toast("Publishing online…");
+const direct=location.origin+location.pathname+"#setdata="+b64enc(data);
+let short="";
+toast("Preparing share link…");
 for(const pr of PROVIDERS){
-try{
-const id=await pr.create(JSON.parse(data));
-showShare(location.origin+location.pathname+"#set="+id,data);
-toast("Published! Anyone with the link can import this set — no account needed.","ok");
-return;
-}catch(e){}
+try{const id=await pr.create(JSON.parse(data));short=location.origin+location.pathname+"#set="+id;break;}catch(e){}
 }
-showShare("",data);
-toast("Cloud unreachable — use the offline share code instead.","err");
+showShare(direct,short,data);
+toast("Share link ready. Opening it copies the set automatically.","ok");
 }
-function shareCode(data){return btoa(unescape(encodeURIComponent(data)));}
-function showShare(link,data){
-const code=shareCode(data);
-$("share-link").value=link||(location.origin+location.pathname+"#setdata="+code);
-$("share-code").value=code;
+function showShare(direct,short,data){
+$("share-link").value=direct;
+$("share-code").value=b64enc(data);
+const row=$("share-short-row");
+if(short){row.classList.remove("hide");$("share-short").value=short;}else row.classList.add("hide");
 $("share").classList.add("on");$("share-scrim").classList.add("on");
 }
 function copyField(id){
@@ -2579,39 +2635,7 @@ el.select();el.setSelectionRange(0,999999);
 try{navigator.clipboard.writeText(el.value).then(()=>toast("Copied!","ok"),()=>{document.execCommand("copy");toast("Copied!","ok");});}
 catch(e){try{document.execCommand("copy");toast("Copied!","ok");}catch(err){toast("Copy failed — select the text manually.","err");}}
 }
-function importShared(j){
-if(!j||!Array.isArray(j.words)||!j.words.length)throw new Error("bad");
-const id="v_"+uid();
-let name=String(j.name||"Shared set");
-if(Object.values(state.vaults).some(v=>v.name===name))name+=" (shared)";
-state.vaults[id]={name,words:j.words.filter(w=>w&&w.word).map(w=>({id:uid(),word:String(w.word).toLowerCase(),definitions:Array.isArray(w.definitions)&&w.definitions.length?w.definitions.map(d=>({pos:POS.includes(d.pos)?d.pos:"other",def:String(d.def||"")})):[{pos:"other",def:"Imported word."}],addedAt:w.addedAt||Date.now(),known:!!w.known}))};
-openSet(id);
-toast('Imported "'+name+'" · '+state.vaults[id].words.length+" words","ok");
-}
-async function importFromString(s){
-s=String(s||"").trim();if(!s)return;
-let m=s.match(/[#&?]set=([A-Za-z0-9_-]+)/);
-if(m){
-toast("Downloading shared set…");
-for(const pr of PROVIDERS){
-try{const j=await pr.get(m[1]);if(j&&j.words){importShared(j);return;}}catch(e){}
-}
-toast("Could not load that shared set.","err");
-return;
-}
-m=s.match(/[#&?]setdata=([A-Za-z0-9+/=%]+)/);
-const raw=m?decodeURIComponent(m[1]):(/^[A-Za-z0-9+/=]{40,}$/.test(s)?s:null);
-if(raw){
-try{importShared(JSON.parse(decodeURIComponent(escape(atob(raw)))));}
-catch(e){toast("Invalid share code.","err");}
-return;
-}
-toast("That doesn't look like a share link or code.","err");
-}
-function hashImport(){
-const h=location.hash||"";
-if(/[#&]set=|[#&]setdata=/.test(h)){importFromString(h);history.replaceState(null,"",location.pathname+location.search);}
-}
+/* ---------- account ---------- */
 function openAcct(){renderAcct();$("acct").classList.add("on");$("acct-scrim").classList.add("on");}
 function closeAcct(){$("acct").classList.remove("on");$("acct-scrim").classList.remove("on");}
 function renderAcct(){
@@ -2645,8 +2669,8 @@ case"open-side":openSide();break;
 case"close-side":closeSide();break;
 case"sound-toggle":state.sound=!state.sound;save();renderSound();if(!state.sound&&"speechSynthesis" in window)window.speechSynthesis.cancel();toast(state.sound?"Sound on":"Sound muted");break;
 case"new-set":newSet();break;
-case"import-link":openModal({title:"Import shared set",msg:"Paste a share link or offline code.",input:true,value:"",placeholder:"https://…#set=… or code",okText:"Import",cb:v=>importFromString(v)});break;
-case"import-string":importFromString(el.dataset.q);break;
+case"import-link":openModal({title:"Copy from share link",msg:"Paste a share link or raw code. The set is copied into your library automatically.",input:true,value:"",placeholder:"https://…#setdata=… or code",okText:"Copy set",cb:v=>copyFromString(v,false)});break;
+case"import-string":copyFromString(el.dataset.q,false);break;
 case"open-set":openSet(el.dataset.id);break;
 case"cont":openSet($("cont-card").dataset.id||state.activeId);openMode("flashcards");break;
 case"cont-open":openSet($("cont-card").dataset.id||state.activeId);break;
@@ -2674,6 +2698,7 @@ case"cloud-out":state.cloud={on:false,name:"",ref:null};save();renderAcct();rend
 case"copy-sync":copyField("sync-code-field");break;
 case"share-close":$("share").classList.remove("on");$("share-scrim").classList.remove("on");break;
 case"copy-link":copyField("share-link");break;
+case"copy-short":copyField("share-short");break;
 case"copy-code":copyField("share-code");break;
 case"export":exportVault();break;
 case"import":$("import-file").click();break;
@@ -2830,11 +2855,11 @@ else if(k.length===1&&k>="A"&&k<="Z"){e.preventDefault();W.type(k);}
 });
 document.addEventListener("visibilitychange",()=>{if(document.hidden)T.pause(true);});
 $("game-tabs").addEventListener("wheel",e=>{if(e.deltaY!==0){e.preventDefault();$("game-tabs").scrollLeft+=e.deltaY;}},{passive:false});
-window.addEventListener("hashchange",hashImport);
+window.addEventListener("hashchange",autoCopyFromLink);
 /* ---------- init ---------- */
 load();nwApply();renderVaults();renderWords();renderSound();bestChip();renderAcct();renderHome();
 $("w-wins").textContent=state.wordle.wins;$("w-streak").textContent=state.wordle.streak;$("w-score").textContent=state.wordle.score;
-hashImport();
+autoCopyFromLink();
 setTimeout(()=>Dict.load(),900);
 setTimeout(()=>nwUpdate(false),2600);
 if(state.cloud.on&&state.cloud.ref)setTimeout(()=>cloudSync(false),1600);
